@@ -1,0 +1,67 @@
+//the star icon
+.star-icon{
+  width: 60px;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.notification-h{
+  color: var(--ion-color-meduim-shade);
+}
+//switch payment duration section
+.swich-date{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  background-color: var(--ion-color-cold);
+  padding: 10px;
+  border-radius: 5px;
+}
+.twelve-months-payment{
+  color: var(--ion-color-meduim-shade);
+  font-weight: var(--ion-font--meduim);
+}
+.three-months-payment{
+  width: 40%;
+  text-align: end;
+}
+.ion-toggle{
+  width: 40px;
+}
+
+// full access section
+.Access-section{
+  background-color: var(--ion-color-blue-bg);
+  padding: 10px 20px 30px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.09);
+
+}
+.access-h{
+  text-align: center;
+}
+.price-sectin{
+  display: flex;
+  align-items: flex-end;
+}
+.check-icon{
+  color: var(--ion-color-green);
+  margin-right: 10px;
+}
+h2{
+  display: flex;
+}
+.btn-start-pay{
+  display: block;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 25px;
+}
+
+.cross-icon{
+  color: var(--ion-color-danger);
+  margin-right: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}

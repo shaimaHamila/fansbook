@@ -1,0 +1,22 @@
+<ion-tabs>
+
+  <ion-tab-bar class="ion-tab-bar" slot="bottom">
+    <ion-tab-button class="ion-tab-button" [class.active-item]="selectedPath.startsWith('p.url')" tab="home">
+      <i class="fi fi-rr-home "></i>
+      <ion-label class="ion-h5 ion-tab-h">Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button class="ion-tab-button" tab="notifications">
+      <i style="width:80px"  class="fi fi-rr-bell"></i>
+      <ion-label class="ion-h5 ion-tab-h">Notifications</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button class="ion-tab-button" tab="messages">
+      <i class="fi fi-rr-comment"></i>
+      <ion-label class="ion-h5 ion-tab-h">Messages</ion-label>
+    </ion-tab-button>
+
+
+  </ion-tab-bar>
+
+</ion-tabs>

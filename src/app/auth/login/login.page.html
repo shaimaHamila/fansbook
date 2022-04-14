@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-content auth-page">
+  <div class="container">
+    <div class="ion-title">
+      <h1 class="ion-h1">Hello Again!</h1>
+      <p class="ion-subtitle ion-subtitle-center">Welcome back you’ve been missed</p>
+    </div>
+
+  <div class="ion-form">
+    <form [formGroup]="validationloginForm" >
+      <div class="">
+        <ion-label  class="ion-h2">Email</ion-label>
+        <ion-input formControlName="email" class="ion-input ion-h2" name="email" type="email" placeholder="Enter your email"></ion-input>
+
+        <div *ngFor="let validation of validationUserMessage.email">
+          <div class="ion-h5 error-message" *ngIf="validationloginForm.get('email').hasError(validation.type) && (validationloginForm.get('email').dirty || validationloginForm.get('email').touched)">
+            {{validation.message}}
+          </div>
+        </div>
+
+      <div class="ion-mt"></div>
+        <ion-label  class="ion-h2">Password</ion-label>
+        <ion-input formControlName="password" class="ion-input ion-h2" name="password" type="password" placeholder="Enter your password"></ion-input>
+
+        <div *ngFor="let validation of validationUserMessage.password">
+          <div class="ion-h5 error-message" *ngIf="validationloginForm.get('password').hasError(validation.type) && (validationloginForm.get('password').dirty || validationloginForm.get('password').touched)">
+            {{validation.message}}
+          </div>
+        </div>
+
+      <div class="ion-mt"></div>
+      </div>
+
+      <div class="ion-psw">
+        <div class="remember-psw">
+          <ion-checkbox ></ion-checkbox>
+          <span class="ion-h3 ion-h3-box "> Remember me</span>
+        </div>
+        <div class="forget-psw">
+          <h3 class="ion-h3 forget-psw-h3">Forget Password?</h3>
+        </div>
+      </div>
+      <div class="ion-mt"></div>
+
+      <div class="ion-btn">
+        <ion-button [disabled]="!validationloginForm.valid"  class="ion-btn-lg ion-h3-btn" type="submit" color="primary" >Sign in</ion-button>
+      </div>
+
+      <div class="ion-h3-div">
+        <h3 class="ion-h3 ion-h3-s">Or continue with</h3>
+      </div>
+
+      <div class="ion-social-btn" >
+        <ion-button size="large" type="submit"  color="var(--ion-color-white)" class="google-btn" ><ion-img class="google-logo" src="../../../../assets/socialmedialogo/Google__G__Logo.svg.png"></ion-img></ion-button>
+        <ion-button size="large" color="var(--ion-color-white)" class="appel-btn"><ion-img class="appel-logo" src="../../../../assets/socialmedialogo/Apple-logo.png"></ion-img></ion-button>
+      </div>
+
+      <div class="ion-register">
+        <h3 class="ion-h2">
+          You don’t have an account ?
+          <a href="#" class="ion-h2 ion-h2-r" >Register now</a>
+        </h3>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+</ion-content>
+
+
+

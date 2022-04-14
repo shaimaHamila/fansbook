@@ -1,0 +1,38 @@
+.app-logo{
+  width: 120px;
+}
+.logo-section{
+}
+.user-profile-img{
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+}
+ion-thumbnail{
+  display: flex ;
+  align-items: center;
+  margin-right: 0px;
+  border: none;
+  margin: 0px;
+}
+hr{
+  border-bottom: 1px solid #F1E9FC;
+  width: 90%;
+}
+.sidebar-icons {
+  margin-right: 10px;
+}
+ion-item{
+  color: var(--ion-color-blue-dark);
+}
+.badge-nb{
+  --background: #eb445a21;
+  color: var(--ion-color-danger);
+
+}
+.active-item{
+  color: var(--ion-color-blue-dark);
+  --background: rgba(116, 47, 255, 0.082);
+  border-radius: 13px;
+  border: 7px solid rgba(255, 255, 255, 0.055);
+}

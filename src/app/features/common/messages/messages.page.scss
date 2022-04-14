@@ -1,0 +1,52 @@
+.searchBar{
+  padding: 0px;
+}
+
+//message
+.profiltPic{
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+}
+
+.message-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.message-info{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.message-img-name{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+}
+.user-name{
+  margin-top: 10px;
+}
+.message{
+  margin-top: 0px;
+}
+.message-date{
+  margin-top: 0px;
+}
+.vu{
+  color: var(--ion-color-meduim-thin);
+}
+.message-not-vu{
+  text-align: end;
+  margin-top: 10px;
+  color: var(--ion-color-secondary);
+
+}

@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-content auth-page">
+  <div class="container">
+    <div class="ion-title">
+      <h1 class="ion-h1">Create An Account</h1>
+      <p class="ion-subtitle ion-subtitle-center">Welcome To you!</p>
+    </div>
+
+  <div class="ion-form">
+    <form [formGroup]="validationRegisterForm">
+      <div class="">
+        <ion-label  class="ion-h3">Full name</ion-label>
+        <ion-input formControlName="fullName" class="ion-input ion-h3" name="fullName" type="text" placeholder="Enter your full name"></ion-input>
+
+        <div *ngFor="let validation of validationUserMessage.fullName">
+          <div class="ion-h5 error-message" *ngIf="validationRegisterForm.get('fullName').hasError(validation.type) && (validationRegisterForm.get('fullName').dirty || validationRegisterForm.get('fullName').touched)">
+            {{validation.message}}
+        <div class="ion-mt"></div>
+
+          </div>
+
+        </div>
+
+        <ion-label  class="ion-h3">Email</ion-label>
+        <ion-input formControlName="email" class="ion-input ion-h3" name="email" type="email" placeholder="Enter your email"></ion-input>
+
+        <div *ngFor="let validation of validationUserMessage.email">
+          <div class="ion-h5 error-message" *ngIf="validationRegisterForm.get('email').hasError(validation.type) && (validationRegisterForm.get('email').dirty || validationRegisterForm.get('email').touched)">
+            {{validation.message}}
+          </div>
+        <div class="ion-mt"></div>
+        </div>
+
+        <ion-label  class="ion-h3">Password</ion-label>
+        <ion-input formControlName="password" class="ion-input ion-h3" name="password" type="password" placeholder="Enter your password"></ion-input>
+
+        <div *ngFor="let validation of validationUserMessage.password">
+          <div class="ion-h5 error-message" *ngIf="validationRegisterForm.get('password').hasError(validation.type) && (validationRegisterForm.get('password').dirty || validationRegisterForm.get('password').touched)">
+            {{validation.message}}
+          </div>
+        <div class="ion-mt"></div>
+        </div>
+
+        <ion-label  class="ion-h3">Confirm Password</ion-label>
+        <ion-input formControlName="confirmPassword" class="ion-input ion-h3" name="confirmPassword" type="password" placeholder="Confirm your password"></ion-input>
+        <p class="ion-subtitle"></p>
+
+        <div *ngFor="let validation of validationUserMessage.confirmPassword">
+          <div class="ion-h5 error-message" *ngIf="validationRegisterForm.get('confirmPassword').hasError(validation.type) && (validationRegisterForm.get('confirmPassword').dirty || validationRegisterForm.get('confirmPassword').touched)">
+            {{validation.message}}
+          </div>
+        <div class="ion-mt"></div>
+        </div>
+
+
+        <ion-label class="ion-h3">User type*</ion-label>
+        <ion-select formControlName="userType" class=" ion-input ion-h3"  placeholder="Select One">
+          <ion-select-option value="influencer">Get Started As An Influencer</ion-select-option>
+          <ion-select-option value="enterpreneur">Get Started As An Enterpreneur</ion-select-option>
+        </ion-select>
+
+        <div *ngFor="let validation of validationUserMessage.userType">
+          <div class="ion-h5 error-message" *ngIf="validationRegisterForm.get('userType').hasError(validation.type) && (validationRegisterForm.get('userType').dirty || validationRegisterForm.get('userType').touched)">
+            {{validation.message}}
+          </div>
+        <div class="ion-mt"></div>
+
+        </div>
+
+      </div>
+
+        <div class="terms-cond">
+          <ion-checkbox formControlName="terms" ></ion-checkbox>
+          <span  class="ion-h3 ion-h3-box ">I agree with Terms and Conditions</span>
+        </div>
+      <div class="ion-mt"></div>
+
+      <div *ngFor="let validation of validationUserMessage.terms">
+        <div class="ion-h5 error-message" *ngIf="validationRegisterForm.get('terms').hasError(validation.type) && (validationRegisterForm.get('terms').dirty || validationRegisterForm.get('terms').touched)">
+          {{validation.message}}
+        </div>
+        <div class="ion-mt"></div>
+      </div>
+
+      <div class="ion-btn">
+        <ion-button [disabled]="!validationRegisterForm.valid" type="submit" class="ion-btn-lg ion-h3-btn"  color="primary" >Continue</ion-button>
+      </div>
+
+      <div class="ion-h3-div">
+        <h3 class="ion-h3 ion-h3-s">Or continue with</h3>
+      </div>
+
+      <div class="ion-mt"></div>
+
+      <div class="ion-social-btn">
+        <ion-button size="large"  color="var(--ion-color-white)" class="google-btn" ><ion-img class="google-logo" src="../../../../assets/socialmedialogo/Google__G__Logo.svg.png"></ion-img></ion-button>
+        <ion-button size="large" color="var(--ion-color-white)" class="appel-btn"><ion-img class="appel-logo" src="../../../../assets/socialmedialogo/Apple-logo.png"></ion-img></ion-button>
+      </div>
+
+      <div class="ion-mt"></div>
+
+      <div class="ion-register">
+        <h3 class="ion-h3">
+          Already have an account ?
+          <a href="#"  class="ion-h3 ion-h2-r" >Sign In</a>
+        </h3>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+</ion-content>
+
+
+
+

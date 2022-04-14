@@ -1,0 +1,80 @@
+// Search section
+.searchBar{
+  padding: 1px;
+  background-color: var(--ion-color-white);
+  box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.04);
+  --placeholder-color: var(--ion-color-grey-text);
+  color: var(--ion-color-grey-text);
+  border-radius: 5px;
+
+}
+.filter-btn{
+  height: 55px;
+  --padding-top: 5px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+}
+.filter-icon{
+  font-size: 20px;
+}
+.search-section{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 7px;
+}
+
+//Top Influencers section
+.top-inf-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.profiltPic{
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+}
+.inf-card{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--ion-color-white);
+  box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.08);
+  padding: 20px 0px;
+  width: 140px;
+  margin: 5px;
+
+}
+
+.followers-h{
+  margin-top: 0px;
+  margin-bottom: 7px;
+}
+.see-inf-profile{
+  margin-top: 15px;
+  display: flex;
+  color: var(--ion-color-first);
+
+}
+.see-inf-h{
+  color: var(--ion-color-first);
+
+}
+.arrow-icon{
+  font-size: 20px;
+}
+.top-infs{
+  display: flex;
+}
+.inf-cards{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

@@ -1,0 +1,46 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content class="ion-content">
+  <div class="container">
+    <div class="ion-mt"></div>
+
+    <!-- Search bar and filter section -->
+    <ion-searchbar class=" ion-h1 searchBar"  placeholder="Search"></ion-searchbar>
+
+    <div class="ion-mt"></div>
+    <!-- users messages section -->
+    <div class="message-section">
+      <div class="message-img-name">
+        <img class="profiltPic" src="../../../../assets/uerPhoto/portrait-pretty-lady-red-warm-jacket-stylish-eyeglasses.jpg" alt="user image">
+        <div class="message-info">
+          <h1 class="ion-h1 user-name">Friend name</h1>
+          <h3 class="ion-h3-b message ">Yeah sur I agree withe...</h3>
+        </div>
+      </div>
+      <div class="message-state">
+        <h3 class="ion-h3 message-not-vu"><i class="fi fi-ss-circle-small message-not-vu"></i></h3>
+        <h3 class="ion-h3 message-date">1 min</h3>
+      </div>
+
+    </div>
+
+    <div class="message-section" *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13]">
+      <div class="message-img-name">
+        <img class="profiltPic" src="../../../../assets/uerPhoto/attractive-curly-woman-purple-cashmere-sweater-fuchsia-sunglasses-poses-isolated-wall.jpg" alt="user image">
+        <div class="message-info">
+          <h1 class="ion-h1 user-name">Friend name</h1>
+          <h3 class="ion-h3 message vu">Yeah sur I agree withe...</h3>
+        </div>
+      </div>
+      <div class="message-state">
+        <h3 class="ion-h3 message-date">2:21 AM</h3>
+      </div>
+
+    </div>
+
+
+
+  </div>
+</ion-content>

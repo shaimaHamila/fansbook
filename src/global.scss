@@ -1,0 +1,277 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import url('http://fonts.cdnfonts.com/css/serif');
+.ion-content{
+  --background: var( --ion-color-bg);
+  font-family: var(--ion-body-font);
+}
+.modal-container{
+  --padding-top:30px;
+  --padding-start: 20px;
+  --padding-end:20px;
+  --padding-bottom: 30px;
+}
+.container{
+margin:auto 5%;
+}
+
+// h1 bold
+.ion-h1{
+  font-size: var(--ion-h1-font-size);
+  font-weight: var(--ion-font--bold);
+  color: var(--ion-color-blue-dark);
+}
+// h1 meduim
+.ion-h1-m{
+  font-size: var(--ion-h1-font-size);
+  font-weight: var(--ion-font--meduim);
+  color: var(--ion-color-blue-dark);
+}
+// h1-2 bold
+.ion-h1-2{
+  font-size: var(--ion-h1-2-font-size);
+  font-weight: var(--ion-font--bold);
+  color: var(--ion-color-blue-dark);
+}
+
+// h1-2 meduim
+.ion-h1-2-m{
+  font-size: var(--ion-h1-2-font-size);
+  font-weight: var(--ion-font--medium);
+  color: var(--ion-color-blue-dark);
+}
+
+// h2 semi-bold
+.ion-h2{
+  font-size: var(--ion-h2-font-size);
+  font-weight: var(--ion-font--semi-bold);
+  color: var(--ion-color-blue-dark);
+}
+.ion-h2-b{
+  font-size: var(--ion-h2-font-size);
+  font-weight: var(--ion-font--bold);
+  color: var(--ion-color-blue-dark);
+}
+// h3 regular
+.ion-h3-r{
+  font-size: var(--ion-h3-font-size);
+  font-weight: var(--ion-font--regular);
+  color: var(--ion-color-blue-dark);
+}
+// h3 medium
+.ion-h3-m{
+  font-size: var(--ion-h3-font-size);
+  font-weight: var(--ion-font--medium);
+  color: var(--ion-color-blue-dark);
+}
+// h3 semi-bold
+.ion-h3{
+  font-size: var(--ion-h3-font-size);
+  font-weight: var(--ion-font--semi-bold);
+  color: var(--ion-color-blue-dark);
+}
+// h3 bold
+.ion-h3-b{
+  font-size: var(--ion-h3-font-size);
+  font-weight: var(--ion-font--bold);
+  color: var(--ion-color-blue-dark);
+}
+
+// h4 semi-bold
+.ion-h4{
+  font-size: var(--ion-h4-font-size);
+  font-weight: var(--ion-font--semi-bold);
+  color: var(--ion-color-blue-dark);
+}
+
+// h4 medium
+.ion-h4-m{
+  font-size: var(--ion-h4-font-size);
+  font-weight: var(--ion-font--medium);
+  color: var(--ion-color-blue-dark);
+
+}
+// h5 semi-bold
+.ion-h5{
+  font-size: var(--ion-h5-font-size);
+  font-weight: var(--ion-font--semi-bold);
+  color: var(--ion-color-blue-dark);
+}
+// h5 regular
+.ion-h5-r{
+  font-size: var(--ion-h5-font-size);
+  font-weight: var(--ion-font--regular );
+  color: var(--ion-color-blue-dark);
+}
+// h5 meduim
+.ion-h5-m{
+  font-size: var(--ion-h5-font-size);
+  font-weight: var(--ion-font--medium);
+  color: var(--ion-color-blue-dark);
+}
+// h6 meduim
+.ion-h6-m{
+  font-size: var(--ion-h6-font-size);
+  font-weight: var(--ion-font--medium);
+  color: var(--ion-color-blue-dark);
+}
+
+
+//btn text
+.ion-h3-btn{
+  font-size: var(--ion-h3-font-size);
+  font-weight: var(--ion-font--bold);
+  color: var(--ion-color-white);
+  margin: auto;
+  letter-spacing: 0.5px;
+  font-family: var(--ion-body-font);
+
+}
+
+
+// Subtitle
+.ion-subtitle{
+  font-size: var(--ion-h5-font-size);
+  font-weight: var(--ion-font--medium);
+  color: var(--ion-color-grey-text);
+}
+
+//input
+.ion-input{
+  background-color: var(--ion-color-white);
+  padding: 10px 5px;
+  color: var(--ion-color-grey-text);
+  --background: var(--ion-color-white);
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  --padding-start: 10px;
+
+  box-shadow: 0px 0px 15px 0px rgba(175,103,255,0.09);
+  padding: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 7px;
+
+}
+
+//button_big
+.ion-btn-lg{
+  --background:var(--ion-color-primary);
+  --padding-top: 25px;
+  --padding-bottom: 25px;
+  --border-radius: 5px;
+  width: 100%;
+}
+//button_med
+.ion-btn-med{
+  --background:var(--ion-color-primary);
+  --padding-top: 25px;
+  --padding-bottom: 25px;
+  --padding-left: 50px;
+  --padding-right: 50px;
+  --border-radius: 5px;
+
+}
+//margin
+.ion-mt{
+  margin-top: 25px ;
+}
+.mt-h{
+  margin-top: 40px;
+}
+
+
+//social botton
+.appel-logo{
+  width: 45px;
+}
+
+.google-logo{
+  width: 30px;
+}
+.appel-btn,
+.google-btn{
+  width: 45%;
+  box-shadow: var(--ion-box-shadow--medium);
+  // --color-focused: red;
+}
+
+
+.ion-social-btn{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  align-content: flex-start;
+  flex-direction: row;
+  margin: auto;
+
+}
+
+// switch to signin/signup
+
+.ion-h2-r{
+  color: var(--ion-color-first);
+  font-family: var(--ion-font--bold);
+}
+
+.ion-register{
+  display: block;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+
+}
+
+//title
+.ion-title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.ion-subtitle-center{
+  width: 90%;
+  text-align: center;
+  margin-top: auto;
+}
+
+// link
+a{
+  text-decoration: none;
+}
+
+//error message
+.error-message{
+  color: var(--ion-color-danger);
+}
+
+//influencer-info-modal
+
+.influencer-info-modal {
+   --border-radius:5px;
+}

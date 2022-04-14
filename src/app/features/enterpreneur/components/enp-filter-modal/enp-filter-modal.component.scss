@@ -1,0 +1,36 @@
+.title{
+  text-align: start;
+  margin-bottom: 10px;
+}
+// .ion-range{
+//   padding: 0px 5px;
+// }
+// .range-min-max{
+//   display: flex;
+//   justify-content: space-between;
+//   margin-top: 20px;
+// }
+// .range-min, .range-max{
+//   margin: 0px;
+// }
+//the two btns
+.btns{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 40px auto;
+  gap: 10px;
+}
+.btn-read{
+  --background: none;
+  color: var(--ion-color-first);
+  border: 1px solid var(--ion-color-first);
+  border-radius: 6px;
+  --box-shadow: none;
+  width: 50%;
+}
+.btn-apply{
+ --box-shadow: none;
+ width: 50%;
+}

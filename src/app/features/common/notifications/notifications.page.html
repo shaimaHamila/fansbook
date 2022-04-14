@@ -1,0 +1,52 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+
+<ion-content class="ion-content">
+  <div class="container">
+
+    <div class="ion-mt"></div>
+    <!-- users notifications section -->
+
+    <div class="notification-section vu">
+      <div class="notification-state">
+        <i class="fi fi-ss-circle-small notification-not-vu"></i>
+        <div class="notification-info">
+          <h1 class="ion-h1 notif-user-name">Friend name</h1>
+          <h2 class="ion-h1-2-m notif-msg">The notification message will be displayed here</h2>
+          <h3 class="ion-h3 notification-date">2:21 AM</h3>
+        </div>
+      </div>
+
+      <img class="profiltPic" src="../../../../assets/uerPhoto/pretty-lady-polka-dot-outfit-smiling-pink-wall.jpg" alt="user image">
+    </div>
+
+    <div class="notification-section vu">
+      <div class="notification-state">
+        <i class="fi fi-ss-circle-small notification-not-vu"></i>
+        <div class="notification-info">
+          <h1 class="ion-h1 notif-user-name">Friend name</h1>
+          <h2 class="ion-h1-2-m notif-msg">The notification message will be displayed here</h2>
+          <h3 class="ion-h3 notification-date">2:21 AM</h3>
+        </div>
+      </div>
+
+      <img class="profiltPic" src="../../../../assets/uerPhoto/upset-curly-woman-with-smartphone-hand-looking-through-sunglasses-purple-background-charming-girl-fashionable-winter-attire-with-bright-make-up-posing-photoshoot.jpg" alt="user image">
+    </div>
+
+
+    <div class="notification-section " *ngFor="let item of [1,2,3,4,5,6,7,8,9]">
+      <div class="notification-state">
+        <div class="notification-info">
+          <h1 class="ion-h1 notif-user-name">Friend name</h1>
+          <h2 class="ion-h1-2-m notif-msg">The notification message will be displayed here</h2>
+          <h3 class="ion-h3 notification-date">2:21 AM</h3>
+        </div>
+      </div>
+
+      <img class="profiltPic" src="../../../../assets/uerPhoto/attractive-curly-woman-purple-cashmere-sweater-fuchsia-sunglasses-poses-isolated-wall.jpg" alt="user image">
+    </div>
+  </div>
+</ion-content>
+

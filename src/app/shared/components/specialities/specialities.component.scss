@@ -1,0 +1,12 @@
+ion-select{
+  background-color: white;
+  padding: 15px;
+  color: var(--ion-color-blue-dark);
+  border-radius: 5px;
+  box-shadow: var(--ion-box-shadow--light);
+}
+/* Set the placeholder color and opacity */
+ion-select::part(placeholder) {
+  color: var(--ion-color-text-meduim);
+  opacity: 0.8;
+}

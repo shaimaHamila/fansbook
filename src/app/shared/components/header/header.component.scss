@@ -1,0 +1,29 @@
+//header
+ion-tab-button{
+  align-items: flex-start;
+}
+
+.profiltPic{
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+}
+
+.user-profile{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  padding-right: 25px;
+  gap: 5px;
+}
+.user-name-h{
+  margin: 0px;
+}
+ion-toolbar{
+  margin-top: 5px;
+  margin-bottom: 4px;
+}

@@ -1,0 +1,65 @@
+
+// New Collaboration Opportunities Listed Section
+.profiltPic-enp{
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+}
+.coll-header-div{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+}
+.company-name-h{
+  margin-top: 0px;
+}
+.data-post-h{
+  margin-top: 0px;
+  color: var(--ion-color-secondary);
+}
+
+.specialty{
+  background-color: var(--ion-color-cold);
+  padding: 10px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 5px;
+  margin-top: 3px;
+}
+.description-text{
+  color: var(--ion-color-meduim-shade);
+  margin-top: 0px;
+}
+.specialities-req-h{
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+.specialities{
+  margin-top: 0px;
+}
+//the two btns
+.btns-coll{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 20px auto;
+  gap: 10px;
+}
+.btn-read{
+  --background: none;
+  color: var(--ion-color-first);
+  border: 1px solid var(--ion-color-first);
+  border-radius: 6px;
+  --box-shadow: none;
+  width: 70%;
+}
+.btn-apply{
+ --box-shadow: none;
+ width: 30%;
+}
+
+

@@ -1,0 +1,155 @@
+// margin top between the sections
+.mt-h{
+  margin-top: 40px;
+}
+//Upgrade profile section
+.upgrade-item{
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  gap: 21px;
+  justify-content: space-between;
+}
+.button-inner{
+  --background: none;
+  color: var(--ion-color-first);
+  border: 1px solid var(--ion-color-first);
+  border-radius: 5px;
+  --box-shadow: none;
+  margin: 0px;
+}
+.upgrade-star-icon{
+  margin-right: 3px;
+}
+.upgrade-label-text{
+  color: var(--ion-color-first);
+}
+
+//App users Section
+.h-user-type{
+  color: var(--ion-color-meduim-shade);
+}
+.h-user-nb{
+  color: var(--ion-color-blue-dark);
+  margin-top: 0px;
+}
+.app-users-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--ion-color-white);
+  padding: 6px;
+  box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.04);
+  border-radius: 5px;
+  width: 48%;
+}
+.app-users-section{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+//Top Influencers section
+.top-inf-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+
+.inf-card{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--ion-color-white);
+  box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.08);
+  padding: 30px 0px;
+  width: 160px;
+  margin: 10px;
+
+}
+
+//Adds section
+.adds-div{
+  background-color: var(--ion-color-white);
+  color: var(--ion-color-first);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.04);
+}
+
+// New Collaboration Opportunities Listed Section
+.profiltPic-enp{
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+}
+.coll-header-div{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+}
+.company-name-h{
+  margin-top: 0px;
+}
+.data-post-h{
+  margin-top: 0px;
+  color: var(--ion-color-secondary);
+}
+
+.specialty{
+  background-color: var(--ion-color-cold);
+  padding: 10px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 5px;
+  margin-top: 3px;
+}
+.description-text{
+  color: var(--ion-color-meduim-shade);
+  margin-top: 0px;
+}
+.specialities-req-h{
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+.specialities{
+  margin-top: 0px;
+}
+.btns-coll{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 20px auto;
+  gap: 10px;
+}
+.btn-read{
+  --background: none;
+  color: var(--ion-color-first);
+  border: 1px solid var(--ion-color-first);
+  border-radius: 6px;
+  --box-shadow: none;
+  width: 70%;
+}
+.btn-apply{
+ --box-shadow: none;
+ width: 30%;
+}
+.enp-card{
+  background-color: var(--ion-color-white);
+  box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.08);
+  padding: 20px 20px;
+  width: 330px;
+  text-align: start;
+  margin: 10px;
+}
+

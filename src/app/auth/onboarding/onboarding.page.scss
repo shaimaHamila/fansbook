@@ -1,0 +1,53 @@
+
+.content{
+  --background: var(--ion-color-blue-dark);
+}
+.content1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.ion-button-sm{
+  font-family: var(--ion-body-font);
+  margin-bottom: 1em;
+}
+
+.ion-h3-regular{
+  font-family: var(--ion-body-font);
+  margin: auto;
+  width: var(--ion-font--regular);
+
+}
+
+.logo{
+  width: 150px;
+  margin: auto;
+  margin-top: 60px;
+}
+
+.appel-btn, .google-btn{
+  width: 40%;
+}
+
+.google-btn{
+  margin-right: 1em;
+}
+
+.appel-logo{
+  width: 50px;
+}
+
+.google-logo{
+  width: 30px;
+}
+
+.btn{
+  margin-top: 50px;
+  margin-bottom: 60px;
+
+}
+.ionic-social-btn{
+  margin-top: 30px;
+  margin-bottom: 20px;
+}

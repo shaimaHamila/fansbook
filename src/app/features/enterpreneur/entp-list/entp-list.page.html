@@ -1,0 +1,37 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content class="ion-content">
+  <div class="container">
+  <!-- Search bar and filter section -->
+  <div class="mt-h"></div>
+  <section>
+    <div class="search-section">
+      <ion-searchbar  class=" ion-h1 searchBar" color="white" placeholder="Name or Speciality"></ion-searchbar>
+
+    </div>
+  </section>
+
+  <!-- influencers list section -->
+  <div class="mt-h"></div>
+  <section>
+    <div class="top-inf-header">
+      <ion-label class="ion-h1-m "> Entrepreneurs List</ion-label>
+    </div>
+    <div class="inf-cards">
+      <div class="inf-card"  *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8]">
+        <img class="profiltPic" src="../../../../assets/uerPhoto/cut-in-a-moment-9ewfCZmObeM-unsplash.jpg" alt="">
+        <h2 class="ion-h2">Pamela Pamela</h2>
+        <h3 class="ion-h3 followers-h">Company name</h3>
+        <div class="see-inf-profile">
+          <a class="ion-h2 see-inf-h">View Profile</a>
+          <i class="fi fi-rr-angle-small-right arrow-icon"></i>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+  </div>
+</ion-content>

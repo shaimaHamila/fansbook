@@ -1,0 +1,40 @@
+//Top Influencers section
+.top-inf-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.profiltPic{
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+}
+
+
+.followers-h{
+  margin-top: 0px;
+  margin-bottom: 7px;
+}
+.see-inf-profile{
+  margin-top: 15px;
+  display: flex;
+  color: var(--ion-color-first);
+  justify-content: center;
+}
+
+
+.see-inf-h{
+  color: var(--ion-color-first);
+
+}
+.arrow-icon{
+  font-size: 20px;
+}
+.top-infs{
+  display: flex;
+}

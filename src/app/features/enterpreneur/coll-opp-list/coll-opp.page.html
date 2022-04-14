@@ -1,0 +1,34 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content class="ion-content">
+  <div class="container">
+  <!-- Search bar and filter section -->
+  <div class="mt-h"></div>
+  <section>
+    <div class="search-section">
+      <ion-searchbar  class=" ion-h1 searchBar" color="white" placeholder="Name or Speciality"></ion-searchbar>
+      <ion-button (click)="openInfFilterModal()" slot="end" class="ion-h6 filter-btn">
+        <i class="fi fi-rr-settings-sliders filter-icon"></i>
+      </ion-button>
+    </div>
+  </section>
+
+  <!-- Collaboration opportunities list section -->
+  <div class="mt-h"></div>
+  <section>
+    <div class="top-enp-header">
+      <ion-label class="ion-h1-m "> Collaboration opportunities</ion-label>
+    </div>
+    <div class="enp-cards">
+      <div class="enp-card" *ngFor="let item of [1, 2, 3] ">
+        <app-collaboration></app-collaboration>
+
+      </div>
+    </div>
+
+
+  </section>
+  </div>
+</ion-content>

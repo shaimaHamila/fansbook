@@ -1,0 +1,30 @@
+
+//form section
+.remember-psw, .forget-psw{
+  display: flex;
+  align-items: center;
+}
+.forget-psw-h3{
+  margin: auto;
+}
+.ion-h3-box{
+  padding-left: 3px;
+}
+.ion-psw{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  --border-radius:5px;
+}
+
+.ion-h3-div{
+  margin-top: 40px;
+  margin-bottom: 20px;
+  display: block;
+  text-align: center;
+}
+.ion-h3-s{
+  color: var(--ion-color-meduim-shade);
+}
+
+

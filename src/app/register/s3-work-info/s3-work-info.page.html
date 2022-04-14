@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-content user-type-page">
+  <div class="container">
+    <div class="ion-mt"></div>
+
+    <section>
+      <h1 class="ion-h1 ion-title">Create A Propfile "66%"</h1>
+    <div class="ion-mt"></div>
+      <ion-progress-bar color="primary" value="0.66"></ion-progress-bar>
+    </section>
+    <div class="mt-h"></div>
+
+    <section>
+      <h2 class="ion-h1-m">Tell us about the work you do. What is the main services you offer and your Minimum budget ?</h2>
+      <h4 class="ion-h3-m text">Clients will see your minimum budget on your profile and in search results once you publish your profile. You can adjust it every time you want.</h4>
+    </section>
+    <div class="ion-mt"></div>
+
+    <section>
+      <form>
+        <h2 class="ion-h2 label">Specialties</h2>
+        <app-specialities></app-specialities>
+
+        <h2  class="ion-h2 label">Minimum budget (DT)</h2>
+        <ion-input class="ion-input input-budge ion-h2" name="minBudget" type="number" min="10" max="100" placeholder="0.0 DT" ></ion-input>
+
+        <div class="ion-mt"></div>
+
+        <div class="ion-btn">
+          <ion-button routerLink="/register/s4-social-info" routerLinkActive="active"  type="submit" class="ion-btn-lg ion-h3-btn btn"  color="primary" >Set Your Social  Links</ion-button>
+        </div>
+
+      </form>
+    </section>
+
+  </div>
+</ion-content>

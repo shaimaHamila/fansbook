@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Contact</ion-title>
+    <ion-buttons>
+      <ion-button (click)="dismissModalInfo()" >
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-content">
+  <div class="container">
+    <div class="phone-num">
+      <h1 class="ion-h1 contact-title">Phone Number</h1>
+      <h3 class="ion-h2 contact-content">{{phoneNum}}</h3>
+    </div>
+    <div class="mail">
+      <h1 class="ion-h1 contact-title">Mail</h1>
+      <h3 class="ion-h2 contact-content">{{email}}</h3>
+    </div>
+    <div class="country">
+      <h1 class="ion-h1 contact-title">Country</h1>
+      <h3 class="ion-h2 contact-content">{{country}}</h3>
+    </div>
+    <div class="city">
+      <h1 class="ion-h1 contact-title">City</h1>
+      <h3 class="ion-h2 contact-content">{{city}}</h3>
+    </div>
+  </div>
+
+</ion-content>

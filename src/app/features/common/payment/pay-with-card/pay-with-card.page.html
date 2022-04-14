@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-content" >
+  <div class="container">
+
+    <!-- Payment cards -->
+    <div class="pay-type-section">
+      <ion-label  class="ion-h2-b">Choose Payment Type</ion-label>
+      <div class="cards">
+        <img class="card-img-selected" src="../../../../../assets/cards/masterCard.png" alt="Master Card">
+        <img class="card-img" src="../../../../../assets/cards/google-card.png" alt="google Card">
+        <img class="card-img" src="../../../../../assets/cards/payPal-card.png" alt="payPal Card">
+        <img class="card-img" src="../../../../../assets/cards/vista-card.png" alt="vista Card">
+      </div>
+    </div>
+
+
+    <div class="ion-mt"></div>
+    <!-- Getting code and Expiration date from user -->
+    <div>
+      <ion-label  class="ion-h2-b">Card number</ion-label>
+      <ion-input  class="ion-input ion-h2" name="card-number" type="number" placeholder="Enter your card number"></ion-input>
+    </div>
+    <div class="ion-mt"></div>
+
+    <div>
+      <ion-label  class="ion-h2-b">Expiration date</ion-label>
+      <ion-input  class="ion-input ion-h2" name="expiration-date" type="date" placeholder="dd/mm/yy"></ion-input>
+    </div>
+    <div class="ion-mt"></div>
+
+    <div class="price">
+      <h2 class="ion-h2-b">Total</h2>
+      <h2 class="ion-h2">$199.00</h2>
+    </div>
+
+    <div class="ion-mt"></div>
+
+    <ion-button routerLink="/tabs/payment/pay-notification" type="submit" class="btn-payment ion-h3-btn ion-btn-med "  color="primary" >
+      Pay
+    </ion-button>
+  </div>
+</ion-content>

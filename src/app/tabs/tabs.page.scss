@@ -1,0 +1,28 @@
+.fi{
+  font-size: 24px;
+
+}
+.ion-tab-h{
+  color: var(--ion-color-meduim-thin);
+}
+.active-item{
+  color: var(--ion-color-blue-dark);
+  background-color: rgba(116, 47, 255, 0.082);
+  border-radius: 10px;
+  border: 6px solid rgba(255, 255, 255, 0.288);
+  padding: 0px;
+}
+.menu-icon-sidebar{
+
+}
+.ion-tab-bar{
+  --background: var(--ion-color-white);
+  border-radius: 23px;
+  padding: 7px;
+  margin-bottom: 10px;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+
+}
+ion-label{
+  margin-bottom: 0px;
+}

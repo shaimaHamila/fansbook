@@ -1,0 +1,30 @@
+.user-img{
+  border-radius: 100%;
+  overflow: hidden;
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  object-position: center;
+}
+.add-icon{
+  margin-right: 7px;
+  font-size: 20px;
+}
+.profile-label{
+  color: var(--ion-color-secondary);
+  display: flex;
+}
+.input-image-section{
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+}
+.label{
+  --margin-bottom: 12px;
+}
+.btn{
+  margin-bottom: 60px;
+}
+.text{
+  color: var(--ion-color-text-meduim);
+}

@@ -1,0 +1,7 @@
+{
+  "name": "fansbook",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
