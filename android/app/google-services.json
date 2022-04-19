@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "457136003894",
+    "project_id": "fansbook-f2919",
+    "storage_bucket": "fansbook-f2919.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457136003894:android:6d204cf92b8e9d8fa1b197",
+        "android_client_info": {
+          "package_name": "com.fansbook.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457136003894-af08vqed8avkojrgn7bkklamei4krggm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fansbook.app",
+            "certificate_hash": "9c4e17dfc525892a007379813587df24a6bd74a1"
+          }
+        },
+        {
+          "client_id": "457136003894-k1ssdracre87riqti9gbs60ovuiq7asi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzp5O2RNsatknucz2eClBY3WePUy_V6co"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457136003894-k1ssdracre87riqti9gbs60ovuiq7asi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "457136003894-k1goqir13fa57bkkb8b5ch6p6e6gfu48.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.fansbook.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

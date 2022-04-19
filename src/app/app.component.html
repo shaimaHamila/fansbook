@@ -34,13 +34,18 @@
               </ion-item>
             </div>
             <hr>
-            <div  *ngFor="let p of lastpages">
+            <div  *ngFor="let p of payment">
               <ion-item [routerLink]="[p.url]" routerLinkActive="active-item" routerDirection="root" lines="none" detail="false">
                 <i [class]="p.icon + ' sidebar-icons'"></i>
                 <ion-label>{{ p.title }}</ion-label>
               </ion-item>
             </div>
-
+            <div  *ngFor="let p of userLogout">
+              <ion-item [routerLink]="[p.url]" (click)="logout()" routerLinkActive="active-item" routerDirection="root" lines="none" detail="false">
+                <i [class]="p.icon + ' sidebar-icons'"></i>
+                <ion-label>{{ p.title }}</ion-label>
+              </ion-item>
+            </div>
 
           </ion-menu-toggle>
         </ion-list>

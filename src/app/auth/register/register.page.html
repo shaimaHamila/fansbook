@@ -89,7 +89,7 @@
       </div>
 
       <div class="ion-btn">
-        <ion-button [disabled]="!validationRegisterForm.valid" type="submit" class="ion-btn-lg ion-h3-btn"  color="primary" >Continue</ion-button>
+        <ion-button (click)="register()" [disabled]="!validationRegisterForm.valid" type="submit" class="ion-btn-lg ion-h3-btn"  color="primary" >Continue</ion-button>
       </div>
 
       <div class="ion-h3-div">

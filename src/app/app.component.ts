@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './services/authService/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -54,18 +56,29 @@ export class AppComponent {
     },
   ];
 
-  lastpages = [
+  payment = [
 
     {
       title: 'Payment',
       url: '/tabs/payment',
       icon: 'fi fi-rr-credit-card'
     },
+  ];
+  userLogout = [
     {
       title: 'Logout',
       url: '/tabs/logout',
       icon: 'fi fi-rr-sign-out-alt'
     },
   ];
-  constructor() {}
+  constructor(private authService: AuthService, private route: Router) {}
+
+  async logout(){
+    await this.authService.logout();
+    this.route.navigateByUrl('/login', {replaceUrl: true});
+    localStorage.removeItem('token');
+  }
+
 }
+
+

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertController, LoadingController, NavController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/authService/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,11 @@ export class LoginPage implements OnInit {
   };
   validationloginForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, private router: Router) { }
+  constructor(
+    public formBuilder: FormBuilder, private router: Router,
+    private alertCtrl: AlertController, private navCtr: NavController,
+    public loadingCtrl: LoadingController, private authService: AuthService,
+    ) { }
 
   ngOnInit() {
     this.validationloginForm = this.formBuilder.group({
@@ -32,11 +38,34 @@ export class LoginPage implements OnInit {
       ])),
       password: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.minLength(8)
+        Validators.minLength(6)
       ]))
     });
   };
 
 
+
+  async login() {
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+
+    const user = await this.authService.login(this.validationloginForm.value);
+    await loading.dismiss();
+
+    if (user) {
+      this.router.navigateByUrl('/tabs/home', { replaceUrl: true });
+    } else {
+      this.showAlert('Login failed', 'Please try again!');
+    }
+  }
+
+  async showAlert(header, message) {
+    const alert = await this.alertCtrl.create({
+      header,
+      message,
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
 
 }

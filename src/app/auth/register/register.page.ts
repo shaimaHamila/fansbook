@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/authService/auth.service';
+
 
 @Component({
   selector: 'app-register',
@@ -40,10 +42,23 @@ export class RegisterPage implements OnInit {
   validationRegisterForm: FormGroup;
   loading: any;
 
-  constructor(public formBuilder: FormBuilder, private router: Router,
-    private alertCtrl: AlertController,private navCtr: NavController, public loadingCtrl: LoadingController) {
+  constructor(
+    public formBuilder: FormBuilder, private router: Router,
+    private alertCtrl: AlertController, private navCtr: NavController,
+    public loadingCtrl: LoadingController, private authService: AuthService,
+
+    ){
       this.loading = this.loadingCtrl;
-     }
+    }
+
+    // Easy access for form fields
+    get email() {
+      return this.validationRegisterForm.get('email');
+    }
+
+    get password() {
+      return this.validationRegisterForm.get('password');
+    }
 
      passwordConfirming(c: AbstractControl): { invalid: boolean }
      {
@@ -51,6 +66,7 @@ export class RegisterPage implements OnInit {
            return {invalid: true};
      }
    }
+
 
   ngOnInit() {
 
@@ -81,5 +97,30 @@ export class RegisterPage implements OnInit {
     },{validator: this.passwordConfirming});
 
   };
+
+
+
+  async register() {
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+
+    const user = await this.authService.register(this.validationRegisterForm.value);
+    await loading.dismiss();
+
+    if (user) {
+      this.router.navigateByUrl('/register/s1-usertype', { replaceUrl: true });
+    } else {
+      this.showAlert('Registration failed', 'Please try again!');
+    }
+  }
+
+  async showAlert(header, message) {
+    const alert = await this.alertCtrl.create({
+      header,
+      message,
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
 
 }

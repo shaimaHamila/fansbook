@@ -51,7 +51,7 @@
       <div class="ion-mt"></div>
 
       <div class="ion-btn">
-        <ion-button [disabled]="!validationloginForm.valid"  class="ion-btn-lg ion-h3-btn" type="submit" color="primary" >Sign in</ion-button>
+        <ion-button (click)="login()" [disabled]="!validationloginForm.valid"  class="ion-btn-lg ion-h3-btn" type="submit" color="primary" >Sign in</ion-button>
       </div>
 
       <div class="ion-h3-div">
