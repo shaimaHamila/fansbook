@@ -19,32 +19,59 @@
               <input id="profiltPic" style="display: none; " class="file-upload" type="file" accept="image/*">
               <label for="profiltPic" class="profile-label">
                 <div class="profile-edit">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
+                  <i class="fi fi-rr-camera "></i>
                 </div>
               </label>
             </div>
               <div class="user-infi-section">
                 <h1 class="ion-h1 user-name">Marvin Stewar</h1>
-                <h2 class="ion-h5 user-sub">Model</h2>
+                <h2 class="ion-h2 user-sub">Model</h2>
                 <ionic-rating-component activeColor = "#691DFE" fontSize = "17px" defaultColor = "#691DFE"></ionic-rating-component>
                 <ion-button (click)="showAlert()" type="button" class="review ionn-h4" > + Add review</ion-button>
               </div>
           </div>
         <!--Contact buttons-->
         <div class="ion-btn">
-          <ion-button (click)="openInfoModal()" type="submit" class="ion-btn-lg btn-contact ion-h3-btn "  color="primary" >Contact</ion-button>
-          <ion-button type="submit" class="ion-btn-lg btn-msg ion-h3-btn"  color="primary" >Message</ion-button>
+          <ion-button (click)="openInfoModal()" type="submit" class="ion-btn-lg btn-contact ion-h3-btn ">
+            <i class="fi fi-rr-star icon"></i>
+            Contact
+          </ion-button>
+          <ion-button type="submit" class="ion-btn-lg btn-msg ion-h3-btn">
+            <i class="fi fi-rr-comments icon"></i>
+            Message
+          </ion-button>
         </div>
       </div>
     </section>
 
     <div class="mt2" ></div>
 
+      <!--Profile building state section-->
+  <section class="progress">
+
+    <h3 class="ion-h2">Complete building your profile to earn a star.</h3>
+    <div class="progress-bar-star">
+      <ion-progress-bar class="bar" color="primary" value="0.5"></ion-progress-bar>
+      <div class="progress-star">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 icon-star" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+        </svg>
+        <h3 class="ion-h3 star-rate-h3">100%</h3>
+      </div>
+
+    </div>
+
+
+      <!-- <ion-button type="submit" class="ion-btn-lg btn-progress ion-h3-btn">set your area of work</ion-button>
+      <div class="ion-mt" ></div> -->
+
+  </section>
+    <div class="ion-mt" ></div>
+
     <!--Follower on social media section-->
     <section>
+      <h1 class="ion-h1 h1_followers">Followers</h1>
+
       <ion-segment class="social-cards" scrollable>
         <div>
           <div class="followers">
@@ -76,53 +103,44 @@
           </div>
         </div>
 
-
       </ion-segment >
     </section>
 
     <div class="mt" ></div>
   </div>
 
-  <!--Profile building state section-->
-  <section class="progress">
-
-  <h3 class="ion-h2">Complete building your profile.</h3>
-  <div class="ion-mt" ></div>
-  <div class="progress-bar-star">
-    <ion-progress-bar class="bar" color="primary" value="0.5"></ion-progress-bar>
-    <div class="progress-star">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 icon-star" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-      </svg>
-      <h3 class="ion-h3 star-rate-h3">100%</h3>
-    </div>
-
-  </div>
-
-  <div class="ion-mt" ></div>
-
-    <ion-button type="submit" class="ion-btn-lg btn-progress ion-h3-btn"  color="primary" >set your area of work</ion-button>
-    <div class="ion-mt" ></div>
-
-  </section>
-  <div class="ion-mt" ></div>
-
   <!-- general info section-->
   <div class="container p-6">
     <section>
+      <div class="mt" ></div>
 
       <!--Profile About section-->
       <div class="about-section">
-        <h1 class="ion-h1 h1">About me</h1>
+        <div class="section_header">
+          <h1 class="ion-h1 h1_followers">About me</h1>
+          <ion-button (click)="editBioModal()" class="edit_btn">
+            <i class="fi fi-rr-pencil"></i>
+          </ion-button>
+        </div>
+        <div class="mb" ></div>
+
         <div class="about">
-          <h3 class="ion-h3 about-h">Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet.</h3>
+          <h3 class="ion-h2 about-h">Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet.</h3>
         </div>
       </div>
 
+      <div class="mt" ></div>
 
       <!--Profile building state section-->
       <div class="specialities-section">
-        <h1 class="ion-h1 h1">Specialties</h1>
+        <div class="section_header ">
+          <h1 class="ion-h1 h1_followers">Specialties</h1>
+          <ion-button (click)="editSpecialitiestModal()" class="edit_btn">
+            <i class="fi fi-rr-pencil"></i>
+          </ion-button>
+        </div>
+        <div class="mb" ></div>
+
         <div class="specialities">
           <h3 class="ion-h3 specialty">specialty1</h3>
           <h3 class="ion-h3 specialty">specialty2</h3>
@@ -130,9 +148,19 @@
           <h3 class="ion-h3 specialty">specialty1</h3>
         </div>
       </div>
+
+    <div class="mt" ></div>
+
       <!--Profile Minimum budget section-->
       <div class="budget-section">
-        <h1 class="ion-h1 h1">Minimum budget</h1>
+        <div class="section_header">
+          <h1 class="ion-h1 h1_followers">Minimum budget</h1>
+          <ion-button (click)="editBugetModal()" class="edit_btn">
+            <i class="fi fi-rr-pencil"></i>
+          </ion-button>
+        </div>
+        <div class="mb" ></div>
+
         <div class="budget">
           <h3 class="ion-h2-b budget-h">1250 DT</h3>
         </div>
@@ -142,7 +170,15 @@
   </div>
   <!--social media section-->
   <section>
-    <h1 class="ion-h1 social-media-h1 h1">Social Links</h1>
+    <div class="mt" ></div>
+
+    <div class="section_header container">
+      <h1 class="ion-h1 h1_followers">Social Links</h1>
+      <ion-button (click)="editSocialLinksModal()" class="edit_btn">
+        <i class="fi fi-rr-pencil"></i>
+      </ion-button>
+    </div>
+    <div class="mb" ></div>
 
     <ion-segment class="social-cards" scrollable>
       <div>
@@ -174,46 +210,34 @@
 
   <div class="container p-6">
     <section>
+    <div class="mt" ></div>
+
       <!--Experiences section-->
       <div class="experiences-section">
-          <h1 class="ion-h1 experiences-h1 h1 ">Experiences</h1>
+          <div class="section_header">
+            <h1 class="ion-h1 experiences-h1 h1_followers">Experiences</h1>
+            <ion-button (click)="addExperienceModal()" class="add_btn">
+              <i class="fi fi-rr-add"></i>
+            </ion-button>
+          </div>
+          <div class="mb" ></div>
+
           <div class="experiences">
-              <div class="experience">
+              <div *ngFor="let i of [1, 2, 3]"  class="experience">
                 <div>
                     <img class="experienceIcon" src="../../../../assets/icon/experienceIcon.png" alt="">
                 </div>
                 <div class="experience-text">
-                  <h1 class="ion-h1 experience-h1">Marketing</h1>
+                  <div class="section_header">
+                    <h1 class="ion-h1 h1_followers">Experiences</h1>
+                    <ion-button (click)="editExperienceModal()" class="edit_btn">
+                      <i class="fi fi-rr-pencil"></i>
+                    </ion-button>
+                  </div>
                   <h3 class="ion-h5 experience-h3-campany">Google</h3>
                   <h3 class="ion-h5 experience-h3">.Tunisia</h3>
                   <h3 class="ion-h5 experience-date">Sep 2020 - nov 2020 . 3mos</h3>
-                  <h3 class="ion-h5 experience-story">Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet.</h3>
-                </div>
-              </div>
-
-              <div class="experience">
-                <div>
-                    <img class="experienceIcon" src="../../../../assets/icon/experienceIcon.png" alt="">
-                </div>
-                <div class="experience-text">
-                  <h1 class="ion-h1 experience-h1">Marketing</h1>
-                  <h3 class="ion-h5 experience-h3-campany">Google</h3>
-                  <h3 class="ion-h5 experience-h3">.Tunisia</h3>
-                  <h3 class="ion-h5 experience-date">Sep 2020 - nov 2020 . 3mos</h3>
-                  <h3 class="ion-h5 experience-story">Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet.</h3>
-                </div>
-              </div>
-
-              <div class="experience">
-                <div>
-                    <img class="experienceIcon" src="../../../../assets/icon/experienceIcon.png" alt="">
-                </div>
-                <div class="experience-text">
-                  <h1 class="ion-h1 experience-h1">Marketing</h1>
-                  <h3 class="ion-h5 experience-h3-campany">Google</h3>
-                  <h3 class="ion-h5 experience-h3">.Tunisia</h3>
-                  <h3 class="ion-h5 experience-date">Sep 2020 - nov 2020 . 3mos</h3>
-                  <h3 class="ion-h5 experience-story">Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet.</h3>
+                  <h3 class="ion-h3 experience-story">Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet.</h3>
                 </div>
               </div>
 
@@ -231,7 +255,14 @@
 
     <!--Galory section-->
     <section>
-      <h1 class="ion-h1 gallery-h1 h1 ">Gallery</h1>
+    <div class="mt" ></div>
+      <div class="section_header">
+        <h1 class="ion-h1 gallery-h1 h1_followers">Gallery</h1>
+        <ion-button class="edit_btn">
+          <i class="fi fi-rr-pencil"></i>
+        </ion-button>
+      </div>
+      <div class="mb" ></div>
 
       <ion-segment class="gallery-btns" [(ngModel)]="galleryType" (ionChange)="segmentChanged($event)">
         <ion-segment-button value="photos">

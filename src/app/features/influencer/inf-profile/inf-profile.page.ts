@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController, NavController } from '@ionic/angular';
+import { UserService } from 'src/app/services/useService/user.service';
+import { EditBioComponent } from '../components/edit-profile-modals/edit-bio/edit-bio.component';
+import { EditBugetComponent } from '../components/edit-profile-modals/edit-buget/edit-buget.component';
+import { EditMediaLinksComponent } from '../components/edit-profile-modals/edit-media-links/edit-media-links.component';
+import { EditSpecialitiesComponent } from '../components/edit-profile-modals/edit-specialities/edit-specialities.component';
+import { ExperienceComponent } from '../components/edit-profile-modals/experience/experience.component';
 import { InfoModalComponent } from '../components/info-modal/info-modal.component';
 
 @Component({
@@ -12,7 +18,7 @@ export class InfProfilePage implements OnInit {
 
   public rating: any;
 
-  //For slides(social media followers)
+  //For slides(recommendation)
   option = {
     slidesPerView: 1.8,
     centredSlides: true,
@@ -33,12 +39,42 @@ export class InfProfilePage implements OnInit {
   galleryType = 'photos';
 
   //constructor
-  constructor(private alertCtrl: AlertController, private modalCtrl: ModalController) { }
+  constructor(private alertCtrl: AlertController,
+   private modalCtrl: ModalController,
+   private userService: UserService,
+   private navCtr: NavController,
+   public loadingCtrl: LoadingController,
+   ) {}
 
 
 
   ngOnInit() {
   };
+
+  async saveInfluencer(){
+  const loading = await this.loadingCtrl.create();
+  await loading.present();
+
+  //const user = await this.userService.createInfluencer();
+
+  await loading.dismiss();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   //ionic rating component
   segmentChanged(event: any){
@@ -114,4 +150,123 @@ export class InfProfilePage implements OnInit {
     return await modal.present();
   };
 
+
+
+  //Edit profile
+
+    // Edit User Bio modal
+    async  editBioModal(){
+      //console.log('open');
+      const modal = await this.modalCtrl.create({
+        component:EditBioComponent,
+        //passing data
+        componentProps:{
+          bio: '',
+        },
+        cssClass: 'influencer-info-modal',
+        swipeToClose: true,
+        presentingElement: await this.modalCtrl.getTop(),
+        initialBreakpoint: 0.5,
+      breakpoints: [0, 0.5, 1]
+
+      });
+      return await modal.present();
+    };
+
+    // Edit User min buget modal
+    async  editBugetModal(){
+      //console.log('open');
+      const modal = await this.modalCtrl.create({
+        component:EditBugetComponent,
+        //passing data
+        componentProps:{
+          minBuget: 'hello my name chaima',
+        },
+        cssClass: 'influencer-info-modal',
+        swipeToClose: true,
+        presentingElement: await this.modalCtrl.getTop(),
+        initialBreakpoint: 1,
+      breakpoints: [0, 0.5, 1]
+
+      });
+      return await modal.present();
+    };
+
+
+    // Edit User specialities buget modal
+    async  editSpecialitiestModal(){
+      //console.log('open');
+      const modal = await this.modalCtrl.create({
+        component:EditSpecialitiesComponent,
+        //passing data
+        componentProps:{
+          minBuget: ['S1', 'S2'],
+        },
+        cssClass: 'influencer-info-modal',
+        swipeToClose: true,
+        presentingElement: await this.modalCtrl.getTop(),
+        initialBreakpoint: 1,
+      breakpoints: [0, 0.5, 1]
+
+      });
+      return await modal.present();
+    };
+
+    // Edit User Sscial Media Links buget modal
+    async  editSocialLinksModal(){
+      //console.log('open');
+      const modal = await this.modalCtrl.create({
+        component: EditMediaLinksComponent,
+        //passing data
+        componentProps:{
+          links: ['S1', 'S2'],
+        },
+        cssClass: 'influencer-info-modal',
+        swipeToClose: true,
+        presentingElement: await this.modalCtrl.getTop(),
+        initialBreakpoint: 1,
+      breakpoints: [0, 0.5, 1]
+
+      });
+      return await modal.present();
+    };
+
+    // Edit User Experience buget modal
+    async  editExperienceModal(){
+      //console.log('open');
+      const modal = await this.modalCtrl.create({
+        component:ExperienceComponent,
+        //passing data
+        componentProps:{
+          links: ['S1', 'S2'],
+        },
+        cssClass: 'influencer-info-modal',
+        swipeToClose: true,
+        presentingElement: await this.modalCtrl.getTop(),
+        initialBreakpoint: 1,
+      breakpoints: [0, 0.5, 1]
+
+      });
+      return await modal.present();
+    };
+
+
+    // Add User experience buget modal
+    async  addExperienceModal(){
+      //console.log('open');
+      const modal = await this.modalCtrl.create({
+        component:ExperienceComponent,
+        //passing data
+        componentProps:{
+          links: ['Atheeeeeeeeeeeeeeeeeeeeeeb'],
+        },
+        cssClass: 'influencer-info-modal',
+        swipeToClose: true,
+        presentingElement: await this.modalCtrl.getTop(),
+        initialBreakpoint: 1,
+      breakpoints: [0, 0.5, 1]
+
+      });
+      return await modal.present();
+    };
 }

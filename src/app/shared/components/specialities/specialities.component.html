@@ -1,6 +1,3 @@
-<ion-select placeholder="Select the Specialties" multiple="true" cancelText="Cancel" okText="Okay!">
-  <ion-select-option value="bacon">Bacon</ion-select-option>
-  <ion-select-option value="olives">Black Olives</ion-select-option>
-  <ion-select-option value="xcheese">Extra Cheese</ion-select-option>
-  <ion-select-option value="peppers">Green Peppers</ion-select-option>
+<ion-select (ionChange)="sendSpecialitiesData()" #userSpecialitiesForm="ngModel" [(ngModel)]="speciality"  name="userSpecialitiesForm" placeholder="Select the Specialties" multiple="true" cancelText="Cancel" okText="Submit">
+  <ion-select-option *ngFor="let speciality of specialities" [value]="speciality">{{speciality}}</ion-select-option>
 </ion-select>

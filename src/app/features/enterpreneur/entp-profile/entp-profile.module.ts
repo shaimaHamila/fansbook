@@ -13,6 +13,7 @@ import { SharedComponentsModule } from 'src/app/shared/modues/shared-components/
     FormsModule,
     IonicModule,
     EntpProfilePageRoutingModule,
+    SharedComponentsModule,
     SharedComponentsModule
   ],
   declarations: [EntpProfilePage]

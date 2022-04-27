@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { countries } from '../store/country-data-store';
 
 @Component({
   selector: 'app-country',
@@ -7,8 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CountryComponent implements OnInit {
 
-  constructor() { }
+  @Output() countrySlected = new EventEmitter<string>();
+  @Input() isMultiSelect: boolean;
 
-  ngOnInit() {}
 
+  country = new FormControl('');
+  //Get instance from country data store class
+  public countries: any = countries;
+
+  constructor() { };
+  ngOnInit() {};
+
+  sendCountrySelected(){
+    // console.log(this.country);
+    //this.countrySlected.emit(this.country);
+    this.countrySlected.emit(this.country.value);
+  }
 }

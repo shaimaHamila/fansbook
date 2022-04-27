@@ -24,14 +24,14 @@
       <h4 class="ion-h3-m text">To keep things safe and simple, they’ll pay to reach you - which is why we need your personal information.</h4>
     </section>
     <div class="ion-mt"></div>
-
+    <!-- form -->
     <section>
-      <form>
+      <form [formGroup]="userFormGroup">
         <div class="input-image-section">
           <ion-avatar>
-            <img class="user-img" src="../../../assets/avatar/upload-img.jpg">
+            <img class="user-img" [src]="userFormGroup.value.profiltPic ?? '../../../assets/avatar/upload-img.jpg'">
           </ion-avatar>
-          <input id="profiltPic" style="display: none; "class="file-upload" type="file" accept="image/*"/>
+          <input id="profiltPic" name="profiltPic" ngForm formControlName="profiltPic" style="display: none; "class="file-upload" type="file" accept="image/*"/>
           <label for="profiltPic" class="ion-h3-m profile-label">
             <i class="fi fi-rr-add add-icon"></i>Upload Photo
           </label>
@@ -41,20 +41,21 @@
           <div class="ion-mt"></div>
 
           <div>
-          <h2 class="ion-h2 label">Country*</h2>
-            <app-country></app-country>
+          <h2 class="ion-h2 label" >Country*</h2>
+            <app-country [isMultiSelect]="false" (countrySlected)="getCountry($event) "></app-country>
+
           </div>
         </div>
         <div class="ion-mt"></div>
 
         <div>
           <ion-label  class="ion-h2 label">Phone*</ion-label>
-          <ion-input class="ion-input ion-h2" name="phoneNumber" type="phone" placeholder="Enter your phone number"></ion-input>
+          <ion-input class="ion-input ion-h2" ngForm name="phoneNumber" formControlName="phoneNumber"  type="phone" placeholder="Enter your phone number"></ion-input>
         </div>
         <div class="mt-h"></div>
 
         <div class="ion-btn btn">
-          <ion-button routerLink="/register/s3-work-info" routerLinkActive="active"  type="submit" class="ion-btn-lg ion-h3-btn"  color="primary" >set your area of work</ion-button>
+          <ion-button (click)="getDat()" routerLink="/register/s3-work-info" routerLinkActive="active"  type="submit" class="ion-btn-lg ion-h3-btn"  color="primary" >set your area of work</ion-button>
         </div>
 
 

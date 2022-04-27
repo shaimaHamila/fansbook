@@ -36,7 +36,7 @@
   --ion-color-first: #691DFE;
   --ion-color-danger: #EB445A;
   --ion-color-green: #35D286;
-  --ion-color-primary: linear-gradient(to bottom right, #691DFE, #AF67FF);
+  --ion-color-primary-brand: linear-gradient(to bottom right, #691DFE, #AF67FF);
  /*====== font and typography ========*/
 
  --ion-body-font:  "Lato",sans-serif;
@@ -65,7 +65,7 @@
 
 
   /** primary **/
-
+  --ion-color-primary: #691DFE;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;

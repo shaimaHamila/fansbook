@@ -77,6 +77,16 @@ margin:auto 5%;
   font-weight: var(--ion-font--bold);
   color: var(--ion-color-blue-dark);
 }
+.ion-h2-r{
+  font-size: var(--ion-h2-font-size);
+  font-weight: var(--ion-font--regular);
+  color: var(--ion-color-blue-dark);
+}
+.ion-h2-m{
+  font-size: var(--ion-h2-font-size);
+  font-weight: var(--ion-font--medium);
+  color: var(--ion-color-blue-dark);
+}
 // h3 regular
 .ion-h3-r{
   font-size: var(--ion-h3-font-size);
@@ -165,7 +175,7 @@ margin:auto 5%;
 .ion-input{
   background-color: var(--ion-color-white);
   padding: 10px 5px;
-  color: var(--ion-color-grey-text);
+  color: var(--ion-color-text-meduim);
   --background: var(--ion-color-white);
   --padding-top: 15px;
   --padding-bottom: 15px;
@@ -181,7 +191,7 @@ margin:auto 5%;
 
 //button_big
 .ion-btn-lg{
-  --background:var(--ion-color-primary);
+  --background:var(--ion-color-primary-brand);
   --padding-top: 25px;
   --padding-bottom: 25px;
   --border-radius: 5px;
@@ -189,13 +199,16 @@ margin:auto 5%;
 }
 //button_med
 .ion-btn-med{
-  --background:var(--ion-color-primary);
+  --background:var(--ion-color-primary-brand);
   --padding-top: 25px;
   --padding-bottom: 25px;
   --padding-left: 50px;
   --padding-right: 50px;
   --border-radius: 5px;
-
+}
+//button_med
+.ion-btn-color{
+  --background:var(--ion-color-primary-brand);
 }
 //margin
 .ion-mt{

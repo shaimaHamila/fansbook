@@ -73,13 +73,16 @@
             <i class="fi fi-rr-angle-small-right"></i>
           </ion-button>
         </div>
-          <ion-segment class="ion-content" scrollable>
-            <div *ngFor="let item of [1, 2, 3, 4, 5] ">
-              <div class="enp-card" >
-                <app-collaboration></app-collaboration>
-              </div>
+        <div>
+          <ion-button *ngIf="isEntrepreneur" routerLink="/add-coll-form" routerLinkActive="tab-selected" color="success" slot="end">+Add collaboration opportunity</ion-button>
+        </div>
+        <ion-segment class="ion-content" scrollable>
+          <div *ngFor="let item of [1, 2, 3, 4, 5] ">
+            <div class="enp-card" >
+              <app-collaboration></app-collaboration>
             </div>
+          </div>
 
-          </ion-segment>
+        </ion-segment>
       </section>
 </ion-content>

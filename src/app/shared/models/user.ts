@@ -1,8 +1,19 @@
-export interface User{
-  fullName: string;
+import { Country } from './Country.model';
+
+export class User{
+
+  uid: string;
   image: string;
-  country: string;
-  isPayed: boolean;
-  userType: string;
+  country: Country;
+  isPayed?: boolean;
+  userType: UserType;
+  email: string;
+  phoneNumber: number;
+  socialLinks?: string[];
+  bio?: string;
 
 };
+enum UserType{
+  entrepreneur,
+  influencer
+}

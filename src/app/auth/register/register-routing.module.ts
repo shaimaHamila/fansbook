@@ -23,6 +23,14 @@ const routes: Routes = [
   {
     path: 's4-social-info',
     loadChildren: () => import('./s4-social-info/s4-social-info.module').then( m => m.S4SocialInfoPageModule)
+  },
+  {
+    path: 'inf-register',
+    loadChildren: () => import('./inf-register/inf-register.module').then( m => m.InfRegisterPageModule)
+  },
+  {
+    path: 'enp-register',
+    loadChildren: () => import('./enp-register/enp-register.module').then( m => m.EnpRegisterPageModule)
   }
 ];
 

@@ -4,6 +4,9 @@ ion-select{
   color: var(--ion-color-blue-dark);
   border-radius: 5px;
   box-shadow: var(--ion-box-shadow--light);
+  margin-top: 15px;
+  margin-bottom: 15px;
+
 }
 /* Set the placeholder color and opacity */
 ion-select::part(placeholder) {

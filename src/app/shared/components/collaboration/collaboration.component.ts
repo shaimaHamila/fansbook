@@ -12,16 +12,20 @@ export class CollaborationComponent implements OnInit {
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {}
-  // display influencer contact info in a modal
+  // display collaboration info in a modal
   async  openCollDetailModal(){
     //console.log('open');
     const modal = await this.modalCtrl.create({
       component: CollModalComponent,
       //passing data
       componentProps:{
-        phoneNum: '+216 22016583',
-        email: 'hamilachaima18@gmail.com',
-        country: 'Tunis',
+        enpName: '',
+        companyName: '',
+        date: '',
+        enpImaje: '',
+        appliNum: '',
+        colTitla: '',
+        specialities: ['',''],
         city: 'Sousse',
       },
       cssClass: 'influencer-info-modal',

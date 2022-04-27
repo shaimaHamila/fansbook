@@ -10,12 +10,18 @@ import { CollModalComponent } from '../../enterpreneur/components/coll-modal/col
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  public rating: any;
+  rating: any;
+
+  //User Role
+  isEntrepreneur = true;
 
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
-  }
+  };
+
+
+
   //ionic rating component
   segmentChanged(event: any){
     console.log(event.target.value);
@@ -24,6 +30,9 @@ export class HomePage implements OnInit {
     console.log('The evaluation was modified and now its value is: ',rating);
     // do your stuff
   };
+
+
+
 
   // display influencer contact info in a modal
   async  openInfoModal(){
@@ -46,5 +55,33 @@ export class HomePage implements OnInit {
     });
     return await modal.present();
   };
+
+
+
+  // // Fill Coll Opp modal modal
+  // async  openCollFormModal(){
+  //   //console.log('open');
+  //   const modal = await this.modalCtrl.create({
+  //     component: CollFormModalComponent,
+  //     //passing data
+  //     componentProps:{
+  //       enpName: '',
+  //       companyName: '',
+  //       date: '',
+  //       enpImaje: '',
+  //       appliNum: '',
+  //       colTitla: '',
+  //       specialities: ['',''],
+  //       city: 'Sousse',
+  //     },
+  //     cssClass: 'influencer-info-modal',
+  //     swipeToClose: true,
+  //     presentingElement: await this.modalCtrl.getTop(),
+  //     initialBreakpoint: 0.5,
+  //   breakpoints: [0, 0.5, 1]
+
+  //   });
+  //   return await modal.present();
+  // };
 
 }

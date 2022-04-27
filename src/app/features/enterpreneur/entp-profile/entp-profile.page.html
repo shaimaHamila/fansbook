@@ -2,6 +2,140 @@
   <app-header></app-header>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-content">
+  <div class="container p-6">
+    <!--Profile Phote + COVER PHOTE section-->
+    <section>
+      <div>
+        <div class="cover-section">
+          <input id="img" style="display: none; " class="file-upload" type="file" accept="image/*">
+          <label class="edit-btn-input ion-h5" for="img">EDIT</label>
+          <img class="cover-photo" src="../../../../assets/uerPhoto/bg.png">
+        </div>
 
+          <div class="profile">
+            <div class="profiltPic-section">
+              <img class="profiltPic circle" src="../../../../assets/uerPhoto/entp.jpg">
+              <input id="profiltPic" style="display: none; " class="file-upload" type="file" accept="image/*">
+              <label for="profiltPic" class="profile-label">
+                <div class="profile-edit">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+              </label>
+            </div>
+              <div class="user-infi-section">
+                <h1 class="ion-h1 user-name">Marvin Stewar</h1>
+                <h2 class="ion-h3-m user-sub">Entrepreneur</h2>
+              </div>
+          </div>
+        <!--Contact buttons-->
+        <div class="ion-btn">
+          <ion-button type="submit" class="ion-btn-lg btn-msg ion-h3-btn ion-btn-color" >
+            <i class="fi fi-rr-comments icon"></i>
+            Message
+          </ion-button>
+          <ion-button routerLink="update-profile" type="submit" class="ion-btn-lg btn-edit ion-h3-btn">
+            <i class="fi fi-rr-pencil icon"></i>
+            edit
+          </ion-button>
+        </div>
+      </div>
+    </section>
+
+    <div class="mt2" ></div>
+
+
+  <!-- general info section-->
+  <div class="container p-6">
+    <section>
+
+      <!--Profile About section-->
+      <div class="about-section">
+        <h1 class="ion-h1 h1">About me</h1>
+        <div class="about">
+          <h3 class="ion-h2 about-h">Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet.</h3>
+        </div>
+      </div>
+
+      <!--Campany-->
+      <div class="about-section">
+        <h1 class="ion-h1 h1">Company</h1>
+        <div class="about">
+          <h3 class="ion-h2 about-h">campany name</h3>
+        </div>
+      </div>
+
+      <!--Profile building state section-->
+      <div class="specialities-section">
+        <h1 class="ion-h1 h1">Specialties</h1>
+        <div class="specialities">
+          <h3 class="ion-h3 specialty">specialty1</h3>
+          <h3 class="ion-h3 specialty">specialty2</h3>
+          <h3 class="ion-h3 specialty">specialty</h3>
+          <h3 class="ion-h3 specialty">specialty1</h3>
+        </div>
+      </div>
+
+      <!--Phone number-->
+      <div class="about-section">
+        <h1 class="ion-h1 h1">Phone Number</h1>
+        <div class="about">
+          <h3 class="ion-h2 about-h">+216 22 016 583</h3>
+        </div>
+      </div>
+
+      <!--Email-->
+      <div class="about-section">
+        <h1 class="ion-h1 h1">Email</h1>
+        <div class="about">
+          <h3 class="ion-h2 about-h">hamilachaima18@gmail.com</h3>
+        </div>
+      </div>
+
+      <!--Country-->
+      <div class="about-section">
+        <h1 class="ion-h1 h1">Country</h1>
+        <div class="about">
+          <h3 class="ion-h2 about-h">Tunisia</h3>
+        </div>
+      </div>
+
+    </section>
+  </div>
+  <!--social media section-->
+  <section>
+    <h1 class="ion-h1 social-media-h1 h1">Social Links</h1>
+
+    <ion-segment class="social-cards" scrollable>
+      <div>
+        <div class="social-media">
+          <img class="icon-fb" src="../../../../assets/icon/Facebook.png">
+        </div>
+      </div>
+
+      <div>
+        <div class="social-media">
+          <img class="icon-insta" src="../../../../assets/icon/Instagram.png">
+        </div>
+      </div>
+
+      <div>
+        <div class="social-media">
+          <img class="icon-fb" src="../../../../assets/icon/YouTube.png">
+        </div>
+      </div>
+
+      <div>
+        <div class="social-media">
+          <img class="icon-fb" src="../../../../assets/icon/Facebook.png">
+        </div>
+      </div>
+    </ion-segment>
+  </section>
+  <div class="ion-2mt" ></div>
+
+  </div>
 </ion-content>

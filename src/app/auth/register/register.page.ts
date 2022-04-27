@@ -3,6 +3,8 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/authService/auth.service';
+import { UserService } from 'src/app/services/useService/user.service';
+import { Influencer } from 'src/app/shared/models/influencer';
 
 
 @Component({
@@ -11,61 +13,62 @@ import { AuthService } from 'src/app/services/authService/auth.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  validationRegisterForm: FormGroup;
+  loading: any;
 
-  validationUserMessage={
-    fullName:[
-      {type:'required', message:'Pleas enter your Full Name!'},
-      {type: 'minlength', message: 'Username must be at least 5 characters long' },
-      {type: 'maxlength', message: 'Username cannot be more than 25 characters long' },
+  validationUserMessage = {
+    fullName: [
+      { type: 'required', message: 'Pleas enter your Full Name!' },
+      { type: 'minlength', message: 'Username must be at least 5 characters long' },
+      { type: 'maxlength', message: 'Username cannot be more than 25 characters long' },
     ],
-    email:[
-      {type:'required', message:'Pleas enter your Email!'},
-      {type:'pattern', message:'The Email entred is Incorrect. Try again'}
+    email: [
+      { type: 'required', message: 'Pleas enter your Email!' },
+      { type: 'pattern', message: 'The Email entred is Incorrect. Try again' }
     ],
-    password:[
-      {type:'required', message:'Pleas enter your Password!'},
-      {type:'pattern', message:'The password must contain a mix of letters and numbrs.'},
-      {type:'minlength', message:'Password must be at least 8 characters long'}
+    password: [
+      { type: 'required', message: 'Pleas enter your Password!' },
+      { type: 'pattern', message: 'The password must contain a mix of letters and numbrs.' },
+      { type: 'minlength', message: 'Password must be at least 8 characters long' }
     ],
-    confirmPassword:[
-      {type:'required', message:'Pleas confirm your Password!'},
-      {type:'invalid', message:'Password mismatch!'}
+    confirmPassword: [
+      { type: 'required', message: 'Pleas confirm your Password!' },
+      { type: 'invalid', message: 'Password mismatch!' }
     ],
-    userType:[
-      {type:'required', message:'Pleas select User Type!'},
+    userType: [
+      { type: 'required', message: 'Pleas select User Type!' },
     ],
-    terms:[
-      {type:'requiredTrue', message:'You must accept terms and conditions'},
+    terms: [
+      { type: 'requiredTrue', message: 'You must accept terms and conditions' },
     ]
   };
 
-  validationRegisterForm: FormGroup;
-  loading: any;
+
 
   constructor(
     public formBuilder: FormBuilder, private router: Router,
     private alertCtrl: AlertController, private navCtr: NavController,
     public loadingCtrl: LoadingController, private authService: AuthService,
+    private userServ: UserService
 
-    ){
-      this.loading = this.loadingCtrl;
+  ) {
+    this.loading = this.loadingCtrl;
+  }
+
+  // Easy access for form fields
+  get email() {
+    return this.validationRegisterForm.get('email');
+  }
+
+  get password() {
+    return this.validationRegisterForm.get('password');
+  }
+
+  passwordConfirming(c: AbstractControl): { invalid: boolean } {
+    if (c.get('password').value !== c.get('confirmPassword').value) {
+      return { invalid: true };
     }
-
-    // Easy access for form fields
-    get email() {
-      return this.validationRegisterForm.get('email');
-    }
-
-    get password() {
-      return this.validationRegisterForm.get('password');
-    }
-
-     passwordConfirming(c: AbstractControl): { invalid: boolean }
-     {
-       if (c.get('password').value !== c.get('confirmPassword').value) {
-           return {invalid: true};
-     }
-   }
+  }
 
 
   ngOnInit() {
@@ -88,26 +91,47 @@ export class RegisterPage implements OnInit {
       confirmPassword: new FormControl('', Validators.compose([
         Validators.required,
       ])),
-      userType: new FormControl('',Validators.compose([
+      userType: new FormControl('', Validators.compose([
         Validators.required
       ])),
       terms: new FormControl(false, Validators.compose([
         Validators.requiredTrue
       ]))
-    },{validator: this.passwordConfirming});
-
+    }, { validator: this.passwordConfirming });
+    const userName = this.validationRegisterForm.value.fullName;
+    const userEmail = this.validationRegisterForm.value.email;
+    const userPsw = this.validationRegisterForm.value.password;
+    const userType = this.validationRegisterForm.value.userType;
+    console.log(userName, userEmail, userPsw, userType);
   };
-
 
 
   async register() {
     const loading = await this.loadingCtrl.create();
     await loading.present();
 
-    const user = await this.authService.register(this.validationRegisterForm.value);
+    let user: any;
+    await this.authService.register(this.validationRegisterForm.value).then(u => {
+      console.log(u);
+      if (u) {
+        user = u.user;
+      }
+    });
+
     await loading.dismiss();
 
     if (user) {
+      console.log(user);
+      // create Influencer Or Entr.. with the uid comes in the user object
+      // all the user servie and create the profile based on selected user type
+      // const ty = this.validationRegisterForm.value.userType;
+      // if (ty === 'influencer') {
+
+      //   const inf = new Influencer();
+      //   inf.uid = user.uid;
+      //   inf.phoneNumber = 12345647;
+      //   this.userServ.createInfluencer(inf);
+      // }
       this.router.navigateByUrl('/register/s1-usertype', { replaceUrl: true });
     } else {
       this.showAlert('Registration failed', 'Please try again!');

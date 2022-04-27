@@ -1,8 +1,5 @@
-<ion-select placeholder="Country" multiple="true" cancelText="Cancel" okText="Okay!">
-  <ion-select-option value="bacon">Bacon</ion-select-option>
-  <ion-select-option value="olives">Black Olives</ion-select-option>
-  <ion-select-option value="xcheese">Extra Cheese</ion-select-option>
-  <ion-select-option value="peppers">Green Peppers</ion-select-option>
+<ion-select (ionChange)="sendCountrySelected()" [formControl]='country' name="country" placeholder="Country" multiple={{isMultiSelect}} cancelText="Cancel" okText="Submit">
+  <ion-select-option *ngFor="let country of countries" [value]="country.name" >{{country.name}}</ion-select-option>
 </ion-select>
 
 

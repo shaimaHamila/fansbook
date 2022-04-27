@@ -24,19 +24,19 @@
     </section>
     <div class="ion-mt"></div>
     <section>
-      <form>
+      <form #ngUserForm="ngForm" (ngSubmit)="getData(ngUserForm)">
 
         <h2 class="ion-h2">Instagram</h2>
-        <ion-input class="ion-input ion-h2" name="Instagram" type="link" placeholder="http://"></ion-input>
+        <ion-input ngModel #instagram="ngModel" name="instagram" type="link" class="ion-input ion-h2" placeholder="http://"></ion-input>
 
         <h2 class="ion-h2">Facebook</h2>
-        <ion-input class="ion-input ion-h2" name="Facebook" type="link" placeholder="http://"></ion-input>
+        <ion-input ngModel #facebook="ngModel" name="facebook" type="link" class="ion-input ion-h2" placeholder="http://"></ion-input>
 
         <h2 class="ion-h2">Youtube</h2>
-        <ion-input class="ion-input ion-h2" name="Youtube" type="link" placeholder="http://"></ion-input>
+        <ion-input ngModel #youtube="ngModel" name="youtube" type="link" class="ion-input ion-h2" placeholder="http://"></ion-input>
         <div class="ion-mt"></div>
         <div class="ion-btn">
-          <ion-button routerLink="/tabs/inf-profile" routerLinkActive="active"  type="submit" class="ion-btn-lg ion-h3-btn btn"  color="primary" >Chek your profile</ion-button>
+          <ion-button routerLink="/tabs/inf-profile" routerLinkActive="active"  type="submit" class="ion-btn-lg ion-h3-btn btn" >Chek your profile</ion-button>
         </div>
 
       </form>

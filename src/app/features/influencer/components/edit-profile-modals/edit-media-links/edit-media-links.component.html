@@ -1,0 +1,31 @@
+
+<ion-content class="ion-content">
+  <div class="container">
+    <div class="ion-mt"></div>
+
+    <section>
+      <h2 class="ion-h2">Social media links</h2>
+
+      <form #ngUserForm="ngForm" (ngSubmit)="getData(ngUserForm)">
+
+        <h2 class="ion-h2">Instagram</h2>
+        <ion-input ngModel #instagram="ngModel" name="instagram" type="link" class="ion-input ion-h2" placeholder="http://"></ion-input>
+
+        <h2 class="ion-h2">Facebook</h2>
+        <ion-input ngModel #facebook="ngModel" name="facebook" type="link" class="ion-input ion-h2" placeholder="http://"></ion-input>
+
+        <h2 class="ion-h2">Youtube</h2>
+        <ion-input ngModel #youtube="ngModel" name="youtube" type="link" class="ion-input ion-h2" placeholder="http://"></ion-input>
+        add
+        <div class="ion-mt"></div>
+
+        <div class="btns-coll btns">
+          <ion-button type="submit" class="  ion-h3-btn btn-delete">Cancel</ion-button>
+          <ion-button type="submit" class="  ion-h3-btn btn-update"  >Update</ion-button>
+        </div>
+
+      </form>
+    </section>
+
+  </div>
+</ion-content>

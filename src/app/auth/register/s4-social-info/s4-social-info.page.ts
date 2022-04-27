@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-s4-social-info',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class S4SocialInfoPage implements OnInit {
 
-  constructor() { }
 
+  constructor() { }
   ngOnInit() {
+  };
+  getData(ngUserForm: NgForm){
+    console.log(ngUserForm.value.instagram);
+    console.log(ngUserForm.value.facebook);
+    console.log(ngUserForm.value.youtube);
   }
 
 }

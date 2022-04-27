@@ -8,16 +8,32 @@ import { CountryComponent } from '../../components/country/country.component';
 import { InfCardComponent } from '../../components/inf-card/inf-card.component';
 import { IonicRatingComponentModule } from 'ionic-rating-component';
 import { HeaderComponent } from '../../components/header/header.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [ SpecialitiesComponent, CollaborationComponent, CountryComponent, InfCardComponent, HeaderComponent],
+  declarations: [
+    SpecialitiesComponent,
+    CollaborationComponent,
+    CountryComponent,
+    InfCardComponent,
+    HeaderComponent
+  ],
+
   imports: [
     CommonModule,
     IonicModule,
-    IonicRatingComponentModule
+    IonicRatingComponentModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  exports: [SpecialitiesComponent,CountryComponent, CollaborationComponent, InfCardComponent, HeaderComponent],
+  exports: [
+    SpecialitiesComponent,
+    CountryComponent,
+    CollaborationComponent,
+    InfCardComponent,
+    HeaderComponent
+  ],
 })
 export class SharedComponentsModule { }

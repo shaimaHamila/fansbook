@@ -27,6 +27,10 @@ const routes: Routes = [
         loadChildren: () => import('../features/influencer/inf-profile/inf-profile.module').then( m => m.InfProfilePageModule)
       },
       {
+        path: 'entp-profile',
+        loadChildren: () => import('../features/enterpreneur/entp-profile/entp-profile.module').then( m => m.EntpProfilePageModule)
+      },
+      {
         path: 'inf-list',
         loadChildren: () => import('../features/influencer/inf-list/inf-list.module').then( m => m.InfListPageModule)
       },

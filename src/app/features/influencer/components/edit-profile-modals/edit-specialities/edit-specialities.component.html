@@ -1,0 +1,22 @@
+<ion-content class="ion-content">
+  <div class="container p-6">
+
+     <!-- form -->
+
+    <form>
+      <div class="mt-h"></div>
+
+      <label class="ion-h1-m label title">Specialties</label>
+      <app-specialities (userSpecialities)="getUserSpecialities($event)"></app-specialities>
+
+      <div class="btns-coll btns">
+        <ion-button type="submit" class="  ion-h3-btn btn-delete">Cancel</ion-button>
+        <ion-button type="submit" class="  ion-h3-btn btn-update" >Update</ion-button>
+      </div>
+
+    </form>
+
+  </div>
+
+
+</ion-content>

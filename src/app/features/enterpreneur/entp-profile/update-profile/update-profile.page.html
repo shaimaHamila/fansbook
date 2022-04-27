@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/entp-profile"></ion-back-button>
+    </ion-buttons>
+    <ion-title >Your Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-content">
+  <div class="container">
+    <form>
+      <h1>Update Your Profile</h1>
+      <ion-label>About me</ion-label>
+      <ion-textarea class="ion-input ion-h2" type="textarea" placeholder="Tell the world about yourself."></ion-textarea>
+
+      <ion-label>Company</ion-label>
+      <ion-input class="ion-input ion-h2" type="text" placeholder="Your company name"></ion-input>
+
+      <h2 class="ion-h2 label">Specialties</h2>
+      <app-specialities (userSpecialities)="getUserSpecialities($event)"></app-specialities>
+      <h2 class="ion-h2">Website</h2>
+      <ion-input  name="website" type="link" class="ion-input ion-h2" placeholder="http://"></ion-input>
+
+      <ion-label>Phone Number</ion-label>
+      <ion-input type="number" class="ion-input ion-h2" placeholder="Your phone namber"></ion-input>
+
+      <ion-label>Email</ion-label>
+      <ion-input type="email" class="ion-input ion-h2" placeholder="Your email"></ion-input>
+
+      <ion-label>Country</ion-label>
+      <ion-input type="text" class="ion-input ion-h2" placeholder="Your country name"></ion-input>
+
+      <ion-label>Gender</ion-label>
+      <ion-input type="text" class="ion-input ion-h2" placeholder="Your gender"></ion-input>
+      <ion-button type="submit" class="  ion-h3-btn btn-delete">Delete Profile</ion-button>
+
+      <div class="btns-coll btns">
+        <ion-button type="submit" class="  ion-h3-btn btn-cancel ion-btn-color"  >Cancel</ion-button>
+        <ion-button type="submit" class="  ion-h3-btn btn-update ion-btn-color"  >Update</ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

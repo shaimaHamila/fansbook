@@ -1,0 +1,175 @@
+.cover-photo{
+  height: 150px;
+  width: 100%;
+  vertical-align:center;
+  object-fit: cover;
+  object-position: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.cover-section{
+  position: relative;
+}
+.edit-btn-input{
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.363);
+  border-radius: 3px;
+  color: var(--ion-color-white);
+  border: 1px solid var(--ion-color-white) ;
+}
+.circle {
+  border-radius: 100%;
+  overflow: hidden;
+  width: 123px;
+  height: 123px;
+  border: 5px solid rgba(203, 211, 255, 0.541);
+}
+
+.profiltPic{
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+}
+
+.user-infi-section{
+  display: inline-block;
+  text-align: center;
+}
+
+.user-name{
+  color: var(--ion-color-dark-thin);
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.user-sub{
+  color: var(--ion-color-blue-thin);
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+
+.profiltPic-section{
+  margin-top: -75px;
+  position: relative;
+}
+.profile{
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.icon{
+  width: 20px;
+}
+.profile-edit{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.431);
+  border-radius: 3px;
+  color: var(--ion-color-white);
+  border: 1px solid var(--ion-color-white) ;
+  border-radius: 100%;
+  right: 0px;
+  bottom: 15px;
+  display: flex;
+  padding: 6px;
+}
+
+.review{
+  margin-top: 0px;
+  --background: none;
+  color: var(--ion-color-green);
+  --border-color: none;
+  --box-shadow: none;
+}
+
+.ion-btn{
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 20px auto;
+
+
+}
+.btn-edit{
+   margin-left: 6px;
+}
+.btn-msg{
+  margin-right: 6px;
+}
+.icon{
+margin-right: 5px;
+}
+
+//Follwers nbr on social media section
+.icon-fb{
+  width: 60px;
+}
+.icon-insta{
+  width: 70px;
+}
+.followers{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--ion-color-white);
+  width: 180px;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  margin: 10px;
+}
+.h1-fol{
+  margin: 0px;
+}
+
+.social-cards{
+  margin-top: 40px;
+}
+.mt{
+  margin-top: 40px;
+}
+.mt2{
+  margin-top: 60px;
+}
+
+
+//about
+.about-h{
+  color: var(--ion-color-dark-thin);
+  line-height: 1.45;
+  letter-spacing: 0.35px;
+}
+
+
+//Specialties
+.specialty{
+  background-color: var(--ion-color-cold);
+  padding: 10px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+//Minimum budget
+.budget-h{
+  color: var(--ion-color-first);
+}
+
+//social media links
+.social-media{
+  background-color: var(--ion-color-white);
+  width: 100px;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  margin: 10px;
+}
+.social-media-h1{
+  margin-left: 5%;
+}
+

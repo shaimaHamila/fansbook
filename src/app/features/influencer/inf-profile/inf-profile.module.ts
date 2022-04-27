@@ -9,6 +9,11 @@ import { InfProfilePageRoutingModule } from './inf-profile-routing.module';
 import { InfProfilePage } from './inf-profile.page';
 import { InfoModalComponent } from '../components/info-modal/info-modal.component';
 import { SharedComponentsModule } from 'src/app/shared/modues/shared-components/shared-components.module';
+import { EditBioComponent } from '../components/edit-profile-modals/edit-bio/edit-bio.component';
+import { EditBugetComponent } from '../components/edit-profile-modals/edit-buget/edit-buget.component';
+import { EditMediaLinksComponent } from '../components/edit-profile-modals/edit-media-links/edit-media-links.component';
+import { EditSpecialitiesComponent } from '../components/edit-profile-modals/edit-specialities/edit-specialities.component';
+import { ExperienceComponent } from '../components/edit-profile-modals/experience/experience.component';
 
 @NgModule({
   imports: [
@@ -20,6 +25,14 @@ import { SharedComponentsModule } from 'src/app/shared/modues/shared-components/
     SharedComponentsModule
 
   ],
-    declarations: [InfProfilePage, InfoModalComponent]
+    declarations: [
+      InfProfilePage,
+      InfoModalComponent,
+      EditBioComponent,
+      EditBugetComponent,
+      EditMediaLinksComponent,
+      EditSpecialitiesComponent,
+      ExperienceComponent
+    ]
 })
 export class InfProfilePageModule {}

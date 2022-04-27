@@ -35,6 +35,7 @@
   position: relative;
 }
 
+
 .user-infi-section{
   display: inline-block;
   text-align: center;
@@ -80,6 +81,10 @@
   bottom: 15px;
   display: flex;
   padding: 6px;
+  width: 34px;
+  height: 34px;
+  justify-content: center;
+  align-items: center;
 }
 
 .review{
@@ -96,7 +101,6 @@
   flex-wrap: nowrap;
   margin: 20px auto;
 
-
 }
 .btn-contact{
    margin-right: 6px;
@@ -104,8 +108,13 @@
 .btn-msg{
   margin-left: 6px;
 }
-
+.icon{
+  margin-right: 5px;
+  }
 //Follwers nbr on social media section
+.h1_followers{
+  margin: 0px;
+}
 .icon-fb{
   width: 60px;
 }
@@ -127,7 +136,7 @@
 }
 
 .social-cards{
-  margin-top: 40px;
+  margin-top: 10px;
 }
 .mt{
   margin-top: 40px;
@@ -138,7 +147,7 @@
 
 //progress section
 .progress{
-  background-color: #F6F7FF;
+  background-color: #ebeefd;
   padding: 20px 5%;
 }
 .progress-bar-star{
@@ -163,10 +172,11 @@
 }
 .btn-progress{
   width: 80%;
+  --background: var(--ion-color-primary);
 }
 //about
 .about-h{
-  color: var(--ion-color-dark-thin);
+  color: var(--ion-color-text-meduim);
   line-height: 1.45;
   letter-spacing: 0.35px;
 }
@@ -193,9 +203,7 @@
   border-radius: 6px;
   margin: 10px;
 }
-.social-media-h1{
-  margin-left: 5%;
-}
+
 
 //experience
 .experiences-h1{
@@ -315,4 +323,28 @@
 .recommendation-bloc{
   margin-top: 20px;
   margin-bottom: 30px;
+}
+
+//edit profile
+.section_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.edit_btn{
+  --background: none;
+  color: var(--ion-color-meduim);
+  border: 1px solid var(--ion-color-cold);
+  border-radius: 6px;
+  --box-shadow: none;
+}
+.add_btn{
+  --background: none;
+  color: var(--ion-color-first);
+  border: 1px solid var(--ion-color-cold);
+  border-radius: 6px;
+  --box-shadow: none;
+}
+.mb{
+  margin-bottom: 10px;
 }

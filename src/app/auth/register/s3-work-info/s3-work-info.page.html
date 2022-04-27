@@ -23,19 +23,19 @@
       <h4 class="ion-h3-m text">Clients will see your minimum budget on your profile and in search results once you publish your profile. You can adjust it every time you want.</h4>
     </section>
     <div class="ion-mt"></div>
-
+    <!-- form section -->
     <section>
-      <form>
+      <form #ngUserForm="ngForm" (ngSubmit)="getDat(ngUserForm)" >
         <h2 class="ion-h2 label">Specialties</h2>
-        <app-specialities></app-specialities>
+        <app-specialities (userSpecialities)="getUserSpecialities($event)"></app-specialities>
 
         <h2  class="ion-h2 label">Minimum budget (DT)</h2>
-        <ion-input class="ion-input input-budge ion-h2" name="minBudget" type="number" min="10" max="100" placeholder="0.0 DT" ></ion-input>
+        <ion-input #minBudget="ngModel" ngModel class="ion-input input-budge ion-h2" name="minBudget" type="number" min="10" max="100" placeholder="0.0 DT" ></ion-input>
 
         <div class="ion-mt"></div>
 
         <div class="ion-btn">
-          <ion-button routerLink="/register/s4-social-info" routerLinkActive="active"  type="submit" class="ion-btn-lg ion-h3-btn btn"  color="primary" >Set Your Social  Links</ion-button>
+          <ion-button routerLink="/register/s4-social-info" routerLinkActive="active"  type="submit" class="ion-btn-lg ion-h3-btn btn" >Set Your Social  Links</ion-button>
         </div>
 
       </form>

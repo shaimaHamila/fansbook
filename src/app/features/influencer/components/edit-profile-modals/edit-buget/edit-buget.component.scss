@@ -1,0 +1,19 @@
+//the two btns
+.btns{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 40px auto;
+  gap: 10px;
+}
+.btn-delete{
+  --background: var(--ion-color-danger);
+  border-radius: 6px;
+  width: 45%;
+}
+.btn-update{
+  --background: var(--ion-color-green);
+  border-radius: 6px;
+  width: 45%;
+}

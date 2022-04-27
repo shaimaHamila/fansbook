@@ -11,7 +11,6 @@
       <h1 class="ion-h1">Create An Account</h1>
       <p class="ion-subtitle ion-subtitle-center">Welcome To you!</p>
     </div>
-
   <div class="ion-form">
     <form [formGroup]="validationRegisterForm">
       <div class="">
@@ -61,8 +60,8 @@
 
         <ion-label class="ion-h3">User type*</ion-label>
         <ion-select formControlName="userType" class=" ion-input ion-h3"  placeholder="Select One">
-          <ion-select-option value="influencer">Get Started As An Influencer</ion-select-option>
-          <ion-select-option value="enterpreneur">Get Started As An Enterpreneur</ion-select-option>
+          <ion-select-option value="influencer">An Influencer</ion-select-option>
+          <ion-select-option value="enterpreneur">An Enterpreneur</ion-select-option>
         </ion-select>
 
         <div *ngFor="let validation of validationUserMessage.userType">
