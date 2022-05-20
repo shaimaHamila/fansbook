@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { InfService } from 'src/app/services/infService/inf.service';
 
 @Component({
   selector: 'app-edit-bio',
@@ -6,11 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-bio.component.scss'],
 })
 export class EditBioComponent implements OnInit {
-  bio;
-  constructor() { }
+  @Input() uid: any;
+  @Input() bio: string;
+
+
+  constructor(
+    private infService: InfService,
+    private modalController: ModalController
+  ) { }
 
   ngOnInit() {
-    console.log(this.bio);
-  }
 
+  }
+  updateBio(){
+    this.infService.updateInfBio(this.uid, this.bio);
+    this.modalController.dismiss();
+
+  }
+  cancel(){
+    this.modalController.dismiss();
+    window.location.reload();
+  }
 }

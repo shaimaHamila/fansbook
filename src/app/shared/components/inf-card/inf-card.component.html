@@ -1,8 +1,8 @@
-<img class="profiltPic" src="../../../../assets/uerPhoto/joyful-parisian-woman-beret-sunglasses-points-place-text-purple-wall.jpg" alt="">
-<h2 class="ion-h2-b">Pamela Pamela</h2>
+<img class="profiltPic" [src]="influencer.image ?? '../../../../assets/avatar/profilePic.png'" alt="">
+<h2 class="ion-h2-b">{{influencer.fullName}}</h2>
 <h3 class="ion-h3 followers-h">Instagram: 71K</h3>
-<ionic-rating-component activeColor = "#691DFE" fontSize = "12px" defaultColor = "#691DFE"></ionic-rating-component>
-<div class="see-inf-profile">
+<ionic-rating-component readonly="true" activeColor = "#691DFE" fontSize = "12px" defaultColor = "#691DFE"></ionic-rating-component>
+<div (click)="goToInfProfile()" class="see-inf-profile">
   <a class="ion-h2 see-inf-h">View Profile</a>
   <i class="fi fi-rr-angle-small-right arrow-icon"></i>
 </div>

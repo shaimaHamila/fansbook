@@ -1,4 +1,4 @@
-<ion-select (ionChange)="sendCountrySelected()" [formControl]='country' name="country" placeholder="Country" multiple={{isMultiSelect}} cancelText="Cancel" okText="Submit">
+<ion-select (ionChange)="sendCountrySelected()" [required]="isRequired" [selectedText]="cucountry"  [formControl]='country' name="country" placeholder="Country" multiple={{isMultiSelect}} cancelText="Cancel" okText="Submit">
   <ion-select-option *ngFor="let country of countries" [value]="country.name" >{{country.name}}</ion-select-option>
 </ion-select>
 

@@ -7,13 +7,22 @@
             <img class="app-logo" src="../assets/appLogo/fansbooklogoV2light.png" alt="Fandbook logo">
           </ion-list-header>
           <hr>
-          <ion-menu-toggle autoHide="false" *ngFor="let p of userProfile">
-            <div>
-              <ion-item class="sidebar-pages" [routerLink]="[p.url]" routerLinkActive="active-item" routerDirection="root" lines="none" detail="false">
+          <ion-menu-toggle autoHide="false">
+            <div *ngIf="userType === 'influencer'">
+              <ion-item class="sidebar-pages" [routerLink]="[infProfile.url]" routerLinkActive="active-item" routerDirection="root" lines="none" detail="false">
                 <ion-thumbnail slot="start">
-                  <img class="user-profile-img" src="../assets/uerPhoto/joyful-parisian-woman-beret-sunglasses-points-place-text-purple-wall.jpg">
+                  <img class="user-profile-img" src="../assets/avatar/profilePic.png">
                 </ion-thumbnail>
-                <ion-label class="ion-h1">{{ p.title }} </ion-label>
+                <ion-label class="ion-h1">{{ infProfile.title }} </ion-label>
+              </ion-item>
+            </div>
+
+            <div *ngIf="userType === 'entrepreneur'">
+              <ion-item class="sidebar-pages" [routerLink]="[enpProfile.url]" routerLinkActive="active-item" routerDirection="root" lines="none" detail="false">
+                <ion-thumbnail slot="start">
+                  <img class="user-profile-img" src="../assets/avatar/profilePic.png">
+                </ion-thumbnail>
+                <ion-label class="ion-h1">{{ enpProfile.title }} </ion-label>
               </ion-item>
             </div>
             <hr>
@@ -33,17 +42,31 @@
                 <ion-label>{{ p.title }}</ion-label>
               </ion-item>
             </div>
-            <hr>
-            <div  *ngFor="let p of payment">
-              <ion-item [routerLink]="[p.url]" routerLinkActive="active-item" routerDirection="root" lines="none" detail="false">
-                <i [class]="p.icon + ' sidebar-icons'"></i>
-                <ion-label>{{ p.title }}</ion-label>
+
+            <div *ngIf="userType === 'entrepreneur'">
+              <ion-item [routerLink]="[myPosts.url]" routerLinkActive="active-item" routerDirection="root" lines="none" detail="false">
+                <i [class]="myPosts.icon + ' sidebar-icons'"></i>
+                <ion-label>{{ myPosts.title }}</ion-label>
               </ion-item>
             </div>
-            <div  *ngFor="let p of userLogout">
-              <ion-item [routerLink]="[p.url]" (click)="logout()" routerLinkActive="active-item" routerDirection="root" lines="none" detail="false">
-                <i [class]="p.icon + ' sidebar-icons'"></i>
-                <ion-label>{{ p.title }}</ion-label>
+
+            <div *ngIf="userType === 'influencer'">
+              <ion-item [routerLink]="[myApplications.url]" routerLinkActive="active-item" routerDirection="root" lines="none" detail="false">
+                <i [class]="myApplications.icon + ' sidebar-icons'"></i>
+                <ion-label>{{ myApplications.title }}</ion-label>
+              </ion-item>
+            </div>
+            <hr>
+            <div>
+              <ion-item [routerLink]="[payment.url]" routerLinkActive="active-item" routerDirection="root" lines="none" detail="false">
+                <i [class]="payment.icon + ' sidebar-icons'"></i>
+                <ion-label>{{ payment.title }}</ion-label>
+              </ion-item>
+            </div>
+            <div>
+              <ion-item [routerLink]="[userLogout.url]" (click)="logout()" routerLinkActive="active-item" routerDirection="root" lines="none" detail="false">
+                <i [class]="userLogout.icon + ' sidebar-icons'"></i>
+                <ion-label>{{ userLogout.title }}</ion-label>
               </ion-item>
             </div>
 

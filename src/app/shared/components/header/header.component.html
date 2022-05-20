@@ -3,8 +3,9 @@
     <ion-menu-button class="menu-icon-sidebar" ></ion-menu-button>
   </ion-tab-button>
 
-  <div class="user-profile">
-    <h2 class="ion-h3 user-name-h">Hello, Pamela!</h2>
-    <img class="profiltPic" src="../../../../assets/uerPhoto/joyful-parisian-woman-beret-sunglasses-points-place-text-purple-wall.jpg" alt="">
+  <div [routerLink]="userURL" routerLinkActive="active-item" class="user-profile">
+    <h2 class="ion-h3 user-name-h">Hello, {{userName}}!</h2>
+    <img  class="profiltPic" [src]='userImg ?? "../assets/avatar/profilePic.png"' alt="">
   </div>
+
 </ion-toolbar>

@@ -8,15 +8,15 @@
     <section>
       <div>
         <div class="cover-section">
-          <input id="img" style="display: none; " class="file-upload" type="file" accept="image/*">
-          <label class="edit-btn-input ion-h5" for="img">EDIT</label>
-          <img class="cover-photo" src="../../../../assets/uerPhoto/full-length-shot-glad-curly-woman-striped-pants-jumping-purple-wall-indoor-portrait-wonderful-girl-sunglasses-fooling-around.jpg">
+          <input (change)="uploadCoverPhoto($event.target.files)" name="coverPhoto" id="img" style="display: none; " class="file-upload" type="file" accept="image/*">
+          <label  class="edit-btn-input ion-h5" for="img">EDIT</label>
+          <img class="cover-photo" [src]="infData.coverPhoto ??'../../../../assets/uerPhoto/bg.png'">
         </div>
 
           <div class="profile">
             <div class="profiltPic-section">
-              <img class="profiltPic circle" src="../../../../assets/uerPhoto/joyful-parisian-woman-beret-sunglasses-points-place-text-purple-wall.jpg">
-              <input id="profiltPic" style="display: none; " class="file-upload" type="file" accept="image/*">
+              <img class="profiltPic circle" [src]="infData.image ??'../../../../assets/uerPhoto/bg.png'">
+              <input (change)="uploadProfilePhoto($event.target.files)" name="image" id="profiltPic" style="display: none; " class="file-upload" type="file" accept="image/*">
               <label for="profiltPic" class="profile-label">
                 <div class="profile-edit">
                   <i class="fi fi-rr-camera "></i>
@@ -24,10 +24,9 @@
               </label>
             </div>
               <div class="user-infi-section">
-                <h1 class="ion-h1 user-name">Marvin Stewar</h1>
-                <h2 class="ion-h2 user-sub">Model</h2>
-                <ionic-rating-component activeColor = "#691DFE" fontSize = "17px" defaultColor = "#691DFE"></ionic-rating-component>
-                <ion-button (click)="showAlert()" type="button" class="review ionn-h4" > + Add review</ion-button>
+                <h1 class="ion-h1 user-name">{{infData.fullName}}</h1>
+                <h2 class="ion-h2 user-sub">{{infData.subTitle}}</h2>
+                <ionic-rating-component readonly="true" activeColor = "#691DFE" fontSize = "17px" defaultColor = "#691DFE"></ionic-rating-component>
               </div>
           </div>
         <!--Contact buttons-->
@@ -36,9 +35,13 @@
             <i class="fi fi-rr-star icon"></i>
             Contact
           </ion-button>
-          <ion-button type="submit" class="ion-btn-lg btn-msg ion-h3-btn">
+          <!-- <ion-button type="submit" class="ion-btn-lg btn-msg ion-h3-btn">
             <i class="fi fi-rr-comments icon"></i>
             Message
+          </ion-button> -->
+          <ion-button (click)="openEditInfoModal()" type="submit" class="ion-btn-lg btn-msg ion-h3-btn">
+            <i class="fi fi-rr-pencil icon"></i>
+            Edit
           </ion-button>
         </div>
       </div>
@@ -51,12 +54,11 @@
 
     <h3 class="ion-h2">Complete building your profile to earn a star.</h3>
     <div class="progress-bar-star">
-      <ion-progress-bar class="bar" color="primary" value="0.5"></ion-progress-bar>
+      <ion-progress-bar class="bar" color="primary" [value]="progress"></ion-progress-bar>
       <div class="progress-star">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 icon-star" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-        </svg>
-        <h3 class="ion-h3 star-rate-h3">100%</h3>
+        <i *ngIf="progress < 100" class="fi fi-rr-star icon-star"></i>
+        <i *ngIf="progress === 100" class="fi fi-sr-star icon-star"></i>
+        <h3 class="ion-h3 star-rate-h3">{{progress * 100}}%</h3>
       </div>
 
     </div>
@@ -78,7 +80,7 @@
             <img class="icon-fb" src="../../../../assets/icon/Facebook.png">
             <div class="followers-nb">
               <h1 class="ion-h1 h1-fol">3,232 M</h1>
-              <h5 class="ion-h5 user-sub">Followers</h5>
+              <h5 class="ion-h3-m user-sub">Followers</h5>
             </div>
           </div>
         </div>
@@ -88,7 +90,7 @@
             <img class="icon-insta" src="../../../../assets/icon/Instagram.png">
             <div class="followers-nb">
               <h1 class="ion-h1 h1-fol">3,232 M</h1>
-              <h5 class="ion-h5 user-sub">Followers</h5>
+              <h5 class="ion-h3-m user-sub">Followers</h5>
             </div>
           </div>
         </div>
@@ -98,7 +100,7 @@
             <img class="icon-fb" src="../../../../assets/icon/YouTube.png">
             <div class="followers-nb">
               <h1 class="ion-h1 h1-fol">3,232 M</h1>
-              <h5 class="ion-h5 user-sub">Followers</h5>
+              <h5 class="ion-h3-m user-sub">Followers</h5>
             </div>
           </div>
         </div>
@@ -125,7 +127,7 @@
         <div class="mb" ></div>
 
         <div class="about">
-          <h3 class="ion-h2 about-h">Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet.</h3>
+          <h3 class="ion-h2 about-h">{{infData.bio}}</h3>
         </div>
       </div>
 
@@ -142,10 +144,8 @@
         <div class="mb" ></div>
 
         <div class="specialities">
-          <h3 class="ion-h3 specialty">specialty1</h3>
-          <h3 class="ion-h3 specialty">specialty2</h3>
-          <h3 class="ion-h3 specialty">specialty</h3>
-          <h3 class="ion-h3 specialty">specialty1</h3>
+          <h3 *ngFor="let specialty of infData.specialties"  class="ion-h3 specialty">{{specialty}}</h3>
+
         </div>
       </div>
 
@@ -162,7 +162,7 @@
         <div class="mb" ></div>
 
         <div class="budget">
-          <h3 class="ion-h2-b budget-h">1250 DT</h3>
+          <h3 class="ion-h2-b budget-h">{{infData.minBudget}}</h3>
         </div>
       </div>
 
@@ -181,29 +181,46 @@
     <div class="mb" ></div>
 
     <ion-segment class="social-cards" scrollable>
-      <div>
+      <div *ngIf="infData.website">
         <div class="social-media">
-          <img class="icon-fb" src="../../../../assets/icon/Facebook.png">
+          <a [href]="infData.website" target="_blank" >
+            <img class="icon-fb" src="../../../../assets/icon/web.png">
+          </a>
         </div>
       </div>
 
-      <div>
+      <div *ngIf="infData.instagram">
         <div class="social-media">
-          <img class="icon-insta" src="../../../../assets/icon/Instagram.png">
+          <a [href]="infData.instagram" target="_blank" >
+            <img class="icon-insta" src="../../../../assets/icon/Instagram.png">
+          </a>
         </div>
       </div>
 
-      <div>
+      <div *ngIf="infData.youtube">
         <div class="social-media">
-          <img class="icon-fb" src="../../../../assets/icon/YouTube.png">
+          <a [href]="infData.youtube" target="_blank" >
+            <img class="icon-fb" src="../../../../assets/icon/YouTube.png">
+          </a>
         </div>
       </div>
 
-      <div>
+      <div *ngIf="infData.facebook">
         <div class="social-media">
-          <img class="icon-fb" src="../../../../assets/icon/Facebook.png">
+          <a [href]="infData.facebook" target="_blank" >
+            <img class="icon-fb" src="../../../../assets/icon/Facebook.png">
+          </a>
         </div>
       </div>
+
+      <div *ngIf="infData.linkedin">
+        <div class="social-media">
+          <a [href]="infData.linkedin" target="_blank" >
+            <img class="icon-fb" src="../../../../assets/icon/linkedin.png">
+          </a>
+        </div>
+      </div>
+
     </ion-segment>
   </section>
   <div class="ion-2mt" ></div>
@@ -223,33 +240,32 @@
           <div class="mb" ></div>
 
           <div class="experiences">
-              <div *ngFor="let i of [1, 2, 3]"  class="experience">
+              <div *ngFor="let exp of experiences" class="experience">
                 <div>
                     <img class="experienceIcon" src="../../../../assets/icon/experienceIcon.png" alt="">
                 </div>
                 <div class="experience-text">
                   <div class="section_header">
-                    <h1 class="ion-h1 h1_followers">Experiences</h1>
-                    <ion-button (click)="editExperienceModal()" class="edit_btn">
+
+                <h1 class="ion-h1 h1_followers">{{exp.title}}</h1>
+                    <ion-button (click)="editExperienceModal(exp)" class="edit_btn">
                       <i class="fi fi-rr-pencil"></i>
                     </ion-button>
                   </div>
-                  <h3 class="ion-h5 experience-h3-campany">Google</h3>
-                  <h3 class="ion-h5 experience-h3">.Tunisia</h3>
-                  <h3 class="ion-h5 experience-date">Sep 2020 - nov 2020 . 3mos</h3>
-                  <h3 class="ion-h3 experience-story">Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet.</h3>
+                  <h3 class="ion-h5 experience-h3-campany">{{exp.company}}</h3>
+                  <h3 *ngIf="exp.country" class="ion-h5 experience-h3">.{{exp.country}}</h3>
+                  <h3 class="ion-h5 experience-date">{{getExperienceTime(exp)}}</h3>
+                  <h3 class="ion-h3 experience-story">{{exp.description}}</h3>
                 </div>
               </div>
 
           </div>
 
               <!--display all Experiences section-->
-             <div class="display-exp">
-                  <a class="ion-h2 experience-see-more-h">See more</a>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 arrow-icon icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-             </div>
+             <!-- <div (click)="show = !show" class="display-exp">
+                  <a class="ion-h2 experience-see-more-h">{{ show ? 'Show less': 'Show More' }}</a>
+                  <i class="fi fi-rr-angle-small-down"></i>
+             </div> -->
       </div>
     </section>
 
@@ -303,52 +319,13 @@
 
     </section>
     <!--Recommendations section-->
-    <section>
+    <section *ngIf="isExist">
       <h1 class="ion-h1 gallery-h1 h1 ">Recommendations</h1>
 
       <ion-slides [options]="recommendation" pager="true" class="">
-
-        <ion-slide>
-          <div class="recommendation-bloc">
-            <div class="recommendation">
-              <img class="enp-img" src="../../../../assets/uerPhoto/cut-in-a-moment-9ewfCZmObeM-unsplash.jpg" alt="">
-              <div class="recom-entp-date">
-                <h2 class="ion-h2-b recommendation-h2">Enp name</h2>
-                <h5 class="ion-h5 recommendation-h5">3 hrs ago</h5>
-              </div>
-              <ionic-rating-component activeColor = "#691DFE" fontSize = "17px" defaultColor = "#691DFE"></ionic-rating-component>
-            </div>
-            <h3 class="ion-h5 recommendation-text">Lorem ipsum dolor sit amet Lorem ipsumdolor sit amet Loremk ipsum dolor sit amet. Lorem ipsum amet ipsum.</h3>
-          </div>
-        </ion-slide>
-
-        <ion-slide>
-          <div class="recommendation-bloc">
-            <div class="recommendation">
-              <img class="enp-img" src="../../../../assets/uerPhoto/cut-in-a-moment-9ewfCZmObeM-unsplash.jpg" alt="">
-              <div class="recom-entp-date">
-                <h2 class="ion-h2-b recommendation-h2">Enp name</h2>
-                <h5 class="ion-h5 recommendation-h5">3 hrs ago</h5>
-              </div>
-              <ionic-rating-component activeColor = "#691DFE" fontSize = "17px" defaultColor = "#691DFE"></ionic-rating-component>
-            </div>
-            <h3 class="ion-h5 recommendation-text">Lorem ipsum dolor sit amet Lorem ipsumdolor sit amet Loremk ipsum dolor sit amet. Lorem ipsum amet ipsum.</h3>
-          </div>
-        </ion-slide>
-
-        <ion-slide>
-          <div class="recommendation-bloc">
-            <div class="recommendation">
-              <img class="enp-img" src="../../../../assets/uerPhoto/cut-in-a-moment-9ewfCZmObeM-unsplash.jpg" alt="">
-              <div class="recom-entp-date">
-                <h2 class="ion-h2-b recommendation-h2">Enp name</h2>
-                <h5 class="ion-h5 recommendation-h5">3 hrs ago</h5>
-              </div>
-              <ionic-rating-component activeColor = "#691DFE" fontSize = "17px" defaultColor = "#691DFE"></ionic-rating-component>
-            </div>
-            <h3 class="ion-h5 recommendation-text">Lorem ipsum dolor sit amet Lorem ipsumdolor sit amet Loremk ipsum dolor sit amet. Lorem ipsum amet ipsum.</h3>
-          </div>
-        </ion-slide>
+        <div *ngFor="let recommendation of recommendations">
+          <app-recommendation [recommendation]="recommendation"></app-recommendation>
+        </div>
 
       </ion-slides>
 

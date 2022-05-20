@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { Influencer } from '../../models/influencer';
 
 @Component({
   selector: 'app-inf-card',
@@ -6,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inf-card.component.scss'],
 })
 export class InfCardComponent implements OnInit {
-
-  constructor() { }
+  @Input() influencer: Influencer;
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {}
+
+  goToInfProfile() {
+    this.router.navigate([`/tabs/infs-profile/${this.influencer.idInf}`]);
+  }
 
 }

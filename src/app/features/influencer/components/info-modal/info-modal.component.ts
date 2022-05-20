@@ -8,16 +8,14 @@ import { ModalController } from '@ionic/angular';
 })
 export class InfoModalComponent implements OnInit {
 
-  @Input() phoneNum: string;
+  @Input() phoneNumber: number;
   @Input() email: string;
   @Input() country: string;
-  @Input() city: string;
 
   constructor( private modalCtrl: ModalController) { }
 
   ngOnInit() {}
   dismissModalInfo(){
-    //console.log('Dismiss');
     this.modalCtrl.dismiss();
   }
 

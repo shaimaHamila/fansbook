@@ -1,11 +1,12 @@
-export interface Experience{
+export class Experience{
   idExp: string;
+  idInf: string;
   title: string;
   company: string;
   isWorking: boolean;
-  startDate?: Date;
+  startDate: Date;
   endDate?: Date;
-  description?: string;
-  idInf: string;
-
+  description: string;
+  country?: string;
+  createdAt?: any;
 }

@@ -2,18 +2,20 @@
   <div class="container p-6">
 
      <!-- form -->
+     <h2 class="ion-h1">Update Minimum budget</h2>
 
-    <form>
+    <form #minBugetform="ngForm" ngForm="minBugetform">
       <div class="mt-h"></div>
 
-      <label  class="ion-h1-m title">Minimum budget</label>
-      <ion-input class="ion-input ion-h3" name="buget" type="number" placeholder="DT"></ion-input>
+      <label  class="ion-h1-m title">Minimum budget (TND)</label>
+      <ion-input [(ngModel)]="minBuget" #minBugetI="ngModel" class="ion-input ion-h3" name="minBugetI" type="number" placeholder="Exp 100DT" required></ion-input>
+      <div *ngIf="minBugetI.touched && !minBugetI.valid" class="error-message">Minimum budget is required!</div>
       <div class="ion-mt"></div>
 
 
       <div class="btns-coll btns">
-        <ion-button type="submit" class="  ion-h3-btn btn-delete">Cancel</ion-button>
-        <ion-button type="submit" class="  ion-h3-btn btn-update"  >Update</ion-button>
+        <ion-button type="cancel" (click)="cancel()" class="  ion-h3-btn btn-delete">Cancel</ion-button>
+        <ion-button type="submit" [disabled]="!minBugetform.valid" (click)="updateBio()" class="  ion-h3-btn btn-update"  >Update</ion-button>
       </div>
 
 

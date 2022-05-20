@@ -13,7 +13,10 @@ import { EditBioComponent } from '../components/edit-profile-modals/edit-bio/edi
 import { EditBugetComponent } from '../components/edit-profile-modals/edit-buget/edit-buget.component';
 import { EditMediaLinksComponent } from '../components/edit-profile-modals/edit-media-links/edit-media-links.component';
 import { EditSpecialitiesComponent } from '../components/edit-profile-modals/edit-specialities/edit-specialities.component';
-import { ExperienceComponent } from '../components/edit-profile-modals/experience/experience.component';
+import { ExperienceComponent } from '../components/addExperience/experience.component';
+import { EditExperienceComponent } from '../components/edit-profile-modals/edit-experience/edit-experience.component';
+import { EditInfoComponent } from '../components/edit-profile-modals/edit-info/edit-info.component';
+import { RecommendationComponent } from '../components/recommendation/recommendation.component';
 
 @NgModule({
   imports: [
@@ -32,7 +35,10 @@ import { ExperienceComponent } from '../components/edit-profile-modals/experienc
       EditBugetComponent,
       EditMediaLinksComponent,
       EditSpecialitiesComponent,
-      ExperienceComponent
+      ExperienceComponent,
+      EditExperienceComponent,
+      EditInfoComponent,
+      RecommendationComponent
     ]
 })
 export class InfProfilePageModule {}

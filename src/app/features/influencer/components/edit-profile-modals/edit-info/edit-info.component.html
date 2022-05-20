@@ -1,0 +1,35 @@
+<ion-content class="ion-content">
+  <div class="container p-6">
+
+     <!-- form -->
+     <h2 class="ion-h1">Edit contact info</h2>
+
+    <form #bioform="ngForm" ngForm="bioForm">
+      <div class="mt-h"></div>
+
+      <label  class="ion-h1-m title">SubTitle</label>
+      <ion-input [(ngModel)]="subTitle" class="ion-input ion-h3" name="subTitle" type="text" placeholder="Exp: Influencer" ></ion-input>
+      <div class="ion-mt"></div>
+
+      <label  class="ion-h1-m title">Phone Number*</label>
+      <ion-input [(ngModel)]="phoneNum" class="ion-input ion-h3"  #phoneNumber="ngModel" name="phoneNumber" type="phone" placeholder="22 222 222" required></ion-input>
+      <div *ngIf="phoneNumber.touched && !phoneNumber.valid" class="error-message">Phone Number is required!</div>
+
+      <div class="ion-mt"></div>
+
+      <h2 class="ion-h2 label" >Country*</h2>
+      <app-country [cucountry]="country" [isMultiSelect]="false" [isRequired]="true" (countrySlected)="getCountry($event)"></app-country>
+      <div class="ion-mt"></div>
+
+      <div class="btns-coll btns">
+        <ion-button (click)="cancel()" type="cancel" class="ion-h3-btn btn-delete">Cancel</ion-button>
+        <ion-button [disabled]="!bioform.valid" (click)="updateBio()" type="submit" class="ion-h3-btn btn-update"  >Update</ion-button>
+      </div>
+
+
+  </form>
+
+  </div>
+
+
+</ion-content>

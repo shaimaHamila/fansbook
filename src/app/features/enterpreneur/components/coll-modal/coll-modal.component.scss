@@ -40,10 +40,17 @@
 .specialities{
   margin-top: 0px;
 }
+.applicants{
+  margin-bottom: 5px;
+  color: var(--ion-color-green);
+}
+.coll-title{
+  margin-top: 10px;
+}
 .btns-coll{
   margin-top: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: nowrap;
   margin: 20px auto;
   gap: 10px;
@@ -54,11 +61,18 @@
   border: 1px solid var(--ion-color-first);
   border-radius: 6px;
   --box-shadow: none;
-  width: 70%;
+  width: 50%;
+  margin: 0px
+
 }
 .btn-apply{
   --box-shadow: none;
-  width: 100%;
+  width: 50%;
+}
+.btn-cancel{
+  --background: var(--ion-color-danger);
+  --box-shadow: none;
+  width: 50%;
 }
 .enp-card{
   padding: 20px 20px;

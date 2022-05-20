@@ -1,3 +1,4 @@
-<ion-select (ionChange)="sendSpecialitiesData()" #userSpecialitiesForm="ngModel" [(ngModel)]="speciality"  name="userSpecialitiesForm" placeholder="Select the Specialties" multiple="true" cancelText="Cancel" okText="Submit">
+<ion-select multiple={{isMultiSelect}} [required]="isRequired" [selectedText]="specialties" (ionChange)="sendSpecialitiesData()" #userSpecialitiesForm="ngModel" [(ngModel)]="speciality"  name="userSpecialitiesForm" placeholder="Select the Specialties" multiple="true" cancelText="Cancel" okText="Submit">
   <ion-select-option *ngFor="let speciality of specialities" [value]="speciality">{{speciality}}</ion-select-option>
 </ion-select>
+<div *ngIf="userSpecialitiesForm.touched && !userSpecialitiesForm.valid" class="error-message">specialties are required!</div>

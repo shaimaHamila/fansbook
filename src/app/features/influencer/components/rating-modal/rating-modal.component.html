@@ -1,0 +1,23 @@
+
+<ion-content class="ion-content">
+  <div class="container">
+    <form ratingForm="ngFom">
+      <h2 *ngIf="isExist" class="ion-h1">Update Recommendation</h2>
+      <h2  class="ion-h2 title">Evaluate your experience working with Marvin</h2>
+      <ionic-rating-component name="starNb" rating={{recommendation.starNb}} #rating (ratingChanged)="onRateChange($event)" activeColor = "#691DFE" fontSize = "35px" defaultColor = "#691DFE"></ionic-rating-component>
+      <div class="ion-mt"></div>
+      <h2  class="ion-h2 title">Give Marvin an honest recommendation :)</h2>
+      <ion-textarea [(ngModel)]="recommendation.recommendation" class="ion-input ion-h3" name="recommendation" type="textarea" placeholder="Give Marvin an honest recommendation .."></ion-textarea>
+      <div class="ion-mt"></div>
+      <ion-button *ngIf="isExist" (click)="deletRec()" type="submit"  class="  ion-h3-btn btn-delete">Delete</ion-button>
+
+      <div class="btns-coll btns">
+        <ion-button (click)="cancel()" type="reset"  class="  ion-h3-btn btn-applicants">Cancel</ion-button>
+        <ion-button *ngIf="!isExist" (click)="addInfRec()" type="submit" class="  ion-h3-btn btn-update">Submit</ion-button>
+        <ion-button *ngIf="isExist" (click)="addInfRec()" type="submit" class="  ion-h3-btn btn-update">Update</ion-button>
+      </div>
+    </form>
+
+  </div>
+
+</ion-content>

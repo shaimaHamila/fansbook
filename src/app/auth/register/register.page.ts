@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
@@ -13,9 +13,11 @@ import { Influencer } from 'src/app/shared/models/influencer';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+
+  @Input() fullName: string;
+
   validationRegisterForm: FormGroup;
   loading: any;
-
   validationUserMessage = {
     fullName: [
       { type: 'required', message: 'Pleas enter your Full Name!' },
@@ -34,9 +36,6 @@ export class RegisterPage implements OnInit {
     confirmPassword: [
       { type: 'required', message: 'Pleas confirm your Password!' },
       { type: 'invalid', message: 'Password mismatch!' }
-    ],
-    userType: [
-      { type: 'required', message: 'Pleas select User Type!' },
     ],
     terms: [
       { type: 'requiredTrue', message: 'You must accept terms and conditions' },
@@ -72,13 +71,16 @@ export class RegisterPage implements OnInit {
 
 
   ngOnInit() {
+    this.initForm();
+  };
 
+  initForm(){
     this.validationRegisterForm = this.formBuilder.group({
-      fullName: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(25)
-      ])),
+      // fullName: new FormControl('', Validators.compose([
+      //   Validators.required,
+      //   Validators.minLength(3),
+      //   Validators.maxLength(25)
+      // ])),
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
@@ -91,19 +93,12 @@ export class RegisterPage implements OnInit {
       confirmPassword: new FormControl('', Validators.compose([
         Validators.required,
       ])),
-      userType: new FormControl('', Validators.compose([
-        Validators.required
-      ])),
       terms: new FormControl(false, Validators.compose([
         Validators.requiredTrue
       ]))
     }, { validator: this.passwordConfirming });
-    const userName = this.validationRegisterForm.value.fullName;
-    const userEmail = this.validationRegisterForm.value.email;
-    const userPsw = this.validationRegisterForm.value.password;
-    const userType = this.validationRegisterForm.value.userType;
-    console.log(userName, userEmail, userPsw, userType);
-  };
+    this.fullName = this.validationRegisterForm.value.fullName;
+  }
 
 
   async register() {
@@ -122,16 +117,16 @@ export class RegisterPage implements OnInit {
 
     if (user) {
       console.log(user);
-      // create Influencer Or Entr.. with the uid comes in the user object
+      // create Influencer Or Entrepreneur with the uid comes in the user object
       // all the user servie and create the profile based on selected user type
       // const ty = this.validationRegisterForm.value.userType;
       // if (ty === 'influencer') {
-
       //   const inf = new Influencer();
       //   inf.uid = user.uid;
       //   inf.phoneNumber = 12345647;
       //   this.userServ.createInfluencer(inf);
       // }
+
       this.router.navigateByUrl('/register/s1-usertype', { replaceUrl: true });
     } else {
       this.showAlert('Registration failed', 'Please try again!');

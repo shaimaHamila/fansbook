@@ -2,18 +2,18 @@
   <div class="container p-6">
 
      <!-- form -->
+     <h2 class="ion-h1">Update the Bio</h2>
 
-    <form>
+    <form #bioform ngForm="bioForm">
       <div class="mt-h"></div>
 
       <label  class="ion-h1-m title">Bio</label>
-      <ion-textarea [value]="bio" rows="6" class="ion-input ion-h3" name="bio" type="textarea" placeholder="Describe your top skills, experiences, and interests. This is one of the first things clients will see on your profile."></ion-textarea>
+      <ion-textarea [(ngModel)]="bio" rows="6" class="ion-input ion-h3" name="bio" type="textarea" placeholder="Describe your top skills, experiences, and interests. This is one of the first things clients will see on your profile."></ion-textarea>
       <div class="ion-mt"></div>
 
-
       <div class="btns-coll btns">
-        <ion-button type="submit" class="  ion-h3-btn btn-delete">Cancel</ion-button>
-        <ion-button type="submit" class="  ion-h3-btn btn-update"  >Update</ion-button>
+        <ion-button (click)="cancel()" type="cancel" class="ion-h3-btn btn-delete">Cancel</ion-button>
+        <ion-button (click)="updateBio()" type="submit" class="ion-h3-btn btn-update"  >Update</ion-button>
       </div>
 
 

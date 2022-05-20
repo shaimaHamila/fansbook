@@ -8,14 +8,27 @@ import { AuthService } from './services/authService/auth.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  userProfile = [
+  //Get the current user type from th lockal storage
+  uid = localStorage.getItem('localStorage_uid_pfe_2022'); //Get the current user uid from th lockal storage
+  userType = localStorage.getItem('localStorage_userType_pfe_2022'); //Get the current user type from th lockal storage
+  userName: string;
+  userImg: any;
+  userURL: any;
+  infProfile =
     {
-      title: 'User Name',
+      title: 'My Profile',
       url: '/tabs/inf-profile',
       icon: '',
       badge: ''
-    },
-  ];
+    };
+  enpProfile =
+  {
+    title: 'My Profile',
+    url: '/tabs/entp-profile',
+    icon: '',
+    badge: ''
+  };
+
 
   primaryPages = [
     {
@@ -53,24 +66,31 @@ export class AppComponent {
       title: 'Collaboration Opportunities',
       url: '/tabs/coll-opp',
       icon: 'fi fi-rr-briefcase '
-    },
+    }
   ];
+  myPosts = {
+    title: 'My Postes',
+    url: '/tabs/entp-profile/enp-posts',
+    icon: 'fi fi-rr-briefcase '
+  };
+  myApplications= {
+    title: 'My Applications',
+    url: '/tabs/inf-profile/my-applications',
+    icon: 'fi fi-rr-briefcase '
+  };
 
-  payment = [
-
-    {
+  payment = {
       title: 'Payment',
       url: '/tabs/payment',
       icon: 'fi fi-rr-credit-card'
-    },
-  ];
-  userLogout = [
-    {
+    };
+
+  userLogout ={
       title: 'Logout',
       url: '/tabs/logout',
       icon: 'fi fi-rr-sign-out-alt'
-    },
-  ];
+    };
+
   constructor(private authService: AuthService, private route: Router) {}
 
   async logout(){

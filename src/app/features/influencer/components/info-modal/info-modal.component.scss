@@ -1,0 +1,22 @@
+.btn{
+  --background: var(--ion-color-white);
+  border-radius: 0px;
+  color: var(--ion-color-dark);
+  --box-shadow: none;
+}
+.header{
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.header-section{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.contact{
+  color: var(--ion-color-text-meduim);
+}
+.contact-title{
+  color: var(--ion-color-grey-text);
+}

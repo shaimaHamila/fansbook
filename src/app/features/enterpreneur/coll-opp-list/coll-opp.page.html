@@ -8,13 +8,17 @@
   <div class="mt-h"></div>
   <section>
     <div class="search-section">
-      <ion-searchbar  class=" ion-h1 searchBar" color="white" placeholder="Name or Speciality"></ion-searchbar>
+      <ion-searchbar  #query (keyup)="filter(query.value)" name="search" class=" ion-h1 searchBar" color="white" placeholder="Search by title"></ion-searchbar>
       <ion-button (click)="openInfFilterModal()" slot="end" class="ion-h6 filter-btn">
         <i class="fi fi-rr-settings-sliders filter-icon"></i>
       </ion-button>
     </div>
   </section>
+  <div class="mt-h"></div>
 
+  <div>
+    <ion-button *ngIf="isEntrepreneur" (click)="openCollUpdatelModal()"  routerLinkActive="tab-selected" color="dark" slot="end">+Add collaboration opportunity</ion-button>
+  </div>
   <!-- Collaboration opportunities list section -->
   <div class="mt-h"></div>
   <section>
@@ -22,8 +26,8 @@
       <ion-label class="ion-h1-m "> Collaboration opportunities</ion-label>
     </div>
     <div class="enp-cards">
-      <div class="enp-card" *ngFor="let item of [1, 2, 3] ">
-        <app-collaboration></app-collaboration>
+      <div class="enp-card" *ngFor="let collaboration of filterCollaborations ">
+        <app-collaboration [collaboration]="collaboration"></app-collaboration>
 
       </div>
     </div>

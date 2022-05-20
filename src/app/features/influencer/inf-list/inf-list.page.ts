@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { FormControl } from '@angular/forms';
+import { LoadingController, ModalController } from '@ionic/angular';
+import { combineLatest, Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { InfService } from 'src/app/services/infService/inf.service';
+import { Influencer } from 'src/app/shared/models/influencer';
 import { InfFilterModalComponent } from '../components/inf-filter-modal/inf-filter-modal.component';
 
 @Component({
@@ -8,11 +13,40 @@ import { InfFilterModalComponent } from '../components/inf-filter-modal/inf-filt
   styleUrls: ['./inf-list.page.scss'],
 })
 export class InfListPage implements OnInit {
-
-  constructor(private modalCtrl: ModalController) { }
+  influencers: Influencer[];
+  filterInfluencers: Influencer[];
+  constructor(
+    private modalCtrl: ModalController,
+    private loadingCtrl: LoadingController,
+    private serviceInf: InfService
+    )
+    {}
 
   ngOnInit() {
+    this.getAllInfluencers();
+
+
   }
+  filter(queryString: string){
+
+    if(queryString){
+      this.filterInfluencers = this.influencers.filter(
+        inf =>inf.fullName.toLowerCase().includes(queryString.toLowerCase()));
+    }
+    else{
+      this.filterInfluencers = this.influencers;
+    }
+  }
+
+  async getAllInfluencers(){
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    await this.serviceInf.getInfList().subscribe((infs)=>{
+      this.filterInfluencers = this.influencers = infs;
+    });
+    await loading.dismiss();
+  }
+
   // display influencer contact info in a modal
   async  openInfFilterModal(){
     //console.log('open');
@@ -20,10 +54,7 @@ export class InfListPage implements OnInit {
       component: InfFilterModalComponent,
       //passing data
       componentProps:{
-        phoneNum: '+216 22016583',
-        email: 'hamilachaima18@gmail.com',
-        country: 'Tunis',
-        city: 'Sousse',
+
       },
       cssClass: 'influencer-info-modal',
       swipeToClose: true,

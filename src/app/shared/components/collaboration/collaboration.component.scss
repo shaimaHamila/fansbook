@@ -15,12 +15,19 @@
 }
 .company-name-h{
   margin-top: 0px;
+  color: var(--ion-color-text-meduim);
 }
 .data-post-h{
   margin-top: 0px;
   color: var(--ion-color-secondary);
 }
-
+.applicants{
+  margin-bottom: 5px;
+  color: var(--ion-color-green);
+}
+.coll-title{
+  margin-top: 10px;
+}
 .specialty{
   background-color: var(--ion-color-cold);
   padding: 10px;
@@ -44,7 +51,7 @@
 .btns-coll{
   margin-top: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: nowrap;
   margin: 20px auto;
   gap: 10px;
@@ -57,11 +64,16 @@
   border-radius: 6px;
   --box-shadow: none;
   width: 70%;
+  margin: 0px
 
 }
 .btn-apply{
  --box-shadow: none;
  width: 30%;
 }
-
+.btn-cancel{
+  --background: var(--ion-color-danger);
+  --box-shadow: none;
+  width: 30%;
+}
 

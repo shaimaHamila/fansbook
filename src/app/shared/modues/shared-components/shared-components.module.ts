@@ -9,6 +9,9 @@ import { InfCardComponent } from '../../components/inf-card/inf-card.component';
 import { IonicRatingComponentModule } from 'ionic-rating-component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddCollFormComponent } from 'src/app/features/enterpreneur/components/add-coll-form/add-coll-form.component';
+import { UpdateCollFormComponent } from 'src/app/features/enterpreneur/components/update-coll-form/update-coll-form.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -18,7 +21,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CollaborationComponent,
     CountryComponent,
     InfCardComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddCollFormComponent,
+    UpdateCollFormComponent
   ],
 
   imports: [
@@ -26,14 +31,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     IonicModule,
     IonicRatingComponentModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
     SpecialitiesComponent,
     CountryComponent,
     CollaborationComponent,
     InfCardComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddCollFormComponent,
+    UpdateCollFormComponent
   ],
 })
 export class SharedComponentsModule { }

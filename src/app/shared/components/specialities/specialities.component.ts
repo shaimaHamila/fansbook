@@ -1,4 +1,4 @@
-import { Component, OnInit,Output, EventEmitter } from '@angular/core';
+import { Component, OnInit,Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class SpecialitiesComponent implements OnInit {
   @Output() userSpecialities = new EventEmitter<string>();
-
+  @Input() isMultiSelect: boolean;
+  @Input() isRequired: boolean;
+  @Input() specialties: string[];
   speciality: string;
   specialities = ['Speciality1', 'Speciality2', 'Speciality3', 'Speciality4', 'Speciality5'];
   constructor() { }

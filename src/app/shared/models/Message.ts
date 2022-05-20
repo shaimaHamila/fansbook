@@ -1,7 +1,8 @@
 export interface Message {
   idMsg: string;
-  from: string;
+  fromId: any;
   msg: string;
-  fromName: string;
+  forId: any;
   myMsg: boolean;
+  createdAt: any;
 }

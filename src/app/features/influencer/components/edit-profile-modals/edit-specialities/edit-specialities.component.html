@@ -3,15 +3,15 @@
 
      <!-- form -->
 
-    <form>
+    <form #spfrom="ngForm">
       <div class="mt-h"></div>
 
       <label class="ion-h1-m label title">Specialties</label>
-      <app-specialities (userSpecialities)="getUserSpecialities($event)"></app-specialities>
+      <app-specialities [isRequired]="true" [specialties]="specialties" [isMultiSelect]="true" (userSpecialities)="getUserSpecialities($event)"></app-specialities>
 
       <div class="btns-coll btns">
-        <ion-button type="submit" class="  ion-h3-btn btn-delete">Cancel</ion-button>
-        <ion-button type="submit" class="  ion-h3-btn btn-update" >Update</ion-button>
+        <ion-button (click)="cancel()" type="cancel" class="  ion-h3-btn btn-delete">Cancel</ion-button>
+        <ion-button [disabled]="!isvalid" (click)="updateSpe()" type="submit" class="  ion-h3-btn btn-update" >Update</ion-button>
       </div>
 
     </form>

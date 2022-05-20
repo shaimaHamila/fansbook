@@ -1,0 +1,58 @@
+
+<ion-content class="ion-content">
+  <div class="container">
+    <div class="ion-mt"></div>
+
+    <section>
+      <h2 class="ion-h1">Edit work experience</h2>
+
+      <form #ngUserForm="ngForm">
+
+        <h2 class="ion-h2">Title*</h2>
+        <ion-input [(ngModel)]="experience.title" #title="ngModel" name="title" type="text" class="ion-input ion-h2" placeholder="Ex: marketing" required></ion-input>
+        <div *ngIf="title.touched && !title.valid" class="error-message">Title is required!</div>
+
+        <h2 class="ion-h2">Company*</h2>
+        <ion-input [(ngModel)]="experience.company" #company="ngModel" name="company" type="text" class="ion-input ion-h2" placeholder="Ex: Google" required></ion-input>
+        <div *ngIf="company.touched && !company.valid" class="error-message">Company name is required!</div>
+
+        <h2 class="ion-h2">Country</h2>
+        <ion-input [(ngModel)]="experience.country" #country="ngModel" name="country" type="text" class="ion-input ion-h2" placeholder="Where did You work" required></ion-input>
+        <div *ngIf="country.touched && !country.valid" class="error-message">Country name is required!</div>
+
+
+        <div class="remember-psw">
+          <ion-checkbox [(ngModel)]="experience.isWorking" name="isWorking"></ion-checkbox>
+          <span class="ion-h3 ion-h3-box ">I an currently working in this role</span>
+        </div>
+
+        <h2 class="ion-h2">Start Date*</h2>
+        <ion-input [(ngModel)]="experience.startDate" #startDate="ngModel" name="startDate" type="date" class="ion-input date" required></ion-input>
+        <div *ngIf="startDate.touched && !startDate.valid" class="error-message">Start Date is required!</div>
+
+        <div *ngIf="!experience.isWorking">
+          <h2 class="ion-h2">End Date*</h2>
+          <ion-input  [(ngModel)]="experience.endDate" #endDate="ngModel" name="endDate" type="date" class="ion-input date" required ></ion-input>
+          <div *ngIf="endDate.touched && !endDate.valid" class="error-message">End Date is required!</div>
+        </div>
+
+        <h2 class="ion-h2">Description*</h2>
+
+        <ion-textarea [(ngModel)]="experience.description" rows="3" class="ion-input ion-h3" #description="ngModel" name="description" type="textarea" placeholder="Describe your experience" required></ion-textarea>
+        <div *ngIf="description.touched && !description.valid" class="error-message">Description is required!</div>
+
+        <ion-button (click)="deleteInfExp()" type="Delete"  class="  ion-h3-btn btn-delete">Delete Experience</ion-button>
+
+        <div class="ion-mt"></div>
+
+        <div class="btns-coll btns">
+          <ion-button (click)="cancel()" type="cancel" class="  ion-h3-btn btn-cancel">Cancel</ion-button>
+          <ion-button [disabled]="!ngUserForm.valid" (click)="updateExperiencr(ngUserForm)" type="submit" class="  ion-h3-btn btn-update"  >Update</ion-button>
+        </div>
+
+      </form>
+    </section>
+
+  </div>
+</ion-content>
+

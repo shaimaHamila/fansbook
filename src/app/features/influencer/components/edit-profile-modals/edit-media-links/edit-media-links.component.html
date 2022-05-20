@@ -4,24 +4,38 @@
     <div class="ion-mt"></div>
 
     <section>
-      <h2 class="ion-h2">Social media links</h2>
+      <h2 class="ion-h1">Update Social media links</h2>
 
-      <form #ngUserForm="ngForm" (ngSubmit)="getData(ngUserForm)">
+      <form #ngUserForm="ngForm">
 
         <h2 class="ion-h2">Instagram</h2>
-        <ion-input ngModel #instagram="ngModel" name="instagram" type="link" class="ion-input ion-h2" placeholder="http://"></ion-input>
+        <ion-input [(ngModel)]="instagram" #instagrami="ngModel" name="instagram" type="link" class="ion-input ion-h2" placeholder="http://" required="true"></ion-input>
+        <div *ngIf="instagrami.touched && !instagrami.valid" class="error-message">Instagram link name is required!</div>
 
         <h2 class="ion-h2">Facebook</h2>
-        <ion-input ngModel #facebook="ngModel" name="facebook" type="link" class="ion-input ion-h2" placeholder="http://"></ion-input>
+        <ion-input [(ngModel)]="facebook" #facebooki="ngModel" name="facebook" type="link" class="ion-input ion-h2" placeholder="http://" required></ion-input>
+        <div *ngIf="facebooki.touched && !facebooki.valid" class="error-message">Facebook link name is required!</div>
 
         <h2 class="ion-h2">Youtube</h2>
-        <ion-input ngModel #youtube="ngModel" name="youtube" type="link" class="ion-input ion-h2" placeholder="http://"></ion-input>
-        add
+        <ion-input [(ngModel)]="youtube" #youtubei="ngModel" name="youtube" type="link" class="ion-input ion-h2" placeholder="http://" required></ion-input>
+        <div *ngIf="youtubei.touched && !youtubei.valid" class="error-message">Youtube link name is required!</div>
+
+        <h2 class="ion-h2">Linkedin</h2>
+        <ion-input [(ngModel)]="linkedin" #linkedini="ngModel" name="linkedin" type="link" class="ion-input ion-h2" placeholder="http://"></ion-input>
+        <div *ngIf="linkedini.touched && !linkedini.valid" class="error-message">Linkedin link name is required!</div>
+
+        <h2 class="ion-h2">Tiktok</h2>
+        <ion-input [(ngModel)]="tiktok" #tiktoki="ngModel" name="tiktok" type="link" class="ion-input ion-h2" placeholder="http://"></ion-input>
+
+        <h2 class="ion-h2">Website</h2>
+        <ion-input [(ngModel)]="website" #websitei="ngModel" name="website" type="link" class="ion-input ion-h2" placeholder="http://"></ion-input>
+        <div *ngIf="websitei.touched && !websitei.valid" class="error-message">Website link name is required!</div>
+
         <div class="ion-mt"></div>
 
         <div class="btns-coll btns">
-          <ion-button type="submit" class="  ion-h3-btn btn-delete">Cancel</ion-button>
-          <ion-button type="submit" class="  ion-h3-btn btn-update"  >Update</ion-button>
+          <ion-button (click)="cancel()" type="cancel" class="  ion-h3-btn btn-delete">Cancel</ion-button>
+          <ion-button [disabled]="!ngUserForm.valid" (click)="updateInfSocialLinks()" type="submit" class="  ion-h3-btn btn-update"  >Update</ion-button>
         </div>
 
       </form>

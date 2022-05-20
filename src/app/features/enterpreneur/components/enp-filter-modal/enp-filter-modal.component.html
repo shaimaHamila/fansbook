@@ -2,14 +2,14 @@
 
   <div class="">
     <h1 class="ion-h1-m title" >Specialities </h1>
-    <app-specialities></app-specialities>
+    <app-specialities (userSpecialities)="getUserSpecialities($event)"></app-specialities>
 
     <h1 class="ion-h1-m title" >Country </h1>
-    <app-country></app-country>
+    <app-country [isMultiSelect]="true" (countrySlected)="getCountry($event)"></app-country>
   </div>
 
   <div class="btns">
-    <ion-button  type="submit" class=" btn-read ion-h3-btn " >Reset</ion-button>
-    <ion-button  type="submit" class=" btn-apply ion-h3-btn"  color="primary" >Done</ion-button>
+    <ion-button (click)="cancel()" type="Reset" class=" btn-read ion-h3-btn " >Cancel</ion-button>
+    <ion-button (click)="filterColl()" type="Submit" class=" btn-apply ion-h3-btn"  color="primary" >Done</ion-button>
   </div>
 </ion-content>

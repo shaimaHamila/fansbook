@@ -19,14 +19,7 @@ const routes: Routes = [
     loadChildren: () => import('./auth/register/register.module').then( m => m.RegisterPageModule)
   },
 
-  {
-    path: 'add-coll-form',
-    loadChildren: () => import('./features/enterpreneur/coll-form/coll-form.module').then( m => m.CollFormPageModule)
-  },
-  {
-    path: 'update-coll-form',
-    loadChildren: () => import('./features/enterpreneur/coll-form/coll-form.module').then( m => m.CollFormPageModule)
-  },
+
 
 
 ];

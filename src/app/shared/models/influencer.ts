@@ -5,12 +5,10 @@ import { Specialities } from './Specialities';
 import { User } from './User';
 
 export class Influencer extends User{
-
-    language?: string;
+    idInf: string;
     galory?: Gallery;
-    experience?: Experience[];
-    specialities: Specialities[];
+    specialties: string[];
     gender: string;
-
-
+    minBudget: number;
+    followers: string;
 };

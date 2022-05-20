@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-content">
+  <div class="container">
+
+    <div class="ion-mt"></div>
+
+
+    <section>
+      <h2 class="ion-h1-m">A few details - then you can check your profile.</h2>
+      <h4 class="ion-h3-m text">To keep things safe and simple, they’ll pay to reach you - which is why we need your personal information.</h4>
+    </section>
+    <div class="ion-mt"></div>
+    <!-- form -->
+    <section>
+      <form [formGroup]="userFormGroup">
+        <div class="input-image-section">
+          <!-- get user image -->
+          <img class="user-img" [src]= 'imgUrl'>
+          <input #fileInput (change)="handleFileInput($event.target.files)" id="profiltPic" name="profiltPic" style="display: none; "class="file-upload" type="file" accept="image/*"/>
+          <label for="profiltPic" class="ion-h3-m profile-label">
+            <i class="fi fi-rr-add add-icon"></i>Upload Photo
+          </label>
+        </div>
+
+          <div class="ion-mt"></div>
+          <ion-label  class="ion-h3">Full name</ion-label>
+          <ion-input formControlName="fullName" class="ion-input ion-h3" name="fullName" type="text" placeholder="Enter your full name"></ion-input>
+          <div class="ion-mt"></div>
+
+          <!-- get user country -->
+          <h2 class="ion-h2 label" >Country*</h2>
+          <app-country [isMultiSelect]="false" (countrySlected)="getCountry($event) "></app-country>
+
+          <!-- get user gender -->
+          <h2 class="ion-h2 label" >Gender*</h2>
+          <ion-select value="female" name="gender" formControlName="gender" type="text" placeholder="Gender">
+            <ion-select-option value="female">Female</ion-select-option>
+            <ion-select-option value="male">Male</ion-select-option>
+          </ion-select>
+
+        <div class="ion-mt"></div>
+
+          <!-- get user company -->
+          <ion-label  class="ion-h2 label">company*</ion-label>
+          <ion-input class="ion-input ion-h2"  name="company" formControlName="company"  type="text" placeholder="Enter your company name"></ion-input>
+
+
+          <!-- get user number -->
+          <ion-label  class="ion-h2 label">Phone*</ion-label>
+          <ion-input class="ion-input ion-h2"  name="phoneNumber" formControlName="phoneNumber"  type="phone" placeholder="Enter your phone number"></ion-input>
+
+        <div class="mt-h"></div>
+
+        <div class="ion-btn btn">
+          <ion-button (click)="addEntrepreneur()"  routerLinkActive="active"  type="submit" class="ion-btn-lg ion-h3-btn"  color="primary" >Chek your profile</ion-button>
+        </div>
+
+
+      </form>
+    </section>
+
+  </div>
+</ion-content>

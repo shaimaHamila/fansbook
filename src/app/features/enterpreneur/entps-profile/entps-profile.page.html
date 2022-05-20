@@ -1,0 +1,128 @@
+<ion-content class="ion-content">
+  <div class="container p-6">
+    <!--Profile Phote + COVER PHOTE section-->
+    <section>
+      <div>
+        <div class="cover-section">
+          <img class="cover-photo" [src]=" enpData.coverPhoto ?? '../../../../assets/uerPhoto/bg.png'" >
+        </div>
+
+          <div class="profile">
+            <div class="profiltPic-section">
+              <img class="profiltPic circle" [src]="enpData.image ??'../../../../assets/uerPhoto/entp.jpg'">
+            </div>
+              <div class="user-infi-section">
+                <h1 class="ion-h1 user-name">{{enpData.fullName}}</h1>
+                <h2 class="ion-h3-m user-sub">{{enpData.subTitle}}</h2>
+              </div>
+          </div>
+        <!--Contact buttons-->
+        <div class="ion-btn">
+          <ion-button (click)="goToEnpChat()" type="submit" class="ion-btn-lg btn-msg ion-h3-btn ion-btn-color" >
+            <i class="fi fi-rr-comments icon"></i>
+            Message
+          </ion-button>
+        </div>
+      </div>
+    </section>
+
+    <div class="mt2" ></div>
+
+
+  <!-- general info section-->
+  <div class="container p-6">
+    <section>
+
+      <!--Profile About section-->
+      <div class="about-section">
+        <h1 class="ion-h1 h1">About me</h1>
+        <div class="about">
+          <h3 class="ion-h2 about-h">{{enpData.bio}}</h3>
+        </div>
+      </div>
+
+      <!--Campany-->
+      <div class="about-section">
+        <h1 class="ion-h1 h1">Company</h1>
+        <div class="about">
+          <h3 class="ion-h2 about-h">{{enpData.companyName}}</h3>
+        </div>
+      </div>
+
+      <!--Phone number-->
+      <div class="about-section">
+        <h1 class="ion-h1 h1">Phone Number</h1>
+        <div class="about">
+          <h3 class="ion-h2 about-h">{{enpData.phoneNumber}}</h3>
+        </div>
+      </div>
+
+      <!--Email-->
+      <div class="about-section">
+        <h1 class="ion-h1 h1">Email</h1>
+        <div class="about">
+          <h3 class="ion-h2 about-h">{{enpData.email}}</h3>
+        </div>
+      </div>
+
+      <!--Country-->
+      <div class="about-section">
+        <h1 class="ion-h1 h1">Country</h1>
+        <div class="about">
+          <h3 class="ion-h2 about-h">{{enpData.country}}</h3>
+        </div>
+      </div>
+
+    </section>
+  </div>
+  <!--social media section-->
+  <section>
+    <h1 class="ion-h1 social-media-h1 h1">Social Links</h1>
+    <ion-segment class="social-cards" scrollable>
+
+      <div *ngIf="enpData.website">
+        <div class="social-media">
+          <a [href]="enpData.website" target="_blank" >
+            <img class="icon-fb" src="../../../../assets/icon/web.png">
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="enpData.instagram">
+        <div class="social-media">
+          <a [href]="enpData.instagram" target="_blank" >
+            <img class="icon-insta" src="../../../../assets/icon/Instagram.png">
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="enpData.youtube">
+        <div class="social-media">
+          <a [href]="enpData.youtube" target="_blank" >
+            <img class="icon-fb" src="../../../../assets/icon/YouTube.png">
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="enpData.facebook">
+        <div class="social-media">
+          <a [href]="enpData.facebook" target="_blank" >
+            <img class="icon-fb" src="../../../../assets/icon/Facebook.png">
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="enpData.linkedin">
+        <div class="social-media">
+          <a [href]="enpData.linkedin" target="_blank" >
+            <img class="icon-fb" src="../../../../assets/icon/linkedin.png">
+          </a>
+        </div>
+      </div>
+
+    </ion-segment>
+  </section>
+  <div class="ion-mt" ></div>
+
+  </div>
+</ion-content>

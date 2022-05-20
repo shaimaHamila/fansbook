@@ -1,6 +1,12 @@
 import { Component,Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { IonicRatingModule } from 'ionic-rating';
+import { CollaborationService } from 'src/app/services/collService/collaboration.service';
+import { EnpService } from 'src/app/services/enpService/enp.service';
+import { InfService } from 'src/app/services/infService/inf.service';
+import { Collaboration } from 'src/app/shared/models/collaboration';
+import { Influencer } from 'src/app/shared/models/influencer';
 import { CollModalComponent } from '../../enterpreneur/components/coll-modal/coll-modal.component';
 
 
@@ -11,16 +17,52 @@ import { CollModalComponent } from '../../enterpreneur/components/coll-modal/col
 })
 export class HomePage implements OnInit {
   rating: any;
+  collaborations: Collaboration[] = [];
+  influencers: Influencer[];
+  infNumber = 0;
+  enpNumber = 0;
 
-  //User Role
-  isEntrepreneur = true;
-
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController,
+    private router: Router,
+    private collService: CollaborationService,
+    private loadingCtrl: LoadingController,
+    private serviceInf: InfService,
+    private serviceEnp: EnpService
+    ) { }
 
   ngOnInit() {
+    this.getAllEnpColl();
+    this.getAllInfluencers();
+    this.getAllEntps();
   };
 
+  async getAllEnpColl(){
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    await this.collService.getAllColl().subscribe((res: Collaboration[]) =>{
+      this.collaborations = res;
+      //console.log(res);
+    });
+    loading.dismiss();
+  }
 
+  async getAllInfluencers(){
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    await this.serviceInf.getInfList().subscribe((infs)=>{
+    this.influencers = infs;
+    this.infNumber = this.influencers.length;
+    });
+    await loading.dismiss();
+  }
+  async getAllEntps(){
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    await this.serviceEnp.getEnpList().subscribe((enps)=>{
+    this.enpNumber = enps.length;
+    });
+    await loading.dismiss();
+  }
 
   //ionic rating component
   segmentChanged(event: any){
@@ -55,6 +97,9 @@ export class HomePage implements OnInit {
     });
     return await modal.present();
   };
+
+
+
 
 
 

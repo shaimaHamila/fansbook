@@ -1,0 +1,35 @@
+.title{
+  margin-bottom: 20px;
+}
+
+//the two btns
+.btns{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 40px auto;
+  gap: 10px;
+}
+.btn-delete{
+  --background: none;
+  color: var(--ion-color-danger);
+  border: 1px solid var(--ion-color-danger);
+  border-radius: 6px;
+  --box-shadow: none;
+  width: 50%;
+}
+.btn-applicants{
+  --background: none;
+  color: var(--ion-color-first);
+  border: 1px solid var(--ion-color-first);
+  border-radius: 6px;
+  --box-shadow: none;
+  width: 50%;
+
+}
+.btn-update{
+  --background: var(--ion-color-green);
+  --box-shadow: none;
+  width: 50%;
+}

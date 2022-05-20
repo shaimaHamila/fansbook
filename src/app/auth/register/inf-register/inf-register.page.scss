@@ -1,0 +1,51 @@
+
+.user-img{
+  border-radius: 100%;
+  overflow: hidden;
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  object-position: center;
+}
+.add-icon{
+  margin-right: 7px;
+  font-size: 20px;
+}
+.profile-label{
+  color: var(--ion-color-secondary);
+  display: flex;
+}
+.input-image-section{
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+}
+.label{
+  --margin-bottom: 12px;
+}
+.btn{
+  margin-bottom: 60px;
+}
+.text{
+  color: var(--ion-color-text-meduim);
+}
+ion-select{
+  background-color: white;
+  padding: 15px;
+  color: var(--ion-color-blue-dark);
+  border-radius: 5px;
+  box-shadow: var(--ion-box-shadow--light);
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+/* Set the placeholder color and opacity */
+ion-select::part(placeholder) {
+  color: var(--ion-color-text-meduim);
+  opacity: 0.8;
+}
+
+
+.input-budge{
+  width: 150px;
+}
+

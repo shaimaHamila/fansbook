@@ -11,6 +11,8 @@ export class CountryComponent implements OnInit {
 
   @Output() countrySlected = new EventEmitter<string>();
   @Input() isMultiSelect: boolean;
+  @Input() isRequired: boolean;
+  @Input() cucountry: string[];
 
 
   country = new FormControl('');
@@ -18,7 +20,9 @@ export class CountryComponent implements OnInit {
   public countries: any = countries;
 
   constructor() { };
-  ngOnInit() {};
+  ngOnInit() {
+
+  };
 
   sendCountrySelected(){
     // console.log(this.country);

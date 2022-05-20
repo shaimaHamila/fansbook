@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomePage } from '../features/common/home/home.page';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
@@ -9,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import('../features/common/home/home.module').then( m => m.HomePageModule)
+        loadChildren: () => import('../features/common/home/home.module').then( m => m.HomePageModule),
       },
       {
         path: 'messages',
@@ -24,11 +25,57 @@ const routes: Routes = [
       },
       {
         path: 'inf-profile',
-        loadChildren: () => import('../features/influencer/inf-profile/inf-profile.module').then( m => m.InfProfilePageModule)
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../features/influencer/inf-profile/inf-profile.module').then( m => m.InfProfilePageModule)
+          },
+          {
+            path: 'my-applications',
+            loadChildren: () => import('../features/influencer/my-applications/my-applications.module')
+            .then( m => m.MyApplicationsPageModule)
+          },
+        ]
+      },
+      {
+        path: 'infs-profile/:idInf',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../features/influencer/infs-profile/infs-profile.module').then( m => m.InfsProfilePageModule)
+
+          },
+          {
+            path: 'chat',
+            loadChildren: () => import('../features/common/chat/chat.module').then( m => m.ChatPageModule)
+          },
+        ]
+      },
+      {
+        path: 'entps-profile/:idEnp',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../features/enterpreneur/entps-profile/entps-profile.module').then( m => m.EntpsProfilePageModule)
+          },
+          {
+            path: 'chat',
+            loadChildren: () => import('../features/common/chat/chat.module').then( m => m.ChatPageModule)
+          },
+        ]
       },
       {
         path: 'entp-profile',
-        loadChildren: () => import('../features/enterpreneur/entp-profile/entp-profile.module').then( m => m.EntpProfilePageModule)
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../features/enterpreneur/entp-profile/entp-profile.module').then( m => m.EntpProfilePageModule),
+          },
+          {
+            path: 'enp-posts',
+            loadChildren: () => import('../features/enterpreneur/enp-posts/enp-posts.module').then( m => m.EnpPostsPageModule)
+          },
+        ]
       },
       {
         path: 'inf-list',

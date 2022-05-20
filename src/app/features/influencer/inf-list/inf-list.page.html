@@ -8,7 +8,7 @@
   <div class="mt-h"></div>
   <section>
     <div class="search-section">
-      <ion-searchbar  class=" ion-h1 searchBar" color="white" placeholder="Name or Speciality"></ion-searchbar>
+      <ion-searchbar #query (keyup)="filter(query.value)"  class=" ion-h1 searchBar" color="white" placeholder="Influencer Name"></ion-searchbar>
       <ion-button (click)="openInfFilterModal()" slot="end" class="ion-h6 filter-btn">
         <i class="fi fi-rr-settings-sliders filter-icon"></i>
       </ion-button>
@@ -22,8 +22,8 @@
       <ion-label class="ion-h1-m ">Finde The perfect influencer for your business!</ion-label>
     </div>
     <div class="inf-cards">
-      <div class="inf-card"  *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8]">
-        <app-inf-card></app-inf-card>
+      <div class="inf-card"  *ngFor="let inf of filterInfluencers">
+        <app-inf-card [influencer]="inf" ></app-inf-card>
       </div>
     </div>
 

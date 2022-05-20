@@ -24,11 +24,11 @@
         <div class="app-users-section">
           <div class="app-users-div">
             <h5 class="ion-h5 h-user-type">Total influencers</h5>
-            <h3 class="h-user-nb">+89941</h3>
+            <h3 class="h-user-nb">+ {{infNumber}}</h3>
           </div>
           <div class="app-users-div">
             <h5 class="ion-h5 h-user-type">Total entrepreneurs</h5>
-            <h3 class="h-user-nb">+9941</h3>
+            <h3 class="h-user-nb">+{{enpNumber}}</h3>
           </div>
         </div>
       </section>
@@ -45,9 +45,9 @@
         </div>
 
         <ion-segment class="ion-content" scrollable>
-          <div class="inf-test" *ngFor="let item of [1, 2, 3]">
+          <div class="inf-test" *ngFor="let influencer of influencers">
             <div class="inf-card" >
-              <app-inf-card></app-inf-card>
+              <app-inf-card [influencer]="influencer"></app-inf-card>
             </div>
           </div>
 
@@ -73,13 +73,11 @@
             <i class="fi fi-rr-angle-small-right"></i>
           </ion-button>
         </div>
-        <div>
-          <ion-button *ngIf="isEntrepreneur" routerLink="/add-coll-form" routerLinkActive="tab-selected" color="success" slot="end">+Add collaboration opportunity</ion-button>
-        </div>
+
         <ion-segment class="ion-content" scrollable>
-          <div *ngFor="let item of [1, 2, 3, 4, 5] ">
+          <div  *ngFor="let collaboration of collaborations ">
             <div class="enp-card" >
-              <app-collaboration></app-collaboration>
+              <app-collaboration  [collaboration]="collaboration"></app-collaboration>
             </div>
           </div>
 

@@ -144,6 +144,12 @@ margin:auto 5%;
   font-weight: var(--ion-font--medium);
   color: var(--ion-color-blue-dark);
 }
+// h5 semi-bold
+.ion-h5-sm{
+  font-size: var(--ion-h5-font-size);
+  font-weight: var(--ion-font--semi-bold);
+  color: var(--ion-color-blue-dark);
+}
 // h6 meduim
 .ion-h6-m{
   font-size: var(--ion-h6-font-size);
@@ -282,7 +288,9 @@ a{
 .error-message{
   color: var(--ion-color-danger);
 }
-
+ion-input.ng-touched.ng-invalid {
+  border: 1px solid var(--ion-color-danger);
+}
 //influencer-info-modal
 
 .influencer-info-modal {

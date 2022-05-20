@@ -1,0 +1,35 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content class="ion-content">
+  <div class="container">
+  <!-- Search bar and filter section -->
+  <div class="mt-h"></div>
+  <section>
+    <div class="search-section">
+      <ion-searchbar #query (keyup)="filter(query.value)" name="search"  class=" ion-h1 searchBar" color="white" placeholder="Search by title"></ion-searchbar>
+    </div>
+  </section>
+  <div class="mt-h"></div>
+
+  <!-- Collaboration opportunities list section -->
+  <div class="mt-h"></div>
+  <section>
+    <div class="top-enp-header">
+      <ion-label class="ion-h1-m ">collaborations you applied in</ion-label>
+    </div>
+    <div class="enp-cards" >
+      <div *ngFor="let collaboration of filterCollaborations ">
+        <div class="enp-card" >
+          <app-collaboration [isOwner]="false" [collaboration]="collaboration"></app-collaboration>
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </section>
+  </div>
+</ion-content>

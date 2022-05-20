@@ -8,7 +8,7 @@
   <div class="mt-h"></div>
   <section>
     <div class="search-section">
-      <ion-searchbar  class=" ion-h1 searchBar" color="white" placeholder="Name or Speciality"></ion-searchbar>
+      <ion-searchbar #query (keyup)="filter(query.value)" name="search" class=" ion-h1 searchBar" color="white" placeholder="Name or Company"></ion-searchbar>
 
     </div>
   </section>
@@ -20,14 +20,13 @@
       <ion-label class="ion-h1-m "> Entrepreneurs List</ion-label>
     </div>
     <div class="inf-cards">
-      <div class="inf-card"  *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8]">
+      <div class="inf-card"  *ngFor="let enp of filterEntrepreneurs">
         <img class="profiltPic" src="../../../../assets/uerPhoto/cut-in-a-moment-9ewfCZmObeM-unsplash.jpg" alt="">
-        <h2 class="ion-h2">Pamela Pamela</h2>
-        <h3 class="ion-h3 followers-h">Company name</h3>
-        <div class="see-inf-profile">
-          <a class="ion-h2 see-inf-h">View Profile</a>
+        <h2 class="ion-h2">{{enp.fullName}}</h2>
+        <h3 class="ion-h3 followers-h">{{enp.companyName}}</h3>
+        <a (click)="goToEnpProfile(enp.idEnp)" class="see-inf-profile ion-h2 see-inf-h">View Profile
           <i class="fi fi-rr-angle-small-right arrow-icon"></i>
-        </div>
+        </a>
       </div>
     </div>
 

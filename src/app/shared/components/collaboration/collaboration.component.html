@@ -1,27 +1,31 @@
 <!-- This is the collaboration opportunity post -->
 
   <div class="coll-header-div">
-    <img class="profiltPic-enp" src="../../../../assets/uerPhoto/nice.jpg" alt="">
+    <img class="profiltPic-enp" [src]="enp.image" alt="">
     <div class="coll-header-text">
-      <h2 class="ion-h1">Enp Name</h2>
-      <h3 class="ion-h2 company-name-h">Company name</h3>
-      <h3 class="ion-h5 data-post-h">10 jan 2022</h3>
+      <h2 class="ion-h1">{{enp.fullName}}</h2>
+      <h3 class="ion-h2-m company-name-h">{{enp.companyName}}</h3>
+      <h3 class="ion-h5 data-post-h">{{getDate()}}</h3>
     </div>
+
   </div>
-  <h3 class="ion-h3">28 applicants</h3>
-  <h1 class="ion-h2-b">Collaboration Title</h1>
-  <h2 class="ion-h3 description-text">Lorem ipsum dolor sit amet.</h2>
+  <h3 class="ion-h3 applicants">{{collaboration.applicants.length}} applicants</h3>
+  <h1 class="ion-h2-b coll-title">Collaboration Title</h1>
+  <h2 class="ion-h3 description-text">{{collaboration.colTitle}}</h2>
 
   <div class="specialities-section">
     <h1 class="ion-h2-b specialities-req-h">Specialties</h1>
     <div class="specialities">
-      <h3 class="ion-h3 specialty">specialty1</h3>
-      <h3 class="ion-h3 specialty">specialty2</h3>
+      <h3 *ngFor="let specialty of collaboration.specialties" class="ion-h3 specialty">{{specialty}}</h3>
+      <!-- <h3  class="ion-h3 specialty">{{collaboration.specialties}}</h3> -->
     </div>
   </div>
 
-  <div class="btns-coll">
+  <div class="btns-coll" >
     <ion-button (click)="openCollDetailModal()" type="submit" class=" btn-read ion-h3-btn ion-btn-color" >Qualifications</ion-button>
-    <ion-button type="submit" class=" btn-apply ion-h3-btn ion-btn-color" >Apply</ion-button>
+    <ion-button *ngIf="!isOwner && !isApplied && isInfluencer " (click)="addApplicant()" type="submit" class=" btn-apply ion-h3-btn ion-btn-color" >Apply</ion-button>
+    <ion-button *ngIf="!isOwner && isApplied && isInfluencer" (click)="removeApplicant()" type="submit" class=" btn-cancel ion-h3-btn " >Cancel</ion-button>
+    <!-- edit pot  -->
+    <ion-button *ngIf="isOwner" (click)="openCollUpdatelModal()" type="submit" class=" btn-apply ion-h3-btn ion-btn-color" >Edit</ion-button>
   </div>
 

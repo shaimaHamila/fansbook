@@ -1,0 +1,45 @@
+<ion-content class="ion-content">
+  <div *ngIf="true" class="container p-6">
+    <h1 class="ion-h1">Add Collaboration Opertunity</h1>
+    <!-- <ng-template >
+      <div  class="top-inf-header">
+        <ion-label class="ion-h1-m title ">28+ applicants</ion-label>
+
+          <ion-button slot="end" class="ion-h6 btn-applicants">
+            See all applicants
+            <i class="fi fi-rr-angle-small-right"></i>
+          </ion-button>
+      </div>
+    </ng-template> -->
+
+     <!-- form -->
+
+    <form #addCollForm='ngForm' (ngSubmit)="addCollOpp(addCollForm)" >
+      <div class="mt-h"></div>
+      <label  class="ion-h1-m title">Collaboration Title</label>
+      <ion-input class="ion-input ion-h3" name="colTitla" [(ngModel)]="newColl.colTitle" #colTitla="ngModel" type="text" placeholder="Enter your full name"></ion-input>
+      <div class="ion-mt"></div>
+
+      <label class="ion-h1-m label title">Specialties</label>
+      <app-specialities   [isMultiSelect]="true" (userSpecialities)="getUserSpecialities($event)"></app-specialities>
+
+
+      <label  class="ion-h1-m title">Collaboration description</label>
+      <ion-textarea class="ion-input ion-h3" name="colDescription" [(ngModel)]="newColl.colDescription" #colDescription="ngModel" type="textarea" placeholder="Collaboration description"></ion-textarea>
+      <div class="ion-mt"></div>
+      <!-- get user country -->
+      <h2 class="ion-h2 label" >Location*</h2>
+      <app-country [isMultiSelect]="false" (countrySlected)="getCountry($event) "></app-country>
+
+      <div class="btns-coll btns">
+        <ion-button type="reset" (click)="resetCollOpp(addCollForm)" class="  ion-h3-btn btn-delete">rest</ion-button>
+        <ion-button type="submit" class="  ion-h3-btn btn-update ion-btn-color"  >Share</ion-button>
+      </div>
+
+    </form>
+
+  </div>
+
+
+</ion-content>
+

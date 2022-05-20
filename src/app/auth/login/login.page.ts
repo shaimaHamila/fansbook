@@ -3,6 +3,11 @@ import {FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/authService/auth.service';
+import { EnpService } from 'src/app/services/enpService/enp.service';
+import { InfService } from 'src/app/services/infService/inf.service';
+import { Entrepreneur } from 'src/app/shared/models/entrepreneur';
+import { Influencer } from 'src/app/shared/models/influencer';
+import { User } from 'src/app/shared/models/User';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +15,9 @@ import { AuthService } from 'src/app/services/authService/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  influencer: Influencer;
+  entrepreneur: Entrepreneur;
+  uid: string;
   userInfo: null;
   validationUserMessage= {
     email:[
@@ -25,9 +32,14 @@ export class LoginPage implements OnInit {
   validationloginForm: FormGroup;
 
   constructor(
-    public formBuilder: FormBuilder, private router: Router,
-    private alertCtrl: AlertController, private navCtr: NavController,
-    public loadingCtrl: LoadingController, private authService: AuthService,
+    public formBuilder: FormBuilder,
+    private router: Router,
+    private alertCtrl: AlertController,
+    private navCtr: NavController,
+    public loadingCtrl: LoadingController,
+    private authService: AuthService,
+    private infService: InfService,
+    private enpService: EnpService
     ) { }
 
   ngOnInit() {
@@ -49,14 +61,39 @@ export class LoginPage implements OnInit {
     const loading = await this.loadingCtrl.create();
     await loading.present();
 
-    const user = await this.authService.login(this.validationloginForm.value);
+    this.uid = await this.authService.login(this.validationloginForm.value);
+
+      console.log('User is logged in2222: ', this.uid);
+
+
     await loading.dismiss();
 
-    if (user) {
-      this.router.navigateByUrl('/tabs/home', { replaceUrl: true });
-    } else {
-      this.showAlert('Login failed', 'Please try again!');
-    }
+    this.infService.getInfById(this.uid).subscribe((inf)=>{
+      if(inf){
+        this.influencer = inf;
+        // localStorage
+        localStorage.setItem(`localStorage_uid_pfe_2022`, this.influencer.uid);
+        localStorage.setItem(`localStorage_userType_pfe_2022`, this.influencer.userType);
+
+        this.router.navigateByUrl('/tabs/home', { replaceUrl: true });
+      }else{
+        this.enpService.getEnpById(this.uid).subscribe((enp)=>{
+          if(inf){
+            this.entrepreneur = enp;
+            console.log('User is logged enp: ', enp);
+            // localStorage
+            localStorage.setItem(`localStorage_uid_pfe_2022`, this.entrepreneur.uid);
+            localStorage.setItem(`localStorage_userType_pfe_2022`, this.entrepreneur.userType);
+
+            this.router.navigateByUrl('/tabs/home', { replaceUrl: true });
+
+          } else {
+            this.showAlert('Login failed', 'Please try again!');
+          }
+        });
+      }
+    });
+
   }
 
   async showAlert(header, message) {

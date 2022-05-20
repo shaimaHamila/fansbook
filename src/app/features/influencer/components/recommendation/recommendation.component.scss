@@ -1,0 +1,71 @@
+
+//Recommendations section
+.recommendation{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.enp-img{
+  border-radius: 100%;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(203, 211, 255, 0.541);
+  object-fit: cover;
+  object-position: center;
+
+}
+.recommendation-h2{
+  margin-top: 0px;
+  margin-bottom: 2px;
+}
+.recommendation-h5{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.recom-entp-date{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.recommendation-text{
+  width:290px;
+  color: var(--ion-color-meduim-shade);
+  line-height: 1.45;
+  text-align: left;
+}
+.recommendation-bloc{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+//edit profile
+.section_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.edit_btn{
+  --background: none;
+  color: var(--ion-color-meduim);
+  border: 1px solid var(--ion-color-cold);
+  border-radius: 6px;
+  --box-shadow: none;
+}
+.add_btn{
+  --background: none;
+  color: var(--ion-color-first);
+  border: 1px solid var(--ion-color-cold);
+  border-radius: 6px;
+  --box-shadow: none;
+}
+.mb{
+  margin-bottom: 10px;
+}
+//rating
+.ratingT{
+  margin-top: 8px;
+  margin-bottom: 5px;
+  color: var(--ion-color-secondary);
+}

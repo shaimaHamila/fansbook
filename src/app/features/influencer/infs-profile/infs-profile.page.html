@@ -1,0 +1,291 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content class="ion-content" >
+  <div class="container p-6">
+    <!--Profile Phote + COVER PHOTE section-->
+    <section>
+      <div>
+        <div class="cover-section">
+          <img class="cover-photo" [src]="infData.coverPhoto ??'../../../../assets/uerPhoto/bg.png'">
+        </div>
+
+          <div class="profile">
+            <div class="profiltPic-section">
+              <img class="profiltPic circle" [src]="infData.image ??'../../../../assets/uerPhoto/bg.png'">
+            </div>
+              <div class="user-infi-section">
+                <h1 class="ion-h1 user-name">{{infData.fullName}}</h1>
+                <h2 class="ion-h2 user-sub">{{infData.subTitle}}</h2>
+                <!-- Rating -->
+                <h2 class="ion-h5-sm ratingT">5{{ratingsNb}} RATINGS</h2>
+                <h2 class="ion-h2-b ratingT">{{avgRatung}}</h2>
+                <ionic-rating-component rating="2"  readonly="true" activeColor = "#691DFE" fontSize = "17px" defaultColor = "#691DFE"></ionic-rating-component>
+                <ion-button *ngIf="userType === 'entrepreneur'" (click)="ratingModal()" type="button" class="review" > + Add review</ion-button>
+              </div>
+          </div>
+        <!--Contact buttons-->
+        <div *ngIf="userType === 'entrepreneur'" class="ion-btn">
+          <ion-button (click)="openInfoModal()" type="submit" class="ion-btn-lg btn-contact ion-h3-btn ">
+            <i class="fi fi-rr-star icon"></i>
+            Contact
+          </ion-button>
+          <ion-button (click)="goToInfChat()" type="submit" class="ion-btn-lg btn-msg ion-h3-btn">
+            <i class="fi fi-rr-comments icon"></i>
+            Message
+          </ion-button>
+
+        </div>
+      </div>
+    </section>
+
+    <div *ngIf="userType === 'entrepreneur'" class="mt2" ></div>
+
+
+
+    <!--Follower on social media section-->
+    <section>
+
+      <ion-segment class="social-cards" scrollable>
+        <div>
+          <div class="followers">
+            <img class="icon-fb" src="../../../../assets/icon/Facebook.png">
+            <div class="followers-nb">
+              <h1 class="ion-h1 h1-fol">3,232 M</h1>
+              <h5 class="ion-h3-m user-sub">Followers</h5>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="followers">
+            <img class="icon-insta" src="../../../../assets/icon/Instagram.png">
+            <div class="followers-nb">
+              <h1 class="ion-h1 h1-fol">3,232 M</h1>
+              <h5 class="ion-h3-m user-sub">Followers</h5>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="followers">
+            <img class="icon-fb" src="../../../../assets/icon/YouTube.png">
+            <div class="followers-nb">
+              <h1 class="ion-h1 h1-fol">3,232 M</h1>
+              <h5 class="ion-h3-m user-sub">Followers</h5>
+            </div>
+          </div>
+        </div>
+
+      </ion-segment >
+    </section>
+
+    <div class="mt" ></div>
+  </div>
+
+  <!-- general info section-->
+  <div class="container p-6">
+    <section>
+      <div class="mt" ></div>
+
+      <!--Profile About section-->
+      <div *ngIf="infData.bio" class="about-section">
+        <div class="section_header">
+          <h1 class="ion-h1 h1_followers">About me</h1>
+
+        </div>
+        <div class="mb" ></div>
+
+        <div class="about">
+          <h3 class="ion-h2 about-h">{{infData.bio}}</h3>
+        </div>
+      </div>
+
+      <div class="mt" ></div>
+
+      <!--Profile building state section-->
+      <div class="specialities-section">
+        <div class="section_header ">
+          <h1 class="ion-h1 h1_followers">Specialties</h1>
+
+        </div>
+        <div class="mb" ></div>
+
+        <div class="specialities">
+          <h3 *ngFor="let specialty of infData.specialties"  class="ion-h3 specialty">{{specialty}}</h3>
+
+        </div>
+      </div>
+
+    <div class="mt" ></div>
+
+      <!--Profile Minimum budget section-->
+      <div class="budget-section">
+        <div class="section_header">
+          <h1 class="ion-h1 h1_followers">Minimum budget</h1>
+        </div>
+        <div class="mb" ></div>
+
+        <div class="budget">
+          <h3 class="ion-h2-b budget-h">{{infData.minBudget}}</h3>
+        </div>
+      </div>
+
+    </section>
+  </div>
+  <!--social media section-->
+  <section>
+    <div class="mt" ></div>
+
+    <div class="section_header container">
+      <h1 class="ion-h1 h1_followers">Social Links</h1>
+
+    </div>
+    <div class="mb" ></div>
+
+    <ion-segment class="social-cards" scrollable>
+      <div *ngIf="infData.website">
+        <div class="social-media">
+          <a [href]="infData.website" target="_blank" >
+            <img class="icon-fb" src="../../../../assets/icon/web.png">
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="infData.instagram">
+        <div class="social-media">
+          <a [href]="infData.instagram" target="_blank" >
+            <img class="icon-insta" src="../../../../assets/icon/Instagram.png">
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="infData.youtube">
+        <div class="social-media">
+          <a [href]="infData.youtube" target="_blank" >
+            <img class="icon-fb" src="../../../../assets/icon/YouTube.png">
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="infData.facebook">
+        <div class="social-media">
+          <a [href]="infData.facebook" target="_blank" >
+            <img class="icon-fb" src="../../../../assets/icon/Facebook.png">
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="infData.linkedin">
+        <div class="social-media">
+          <a [href]="infData.linkedin" target="_blank" >
+            <img class="icon-fb" src="../../../../assets/icon/linkedin.png">
+          </a>
+        </div>
+      </div>
+
+    </ion-segment>
+  </section>
+  <div class="ion-2mt" ></div>
+
+  <div class="container p-6">
+    <section *ngIf="experienceExist">
+    <div class="mt" ></div>
+
+      <!--Experiences section-->
+      <div class="experiences-section">
+          <div class="section_header">
+            <h1 class="ion-h1 experiences-h1 h1_followers">Experiences</h1>
+          </div>
+          <div class="mb" ></div>
+
+          <div class="experiences">
+              <div *ngFor="let exp of experiences">
+                <div>
+                    <img class="experienceIcon" src="../../../../assets/icon/experienceIcon.png" alt="">
+                </div>
+                <div class="experience-text">
+                  <div class="section_header">
+                    <h1 class="ion-h1 h1_followers">{{exp.title}}</h1>
+                  </div>
+                  <h3 class="ion-h5 experience-h3-campany">{{exp.company}}</h3>
+                  <div></div>
+                  <h3 *ngIf="exp.country" class="ion-h5 experience-h3">.{{exp.country}}</h3>
+                  <h3 class="ion-h5 experience-date">{{getExperienceTime(exp)}}</h3>
+                  <h3 class="ion-h3 experience-story">{{exp.description}}</h3>
+                </div>
+              </div>
+
+          </div>
+
+              <!--display all Experiences section-->
+             <!-- <div (click)="show = !show" class="display-exp">
+                  <a class="ion-h2 experience-see-more-h">{{ show ? 'Show less': 'Show More' }}</a>
+                  <i class="fi fi-rr-angle-small-down"></i>
+             </div> -->
+      </div>
+    </section>
+
+    <!--Galory section-->
+    <section>
+    <div class="mt" ></div>
+      <div class="section_header">
+        <h1 class="ion-h1 gallery-h1 h1_followers">Gallery</h1>
+      </div>
+      <div class="mb" ></div>
+
+      <ion-segment class="gallery-btns" [(ngModel)]="galleryType">
+        <ion-segment-button value="photos">
+          <ion-label>Photos</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="videos">
+          <ion-label>Videos</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      <div [ngSwitch]="galleryType">
+        <div *ngSwitchCase="'photos'" class="galory-photo">
+
+          <img class="user-img" src="../../../../assets/uerPhoto/upset-curly-woman-with-smartphone-hand-looking-through-sunglasses-purple-background-charming-girl-fashionable-winter-attire-with-bright-make-up-posing-photoshoot.jpg" alt="">
+          <img class="user-img" src="../../../../assets/uerPhoto/attractive-curly-woman-purple-cashmere-sweater-fuchsia-sunglasses-poses-isolated-wall.jpg" alt="">
+          <img class="user-img" src="../../../../assets/uerPhoto/joyful-parisian-woman-beret-sunglasses-points-place-text-purple-wall.jpg" alt="">
+          <img class="user-img" src="../../../../assets/uerPhoto/pretty-lady-polka-dot-outfit-smiling-pink-wall.jpg" alt="">
+          <img class="user-img" src="../../../../assets/uerPhoto/laura-chouette-N9a5oS06Er4-unsplash.jpg" alt="">
+          <img class="user-img" src="../../../../assets/uerPhoto/portrait-pretty-lady-red-warm-jacket-stylish-eyeglasses.jpg" alt="">
+
+        </div>
+        <div *ngSwitchCase="'videos'" class="galory-photo">
+          <video class="user-video" controls>
+            <source src="../../../../assets/videos/Orange and Blue Modern Tech Animated Feature News Facebook Video_2.mp4" type="video/mp4">
+          </video>
+          <video class="user-video" controls>
+            <source src="../../../../assets/videos/Orange and Blue Modern Tech Animated Feature News Facebook Video_2.mp4" type="video/mp4">
+          </video>
+          <video class="user-video" controls>
+            <source src="../../../../assets/videos/Orange and Blue Modern Tech Animated Feature News Facebook Video_2.mp4" type="video/mp4">
+          </video>
+          <video class="user-video" controls>
+            <source src="../../../../assets/videos/Orange and Blue Modern Tech Animated Feature News Facebook Video_2.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+
+    </section>
+    <!--Recommendations section-->
+    <section *ngIf="isExist">
+      <h1 class="ion-h1 gallery-h1 h1 ">Recommendations</h1>
+
+      <ion-slides [options]="recommendation" pager="true" class="">
+        <div *ngFor="let recommendation of recommendations">
+          <app-recommendation [recommendation]="recommendation"></app-recommendation>
+        </div>
+
+      </ion-slides>
+
+    </section>
+
+  </div>
+</ion-content>
+

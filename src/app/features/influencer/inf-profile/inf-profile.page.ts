@@ -1,12 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, LoadingController, ModalController, NavController } from '@ionic/angular';
+import { InfService } from 'src/app/services/infService/inf.service';
+import { UploadFileService } from 'src/app/services/uploadFileService/upload-file.service';
 import { UserService } from 'src/app/services/useService/user.service';
+import { Experience } from 'src/app/shared/models/Experience';
+import { Influencer } from 'src/app/shared/models/influencer';
 import { EditBioComponent } from '../components/edit-profile-modals/edit-bio/edit-bio.component';
 import { EditBugetComponent } from '../components/edit-profile-modals/edit-buget/edit-buget.component';
+import { EditExperienceComponent } from '../components/edit-profile-modals/edit-experience/edit-experience.component';
+import { EditInfoComponent } from '../components/edit-profile-modals/edit-info/edit-info.component';
 import { EditMediaLinksComponent } from '../components/edit-profile-modals/edit-media-links/edit-media-links.component';
 import { EditSpecialitiesComponent } from '../components/edit-profile-modals/edit-specialities/edit-specialities.component';
-import { ExperienceComponent } from '../components/edit-profile-modals/experience/experience.component';
+import { ExperienceComponent } from '../components/addExperience/experience.component';
 import { InfoModalComponent } from '../components/info-modal/info-modal.component';
+import { Recommendation } from 'src/app/shared/models/Recommendation';
+import { RecommendationService } from 'src/app/services/recoService/recommendation.service';
 
 @Component({
   selector: 'app-inf-profile',
@@ -14,8 +22,20 @@ import { InfoModalComponent } from '../components/info-modal/info-modal.componen
   styleUrls: ['./inf-profile.page.scss'],
 })
 export class InfProfilePage implements OnInit {
+  ratingsNb: number;
+  avgRatung=0;
+  isExist: boolean; // Check whether the Influencer has recommendations or not
+  recommendations: Recommendation[]; //for all inf recommendations
 
-
+  //Influencer Experience
+  experiences: Experience[];
+  //For the progress bar to earn a star
+  progress = 0;
+  progressPercent = 0;
+  //Get the current user uid from th lockal storage
+  uid = localStorage.getItem('localStorage_uid_pfe_2022');
+  infData= new Influencer();
+  show= false;
   public rating: any;
 
   //For slides(recommendation)
@@ -44,35 +64,102 @@ export class InfProfilePage implements OnInit {
    private userService: UserService,
    private navCtr: NavController,
    public loadingCtrl: LoadingController,
+   private infService: InfService,
+   private uploadService: UploadFileService,
+   private recoService: RecommendationService,
    ) {}
 
 
 
   ngOnInit() {
+    this.getInfData();
+    this.getInfExp();
+    this.getInfReco(); //get all inf recommendation's
+    //  this.infService.instagramSyncData('hamila_chaima');
   };
 
-  async saveInfluencer(){
-  const loading = await this.loadingCtrl.create();
-  await loading.present();
+  //get all inf recommendation
+  async getInfReco(){
+    await this.recoService.getInfReco(this.uid).subscribe((data)=>{
+      if(data.length > 0){
+        this.isExist = true;
+        this.recommendations = data;
+        this.ratingsNb = data.length;
+        this.recommendations.forEach(rec => {
+          this.avgRatung = this.avgRatung + rec.starNb;
+          console.log(this.avgRatung);
+          console.log(rec);
+        });
+        console.log(this.recommendations);
 
-  //const user = await this.userService.createInfluencer();
+        this.avgRatung = this.avgRatung / this.ratingsNb;
 
-  await loading.dismiss();
+      }else{
+        this.isExist = false;
+      }
+    });
+  };
+  //Get influencer experience
+  getInfExp(){
+    this.infService.getInfExp(this.uid).subscribe((exp)=>{
+      this.experiences = exp;
+    });
+  }
 
-}
+  //Display Experience time
+  getExperienceTime(experience: Experience){
+    let date: string;
+    if (experience.isWorking){
+      date = experience.startDate +' - Present.';
+      return date;
+    }else{
+      date = experience.startDate +' - ' + experience.endDate;
+      return date;
+    }
+  }
+
+  //Get Inf date
+  async getInfData(){
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    await this.infService.getInfById(this.uid).subscribe(inf=>{
+    console.log('current inf user', inf);
+    //console.log('current inf user', inf.phoneNumber);
+    this.infData = inf;
+    //profile building
+    let p= 0;
+    for(const i in this.infData){
+      if(i !== 'undifinde'){
+        p = p + 0.05;
+      }
+    }
+    this.progress = parseFloat(p.toFixed(2));
+    console.log(p.toFixed(2));
+    });
+
+    await loading.dismiss();
+  }
+
+  //Upload Cover Photo
+  async uploadCoverPhoto(file: FileList){
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    await this.uploadService.uploadUserFile('usersCoverPhoto', file.item(0), this.infData.idInf).then( (url)=>{
+      this.infService.updateCoverPic(this.infData.idInf, url);
+    }) ;
+    await loading.dismiss();
+  }
 
 
 
-
-
-
-
-
-
-
-
-
-
+  async uploadProfilePhoto(file: FileList){
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    await this.uploadService.uploadUserFile('usersProfileImg', file.item(0), this.infData.idInf).then( (url)=>{
+      this.infService.updateProfilePic(this.infData.idInf, url);
+    }) ;
+    await loading.dismiss();
+  }
 
 
 
@@ -80,53 +167,9 @@ export class InfProfilePage implements OnInit {
   segmentChanged(event: any){
     console.log(event.target.value);
   };
-  onRatingChange(rating){
-    console.log('The evaluation was modified and now its value is: ',rating);
-    // do your stuff
-  };
 
 
-  //Rating write cmnt and give stars
-  async showAlert(){
-    await this.alertCtrl.create({
-      subHeader: 'Evaluate your experience working with Marvin',
-      inputs: [
-        { type: 'textarea', name: 'recommendation', placeholder: 'Give Marvin an honest recommendation ..'}
-      ],
-      buttons: [
-        {
-          text: 'Cancel'
-        },
-        {
-          text: 'Next', handler: (res) => {
-            this.imageAlert();
-          }
-        }
 
-      ]
-    }).then(res => res.present());
-  }
-
-  //Rating Upload document alert
-  async imageAlert(){
-    await this.alertCtrl.create({
-      subHeader: 'Upload a photo (can be a screenshot of messages) or a document that proves that you have worked together',
-      inputs: [
-        { }
-      ],
-      buttons: [
-        {
-          text: 'Cancel'
-        },
-        {
-          text: 'Next', handler: (res) => {
-            console.log(res.recommendation);
-          }
-        }
-
-      ]
-    }).then(res => res.present());
-  }
 
   // display influencer contact info in a modal
   async  openInfoModal(){
@@ -135,10 +178,9 @@ export class InfProfilePage implements OnInit {
       component: InfoModalComponent,
       //passing data
       componentProps:{
-        phoneNum: '+216 22016583',
-        email: 'hamilachaima18@gmail.com',
-        country: 'Tunis',
-        city: 'Sousse',
+        phoneNumber: this.infData.phoneNumber,
+        email: this.infData.email,
+        country: this.infData.country
       },
       cssClass: 'influencer-info-modal',
       swipeToClose: true,
@@ -153,6 +195,26 @@ export class InfProfilePage implements OnInit {
 
 
   //Edit profile
+   // Edit User Bio modal
+   async  openEditInfoModal(){
+    const modal = await this.modalCtrl.create({
+      component:EditInfoComponent,
+      //passing data
+      componentProps:{
+        uid: this.uid,
+        phoneNum: this.infData.phoneNumber,
+        country: this.infData.country,
+        subTitle: this.infData.subTitle,
+      },
+      cssClass: 'influencer-info-modal',
+      swipeToClose: true,
+      presentingElement: await this.modalCtrl.getTop(),
+      initialBreakpoint: 1,
+    breakpoints: [0, 0.5, 1]
+
+    });
+    return await modal.present();
+  };
 
     // Edit User Bio modal
     async  editBioModal(){
@@ -161,7 +223,8 @@ export class InfProfilePage implements OnInit {
         component:EditBioComponent,
         //passing data
         componentProps:{
-          bio: '',
+          uid: this.uid,
+          bio: this.infData.bio
         },
         cssClass: 'influencer-info-modal',
         swipeToClose: true,
@@ -180,13 +243,14 @@ export class InfProfilePage implements OnInit {
         component:EditBugetComponent,
         //passing data
         componentProps:{
-          minBuget: 'hello my name chaima',
+          uid: this.uid,
+          minBuget: this.infData.minBudget
         },
         cssClass: 'influencer-info-modal',
         swipeToClose: true,
         presentingElement: await this.modalCtrl.getTop(),
-        initialBreakpoint: 1,
-      breakpoints: [0, 0.5, 1]
+        initialBreakpoint: 0.5,
+        breakpoints: [0, 0.5, 1]
 
       });
       return await modal.present();
@@ -200,12 +264,13 @@ export class InfProfilePage implements OnInit {
         component:EditSpecialitiesComponent,
         //passing data
         componentProps:{
-          minBuget: ['S1', 'S2'],
+          uid: this.uid,
+          specialties: this.infData.specialties
         },
         cssClass: 'influencer-info-modal',
         swipeToClose: true,
         presentingElement: await this.modalCtrl.getTop(),
-        initialBreakpoint: 1,
+        initialBreakpoint: 0.5,
       breakpoints: [0, 0.5, 1]
 
       });
@@ -219,7 +284,13 @@ export class InfProfilePage implements OnInit {
         component: EditMediaLinksComponent,
         //passing data
         componentProps:{
-          links: ['S1', 'S2'],
+          uid: this.uid,
+          instagram: this.infData.instagram,
+          facebook: this.infData.facebook,
+          youtube: this.infData.youtube,
+          linkedin: this.infData.linkedin,
+          tiktok: this.infData.tiktok,
+          website: this.infData.website,
         },
         cssClass: 'influencer-info-modal',
         swipeToClose: true,
@@ -232,13 +303,14 @@ export class InfProfilePage implements OnInit {
     };
 
     // Edit User Experience buget modal
-    async  editExperienceModal(){
+    async  editExperienceModal(experience: Experience){
       //console.log('open');
       const modal = await this.modalCtrl.create({
-        component:ExperienceComponent,
+        component:EditExperienceComponent,
         //passing data
         componentProps:{
-          links: ['S1', 'S2'],
+          idInf: this.uid,
+          experience,
         },
         cssClass: 'influencer-info-modal',
         swipeToClose: true,
@@ -258,7 +330,7 @@ export class InfProfilePage implements OnInit {
         component:ExperienceComponent,
         //passing data
         componentProps:{
-          links: ['Atheeeeeeeeeeeeeeeeeeeeeeb'],
+          idInf: this.uid,
         },
         cssClass: 'influencer-info-modal',
         swipeToClose: true,

@@ -1,0 +1,35 @@
+//the two btns
+.btns{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 40px auto;
+  gap: 10px;
+}
+.btn-delete{
+  --background: none;
+  color: var(--ion-color-danger);
+  border: 1px solid var(--ion-color-danger);
+  border-radius: 6px;
+  --box-shadow: none;
+  width: 50%;
+}
+.btn-update{
+  --background: var(--ion-color-green);
+  border-radius: 6px;
+  width: 45%;
+}
+.btn-cancel{
+  --background: var(--ion-color-danger);
+  border-radius: 6px;
+  width: 45%;
+}
+.remember-psw, .forget-psw{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.date{
+  color: var(--ion-color-text-meduim);
+}

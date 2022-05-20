@@ -14,17 +14,17 @@
   <div class="ion-form">
     <form [formGroup]="validationRegisterForm">
       <div class="">
-        <ion-label  class="ion-h3">Full name</ion-label>
+        <!-- <ion-label  class="ion-h3">Full name</ion-label>
         <ion-input formControlName="fullName" class="ion-input ion-h3" name="fullName" type="text" placeholder="Enter your full name"></ion-input>
 
         <div *ngFor="let validation of validationUserMessage.fullName">
           <div class="ion-h5 error-message" *ngIf="validationRegisterForm.get('fullName').hasError(validation.type) && (validationRegisterForm.get('fullName').dirty || validationRegisterForm.get('fullName').touched)">
             {{validation.message}}
-        <div class="ion-mt"></div>
+            <div class="ion-mt"></div>
 
           </div>
 
-        </div>
+        </div> -->
 
         <ion-label  class="ion-h3">Email</ion-label>
         <ion-input formControlName="email" class="ion-input ion-h3" name="email" type="email" placeholder="Enter your email"></ion-input>
@@ -55,21 +55,6 @@
             {{validation.message}}
           </div>
         <div class="ion-mt"></div>
-        </div>
-
-
-        <ion-label class="ion-h3">User type*</ion-label>
-        <ion-select formControlName="userType" class=" ion-input ion-h3"  placeholder="Select One">
-          <ion-select-option value="influencer">An Influencer</ion-select-option>
-          <ion-select-option value="enterpreneur">An Enterpreneur</ion-select-option>
-        </ion-select>
-
-        <div *ngFor="let validation of validationUserMessage.userType">
-          <div class="ion-h5 error-message" *ngIf="validationRegisterForm.get('userType').hasError(validation.type) && (validationRegisterForm.get('userType').dirty || validationRegisterForm.get('userType').touched)">
-            {{validation.message}}
-          </div>
-        <div class="ion-mt"></div>
-
         </div>
 
       </div>
