@@ -59,6 +59,13 @@ margin:auto 5%;
   color: var(--ion-color-blue-dark);
 }
 
+// h1-2 semi-bold
+.ion-h1-2-sb{
+  font-size: var(--ion-h1-2-font-size);
+  font-weight: var(--ion-font--semi-bold);
+  color: var(--ion-color-blue-dark);
+}
+
 // h1-2 meduim
 .ion-h1-2-m{
   font-size: var(--ion-h1-2-font-size);
@@ -79,7 +86,7 @@ margin:auto 5%;
 }
 .ion-h2-r{
   font-size: var(--ion-h2-font-size);
-  font-weight: var(--ion-font--regular);
+  font-weight: var(--ion-font--semi-bold);
   color: var(--ion-color-blue-dark);
 }
 .ion-h2-m{
@@ -295,4 +302,9 @@ ion-input.ng-touched.ng-invalid {
 
 .influencer-info-modal {
    --border-radius:5px;
+}
+.toast{
+  --background: var(--ion-color-dark-thin);
+  --color: var(--ion-color-green);
+  --height: 70px;
 }

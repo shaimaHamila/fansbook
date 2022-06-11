@@ -1,0 +1,55 @@
+//notification
+.profiltPic{
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+ }
+
+.notification-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 15px;
+}
+
+.notification-state{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+
+}
+.notification-info{
+}
+
+.notif-user-name{
+  display: inline;
+}
+.notif-msg{
+  display: inline;
+  margin-left: 8px;
+  color: var(--ion-color-text-meduim);
+}
+.notification{
+  margin-top: 0px;
+}
+.notification-date{
+  margin-bottom: 0px;
+  color: var(--ion-color-meduim-thin);
+}
+.vu{
+  background-color: var(--ion-color-cold);
+  margin-top: 5px;
+  border-radius: 5px;
+}
+.notification-not-vu{
+ color: var(--ion-color-secondary);
+ margin-right: 8px;
+ font-size: 10px;
+ margin-top: 2px;
+}

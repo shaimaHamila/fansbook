@@ -30,12 +30,17 @@ export class CollModalComponent implements OnInit {
     this.isInfApplied();
   }
   isInfApplied(){
-    const isApplied = this.collaboration.applicants.indexOf(this.uid);
-    if(isApplied >= 0){
-      this.isApplied = true;
+    if(this.collaboration.applicants){
+      const isApplied = this.collaboration.applicants.indexOf(this.uid);
+      if(isApplied >= 0){
+        this.isApplied = true;
+      }else{
+        this.isApplied = false;
+      }
     }else{
       this.isApplied = false;
     }
+
   }
   //Add an applicant
   async addApplicant(){

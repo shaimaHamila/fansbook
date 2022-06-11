@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-content auth-page">
+  <div class="container">
+    <div class="ion-title">
+      <h1 class="ion-h1">Forget your password?</h1>
+      <p class="ion-subtitle ion-subtitle-center">Welcome back you’ve been missed</p>
+    </div>
+<div class="mt-h"></div>
+    <div class="ion-form">
+      <form #recoverPswForm="ngForm">
+        <div class="">
+          <ion-label  class="ion-h2">Enter your email bellow and we will send your instructions to recover your password</ion-label>
+          <div class="mt2" ></div>
+
+          <ion-input class="ion-input ion-h2" (ngModel)="email" #email="ngModel" required name="email" type="email" email placeholder="Enter your email"></ion-input>
+          <div *ngIf="email.touched && !email.valid" class="error-message">Enter a valid email! Exp: name@gmail.com</div>
+        </div>
+
+
+        <div class="ion-mt"></div>
+
+        <div class="ion-btn">
+          <ion-button (click)="recoverPsw(recoverPswForm.value.email)" [disabled]="!recoverPswForm.valid" class="ion-btn-lg ion-h3-btn" type="submit" color="primary" >Recover Password</ion-button>
+        </div>
+
+
+        <div class="ion-register">
+          <h3 class="ion-h2">
+            Do you remember your password?
+            <a routerLink="/login" class="ion-h2 ion-h2-r" >Login</a>
+          </h3>
+        </div>
+
+      </form>
+
+    </div>
+
+
+  </div>
+</ion-content>

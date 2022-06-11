@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCollFormComponent } from 'src/app/features/enterpreneur/components/add-coll-form/add-coll-form.component';
 import { UpdateCollFormComponent } from 'src/app/features/enterpreneur/components/update-coll-form/update-coll-form.component';
 import { RouterModule } from '@angular/router';
+import { NotifComponent } from '../../components/notif/notif.component';
+import { RecommendationComponent } from 'src/app/features/influencer/components/recommendation/recommendation.component';
 
 
 
@@ -23,7 +25,9 @@ import { RouterModule } from '@angular/router';
     InfCardComponent,
     HeaderComponent,
     AddCollFormComponent,
-    UpdateCollFormComponent
+    UpdateCollFormComponent,
+    NotifComponent,
+    RecommendationComponent
   ],
 
   imports: [
@@ -41,7 +45,9 @@ import { RouterModule } from '@angular/router';
     InfCardComponent,
     HeaderComponent,
     AddCollFormComponent,
-    UpdateCollFormComponent
+    UpdateCollFormComponent,
+    NotifComponent,
+    RecommendationComponent
   ],
 })
 export class SharedComponentsModule { }

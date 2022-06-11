@@ -1,0 +1,14 @@
+<div class="message-section">
+  <div class="message-img-name">
+    <img class="profiltPic" [src]="applicantImg ?? '../assets/avatar/profilePic.png'" alt="user image">
+    <div class="message-info">
+      <h1 class="ion-h2 user-name">{{applicantName}}</h1>
+      <h3 class="ion-h3 message vu">{{applicantTitle}}</h3>
+    </div>
+  </div>
+  <div class="message-state">
+    <ion-button (click)="goEnpProfile()" type="submit" class=" btn-apply ion-h3-btn" >See Profile</ion-button>
+
+  </div>
+
+</div>

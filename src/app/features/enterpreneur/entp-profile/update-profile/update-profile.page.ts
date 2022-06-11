@@ -14,6 +14,7 @@ export class UpdateProfilePage implements OnInit {
   //id= null;
   idEnp: string;
   uid = localStorage.getItem('localStorage_uid_pfe_2022');
+  countrySelected: string;
 
   constructor(
     public authService: AuthService,
@@ -49,6 +50,10 @@ export class UpdateProfilePage implements OnInit {
 
   getUserSpecialities($event){
     //this.collaboration.specialties = specialities;
+  }
+  getCountry(country) {
+    // console.log(country);
+    this.countrySelected = country;
   }
 
 }

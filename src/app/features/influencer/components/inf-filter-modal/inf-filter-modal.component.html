@@ -2,8 +2,8 @@
   <div class="budget">
     <h1 class="ion-h1-m title" >Minimum budget</h1>
     <div class="range-min-max">
-      <h3 class="ion-h3 range-min">150$</h3>
-      <h3 class="ion-h3 range-max">15.000$</h3>
+      <h3 class="ion-h3 range-min">50DT</h3>
+      <h3 class="ion-h3 range-max">15.000DT</h3>
     </div>
     <ion-range class="ion-range" (ionChange)="budgetChange($event)" min="10" dualKnobs="true" [pin]="true" ></ion-range>
   </div>
@@ -11,8 +11,8 @@
   <div class="instaFollwersChange">
     <h1 class="ion-h1-m title" >Instagram Follwers</h1>
     <div class="range-min-max">
-      <h3 class="ion-h3 range-min">15M</h3>
-      <h3 class="ion-h3 range-max">15000M</h3>
+      <h3 class="ion-h3 range-min">1k</h3>
+      <h3 class="ion-h3 range-max">1500M</h3>
     </div>
     <ion-range class="ion-range" (ionChange)="instaFollwersChange($event)" min="10" dualKnobs="true" [pin]="true" ></ion-range>
   </div>
@@ -20,8 +20,8 @@
   <div class="fbFollwersChange">
     <h1 class="ion-h1-m title" >Facebook Follwers </h1>
     <div class="range-min-max">
-      <h3 class="ion-h3 range-min">10K</h3>
-      <h3 class="ion-h3 range-max">15.000M</h3>
+      <h3 class="ion-h3 range-min">1K</h3>
+      <h3 class="ion-h3 range-max">1500M</h3>
     </div>
     <ion-range class="ion-range" (ionChange)="fbFollwersChange($event)" min="10" dualKnobs="true" [pin]="true" ></ion-range>
   </div>
@@ -36,6 +36,6 @@
 
   <div class="btns">
     <ion-button  type="submit" class=" btn-read ion-h3-btn " >Reset</ion-button>
-    <ion-button  type="submit" class=" btn-apply ion-h3-btn"  color="primary" >Done</ion-button>
+    <ion-button  type="submit" class=" btn-apply ion-h3-btn" (click)="filter()" color="primary" >Done</ion-button>
   </div>
 </ion-content>

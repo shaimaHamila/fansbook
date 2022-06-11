@@ -1,0 +1,25 @@
+<div (click)="goEnpPosts()"  class="notification-section vu" >
+  <div class="notification-state">
+    <!-- <ion-icon name="ellipse" class="notification-not-vu"></ion-icon> -->
+    <div class="notification-info">
+      <h1 class="ion-h1-2 notif-user-name">{{userFullName}}</h1>
+      <h2 class="ion-h1-2-m notif-msg">{{notification.notifMessg}}</h2>
+      <h2 *ngIf="colTitle" class="ion-h1-2-sb notif-msg">{{colTitle}}</h2>
+      <h3 class="ion-h3-m notification-date">{{notification.createdAt.toMillis()| date:'short' }}</h3>
+    </div>
+  </div>
+
+  <img class="profiltPic" [src]="userImg ?? '../assets/avatar/profilePic.png'" alt="user image">
+</div>
+
+<!-- <div class="notification-section">
+  <div class="notification-state">
+    <div class="notification-info">
+      <h1 class="ion-h1 notif-user-name">Friend name</h1>
+      <h2 class="ion-h1-2-m notif-msg">The notification message will be displayed here</h2>
+      <h3 class="ion-h3 notification-date">2:21 AM</h3>
+    </div>
+  </div>
+
+  <img class="profiltPic" src="../../../../assets/uerPhoto/attractive-curly-woman-purple-cashmere-sweater-fuchsia-sunglasses-poses-isolated-wall.jpg" alt="user image">
+</div> -->

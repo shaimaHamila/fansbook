@@ -8,6 +8,7 @@ import { MessagesPageRoutingModule } from './messages-routing.module';
 
 import { MessagesPage } from './messages.page';
 import { SharedComponentsModule } from 'src/app/shared/modues/shared-components/shared-components.module';
+import { MessageComponent } from '../components/message/message.component';
 
 @NgModule({
   imports: [
@@ -15,8 +16,8 @@ import { SharedComponentsModule } from 'src/app/shared/modues/shared-components/
     FormsModule,
     IonicModule,
     MessagesPageRoutingModule,
-    SharedComponentsModule
+    SharedComponentsModule,
   ],
-  declarations: [MessagesPage]
+  declarations: [MessagesPage, MessageComponent]
 })
 export class MessagesPageModule {}

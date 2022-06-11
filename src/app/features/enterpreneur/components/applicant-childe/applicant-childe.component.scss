@@ -1,0 +1,56 @@
+//message
+.profiltPic{
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+}
+
+.message-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.message-info{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.message-img-name{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+}
+.user-name{
+  margin: 0px;
+}
+.message{
+  margin: 0px;
+
+}
+.message-date{
+  margin-top: 0px;
+}
+.vu{
+  color: var(--ion-color-meduim-thin);
+}
+.message-not-vu{
+  text-align: end;
+  margin-top: 10px;
+  color: var(--ion-color-secondary);
+
+}
+.btn-apply{
+  --background: none;
+  color: var(--ion-color-secondary);
+  border: 1px solid var(--ion-color-secondary);
+  border-radius: 6px;
+  --box-shadow: none;
+}

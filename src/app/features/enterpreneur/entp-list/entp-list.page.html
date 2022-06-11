@@ -21,7 +21,7 @@
     </div>
     <div class="inf-cards">
       <div class="inf-card"  *ngFor="let enp of filterEntrepreneurs">
-        <img class="profiltPic" src="../../../../assets/uerPhoto/cut-in-a-moment-9ewfCZmObeM-unsplash.jpg" alt="">
+        <img class="profiltPic" [src]="enp.image ?? '../../../assets/avatar/profilePic.png'" alt="">
         <h2 class="ion-h2">{{enp.fullName}}</h2>
         <h3 class="ion-h3 followers-h">{{enp.companyName}}</h3>
         <a (click)="goToEnpProfile(enp.idEnp)" class="see-inf-profile ion-h2 see-inf-h">View Profile

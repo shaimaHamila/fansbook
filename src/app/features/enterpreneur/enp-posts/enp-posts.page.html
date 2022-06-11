@@ -23,9 +23,9 @@
   <div class="mt-h"></div>
   <section>
     <div class="top-enp-header">
-      <ion-label class="ion-h1-m "> Collaboration opportunities</ion-label>
+      <ion-label class="ion-h1-m "> My Collaborations Postes</ion-label>
     </div>
-    <div class="enp-cards">
+    <div *ngIf="collaborations" class="enp-cards">
       <div *ngFor="let collaboration of collaborations " >
         <div class="enp-card"  *ngIf="idEnp=== collaboration.enpId" >
           <app-collaboration [isOwner]="true" [collaboration]="collaboration"></app-collaboration>

@@ -25,6 +25,19 @@
   margin-bottom: 5px;
   color: var(--ion-color-green);
 }
+.applicant{
+  display: flex;
+  align-items: center;
+  color: var(--ion-color-danger);
+}
+.app{
+  margin: 8px 0px;
+  color: var(--ion-color-danger);
+
+}
+.appicon{
+  margin-left: 5px;
+}
 .coll-title{
   margin-top: 10px;
 }

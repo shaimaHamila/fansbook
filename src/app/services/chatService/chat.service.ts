@@ -24,23 +24,40 @@ export class ChatService {
     //3 Sender sends the message which should than go to that collection
     //4 And on receiver side read the collection with logged in user id and check
 
-    addChatMessage(newMsg: any, fromId: any, forId: any){
+    // addChatMessage(newMsg: any, fromId: any, forId: any){
+    //   const collRef = collection(this.firestore, 'Message');
+    //   return addDoc(collRef, {
+    //     msg: newMsg,
+    //     fromId,
+    //     forId,
+    //     createdAt: serverTimestamp()
+    //   });
+    // }
+    addChatMessage(message: Message){
       const collRef = collection(this.firestore, 'Message');
-      return addDoc(collRef, {
-        msg: newMsg,
-        fromId,
-        forId,
-        createdAt: serverTimestamp()
-      });
-  }
+      return addDoc(collRef, {...message});
+    }
 
-  getChatMessages(fromId: any, forId: any): Observable<Message[]>{
-    const collRef = collection(this.firestore, 'Message');
-    const q = query(collRef, where('fromId', '==', fromId), where('forId', '==', forId), orderBy('createdAt'));
-    return collectionData(q, {idField: 'idExp'})as Observable<Message[]>;
+    // ForId is the userId of the logged In user
+      getChatMessages(): Observable<Message[]>{
+      const collRef = collection(this.firestore, 'Message');
+      const q = query(collRef, orderBy('createdAt', 'asc'));
+      return collectionData(q, {idField: 'idMsg'})as Observable<Message[]>;
+    }
 
-  }
+    // getChatMessages(fromId: any, forId: any): Observable<Message[]>{
+    //   const collRef = collection(this.firestore, 'Message');
+    //   const q = query(collRef, where('fromId', '==', fromId), where('forId', '==', forId), orderBy('createdAt'));
+    //   return collectionData(q, {idField: 'idExp'})as Observable<Message[]>;
 
+    // }
+
+    // fromId is the userId of the logged In Enterprenur
+    getAllChatMessagesFromEnt(fromId: any): Observable<Message[]>{
+      const collRef = collection(this.firestore, 'Message');
+      const q = query(collRef, orderBy('createdAt', 'asc'));
+      return collectionData(q, {idField: 'idMsg'})as Observable<Message[]>;
+    }
 
 
 

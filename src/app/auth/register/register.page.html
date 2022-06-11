@@ -1,8 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="onboarding"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 
 
 <ion-content class="ion-content auth-page">
@@ -92,7 +95,7 @@
       <div class="ion-register">
         <h3 class="ion-h3">
           Already have an account ?
-          <a href="#"  class="ion-h3 ion-h2-r" >Sign In</a>
+          <a routerLink="/login"  class="ion-h3 ion-h2-r" >Sign In</a>
         </h3>
       </div>
 

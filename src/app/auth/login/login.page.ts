@@ -78,7 +78,7 @@ export class LoginPage implements OnInit {
         this.router.navigateByUrl('/tabs/home', { replaceUrl: true });
       }else{
         this.enpService.getEnpById(this.uid).subscribe((enp)=>{
-          if(inf){
+          if(enp){
             this.entrepreneur = enp;
             console.log('User is logged enp: ', enp);
             // localStorage

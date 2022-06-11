@@ -7,22 +7,32 @@
     <form #updateCollForm='ngForm'  >
       <div class="mt-h"></div>
       <label  class="ion-h1-m title">Collaboration Title</label>
-      <ion-input class="ion-input ion-h3" name="colTitla" [(ngModel)]="collaboration.colTitle" #colTitla="ngModel" type="text" placeholder="Enter your full name"></ion-input>
+      <ion-input class="ion-input ion-h3" name="colTitla" [(ngModel)]="collaboration.colTitle" #colTitla="ngModel" type="text" placeholder="Enter collaboration title" required maxlength="40" minlength="3"></ion-input>
+      <div *ngIf="colTitla.touched && !colTitla.valid" class="error-message">Title is required!</div>
+
       <div class="ion-mt"></div>
 
       <label class="ion-h1-m label title">Specialties</label>
-      <app-specialities   [isMultiSelect]="true" (userSpecialities)="getUserSpecialities($event)"></app-specialities>
+      <app-specialities [isRequired]="true" [specialties]="collaboration.specialties"  [isMultiSelect]="true" (userSpecialities)="getUserSpecialities($event)"></app-specialities>
 
 
       <label  class="ion-h1-m title">Collaboration description</label>
-      <ion-textarea class="ion-input ion-h3" name="colDescription" [(ngModel)]="collaboration.colDescription" #colDescription="ngModel" type="textarea" placeholder="Collaboration description"></ion-textarea>
+      <ion-textarea class="ion-input ion-h3" name="colDescription" [(ngModel)]="collaboration.colDescription" #colDescription="ngModel" type="textarea" placeholder="Collaboration description" required minlength="10"></ion-textarea>
+      <div *ngIf="colDescription.touched && !colDescription.valid" class="error-message">Description is required!</div>
+
+
+      <div class="ion-mt"></div>
+      <!-- get user country -->
+      <h2 class="ion-h2 label" >Location*</h2>
+      <app-country [cucountry]="collaboration.country" [isRequired]="true" [isMultiSelect]="false" (countrySlected)="getCountry($event) "></app-country>
+      <div class="ion-mt"></div>
+
       <div class="ion-mt"></div>
       <ion-button type="Delete" (click)="deleteCollOpp()" class="  ion-h3-btn btn-delete">Delete</ion-button>
 
-
       <div class="btns-coll btns">
         <ion-button (click)="cancelUpdateColl()" type="cancel" class="  ion-h3-btn btn-cancel">Cancel</ion-button>
-        <ion-button type="submit" (click)="updateCollOpp()" class="  ion-h3-btn btn-update ion-btn-color"  >Update</ion-button>
+        <ion-button [disabled]="!updateCollForm.valid" type="submit" (click)="updateCollOpp()" class="  ion-h3-btn btn-update ion-btn-color"  >Update</ion-button>
       </div>
 
 

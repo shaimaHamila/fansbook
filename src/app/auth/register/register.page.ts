@@ -14,27 +14,23 @@ import { Influencer } from 'src/app/shared/models/influencer';
 })
 export class RegisterPage implements OnInit {
 
-  @Input() fullName: string;
+
 
   validationRegisterForm: FormGroup;
   loading: any;
   validationUserMessage = {
-    fullName: [
-      { type: 'required', message: 'Pleas enter your Full Name!' },
-      { type: 'minlength', message: 'Username must be at least 5 characters long' },
-      { type: 'maxlength', message: 'Username cannot be more than 25 characters long' },
-    ],
+
     email: [
-      { type: 'required', message: 'Pleas enter your Email!' },
+      { type: 'required', message: 'Please enter your Email!' },
       { type: 'pattern', message: 'The Email entred is Incorrect. Try again' }
     ],
     password: [
-      { type: 'required', message: 'Pleas enter your Password!' },
+      { type: 'required', message: 'Please enter your Password!' },
       { type: 'pattern', message: 'The password must contain a mix of letters and numbrs.' },
       { type: 'minlength', message: 'Password must be at least 8 characters long' }
     ],
     confirmPassword: [
-      { type: 'required', message: 'Pleas confirm your Password!' },
+      { type: 'required', message: 'Please confirm your Password!' },
       { type: 'invalid', message: 'Password mismatch!' }
     ],
     terms: [
@@ -76,11 +72,6 @@ export class RegisterPage implements OnInit {
 
   initForm(){
     this.validationRegisterForm = this.formBuilder.group({
-      // fullName: new FormControl('', Validators.compose([
-      //   Validators.required,
-      //   Validators.minLength(3),
-      //   Validators.maxLength(25)
-      // ])),
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
@@ -97,9 +88,8 @@ export class RegisterPage implements OnInit {
         Validators.requiredTrue
       ]))
     }, { validator: this.passwordConfirming });
-    this.fullName = this.validationRegisterForm.value.fullName;
-  }
 
+  }
 
   async register() {
     const loading = await this.loadingCtrl.create();
@@ -107,7 +97,8 @@ export class RegisterPage implements OnInit {
 
     let user: any;
     await this.authService.register(this.validationRegisterForm.value).then(u => {
-      console.log(u);
+
+      //console.log(u.user);
       if (u) {
         user = u.user;
       }
@@ -116,7 +107,7 @@ export class RegisterPage implements OnInit {
     await loading.dismiss();
 
     if (user) {
-      console.log(user);
+      //console.log(user);
       // create Influencer Or Entrepreneur with the uid comes in the user object
       // all the user servie and create the profile based on selected user type
       // const ty = this.validationRegisterForm.value.userType;
@@ -126,8 +117,9 @@ export class RegisterPage implements OnInit {
       //   inf.phoneNumber = 12345647;
       //   this.userServ.createInfluencer(inf);
       // }
+    this.authService.sendVerificationMail(user); // Sending email verification notification, when new user registers
 
-      this.router.navigateByUrl('/register/s1-usertype', { replaceUrl: true });
+     // this.router.navigateByUrl('/register/s1-usertype', { replaceUrl: true });
     } else {
       this.showAlert('Registration failed', 'Please try again!');
     }

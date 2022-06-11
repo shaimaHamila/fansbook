@@ -2,10 +2,13 @@ import { Injectable } from '@angular/core';
 import {
   Auth,
   createUserWithEmailAndPassword,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signOut
 } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
 import { Observable } from 'rxjs';
 import { Entrepreneur } from 'src/app/shared/models/entrepreneur';
@@ -26,7 +29,9 @@ export class AuthService {
     private auth: Auth,
     private afa: AngularFireAuth,
     private infService: InfService,
-    private enpService: EnpService
+    private enpService: EnpService,
+    private router: Router,
+    private toastCtrl: ToastController
     ) {
     onAuthStateChanged(auth, user =>{
       console.log('changed: ', user);
@@ -35,6 +40,15 @@ export class AuthService {
     this.currentUser = this.afa.user;
 
   };
+
+  sendVerificationMail(user: any) {
+    sendEmailVerification(user)
+      .then((res: any) => {
+        this.router.navigate(['/verify-email']);
+      },(err: any)=>{
+        alert('Something went wreng. Not able to send mail to your zmail');
+      });
+  }
 
   async register({ email, password }) {
     try {
@@ -70,8 +84,23 @@ export class AuthService {
   //Forget password
 
   forgotPassword(email: string){
-    return sendPasswordResetEmail(this.auth, email);
-  }
+    sendPasswordResetEmail(this.auth, email).then(()=>{
+      this.router.navigateByUrl('/login');
+      this.presentToast('Password reset email sent',  'bottom', 3000); // this is toastController
 
+    }, error =>{
+      console.log('Some thing went wrong! Try again');
+    });
+  }
+  async presentToast(message, position, duration) {
+    const toast = await this.toastCtrl.create({
+      message,
+      duration,
+      position,
+      cssClass: 'toast',
+    });
+
+    toast.present();
+  }
 
 }

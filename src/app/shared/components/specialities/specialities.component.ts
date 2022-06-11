@@ -12,7 +12,51 @@ export class SpecialitiesComponent implements OnInit {
   @Input() isRequired: boolean;
   @Input() specialties: string[];
   speciality: string;
-  specialities = ['Speciality1', 'Speciality2', 'Speciality3', 'Speciality4', 'Speciality5'];
+  specialities = [
+    'Architecture',
+    'Engineering',
+    'OccupationsArts',
+    'Design',
+    'Entertainment',
+    'Sports',
+    'Media Occupations',
+    'Building',
+    'Grounds Cleaning',
+    'Maintenance',
+    'Business',
+    ' Financial Operations',
+    'Community and Social Services',
+    'Computer',
+    'Mathematical Occupations',
+    'Construction',
+    'Extractions',
+    'Education',
+    'Training',
+    'Library',
+    'Farming',
+    'Fishing',
+    'Forestry',
+    'Food Preparation',
+    ' Serving Related',
+    'Healthcare',
+    'Practitioners',
+    'Technical Occupations',
+    'Healthcare',
+    'Beauty',
+    'Support',
+    'Installation, Maintenance, and Repair',
+    ' Physical, and Social Science',
+    'Management',
+    'Personal Care',
+    'Production',
+    'Protective Service',
+    'Sales and Related',
+    'singer' ,
+    'production' ,
+    'wedding planner ',
+    'event planner' ,
+    'makeup artist'
+  ];
   constructor() { }
   ngOnInit() {};
 

@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonContent } from '@ionic/angular';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { IonContent, LoadingController } from '@ionic/angular';
+import { Timestamp } from 'firebase/firestore';
 import { ChatService } from 'src/app/services/chatService/chat.service';
+import { EnpService } from 'src/app/services/enpService/enp.service';
+import { InfService } from 'src/app/services/infService/inf.service';
+import { Entrepreneur } from 'src/app/shared/models/entrepreneur';
+import { Influencer } from 'src/app/shared/models/influencer';
 import { Message } from 'src/app/shared/models/Message';
 
 @Component({
@@ -13,44 +16,95 @@ import { Message } from 'src/app/shared/models/Message';
 })
 export class ChatPage implements OnInit {
   @ViewChild(IonContent) content: IonContent;
-
+  conversations: any = [];
   messages: Message[];
+  specificChat: Message[];
   newMsg = '';
   textMessage: any;
   forId: any;
+  currentUserImage: string;
+  currentUserFullName: string;
+  targetUserImage: string;
+  targetUserFullName: string;
+  enpData: Entrepreneur;
   //Get the current entreprenur uid from th lockal storage
   fromId = localStorage.getItem('localStorage_uid_pfe_2022');
+  //Get the current user type from th lockal storage
+  userType = localStorage.getItem('localStorage_userType_pfe_2022');
+
   constructor(
     private chatService: ChatService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
-    ) {
-    //get inf id from url
-    /////////!!!!!!!! important I need to add if here to trst if it's an enp or an inf
-    this.forId = this.activatedRoute.snapshot.paramMap.get('idInf');
+    private activatedRoute: ActivatedRoute,
+    private loadingCtrl: LoadingController,
+    private infService: InfService,
+    private enpService: EnpService,
+
+  )
+  {
+
+    //get user for id from url
+    if(this.userType ==='entrepreneur'){
+      this.forId = this.activatedRoute.snapshot.paramMap.get('idInf');
+    }else{
+      this.forId = this.activatedRoute.snapshot.paramMap.get('idEnp');
+    }
   }
 
   ngOnInit() {
-     this.chatService.getChatMessages(this.fromId, this.forId).subscribe((m)=>{
-      this.messages = m;
-    });
-    // this.messages =  this.chatService.getChatMessages(this.fromId, this.forId).pipe(
-    //     map((messages: Message[])=>messages),
-    //     map((messages)=>{
-    //       for(const m of messages) {
-    //         m.myMsg = this.fromId === m.fromId;
-    //       };
-    //       return messages;
-    //     })
-    //  );
-     console.log(this.messages);
+    this.getAllMsg();
+
+    if(this.userType === 'entrepreneur'){
+      this.infService.getInfById(this.forId).subscribe(inf=>{
+        this.targetUserImage = inf.image;
+        this.targetUserFullName = inf.fullName;
+      });
+      this.enpService.getEnpById(this.fromId).subscribe(enp=>{
+        this.currentUserImage = enp.image;
+        this.currentUserFullName = enp.fullName;
+      });
+
+    }else{
+      this.infService.getInfById(this.fromId).subscribe(inf=>{
+        this.currentUserImage= inf.image;
+        this.currentUserFullName = inf.fullName;
+      });
+      this.enpService.getEnpById(this.forId).subscribe(enp=>{
+        this.targetUserImage  = enp.image;
+        this.targetUserFullName = enp.fullName;
+      });
+
+    }
   }
 
-  sendMessage() {
-    this.chatService.addChatMessage(this.newMsg, this.fromId, this.forId).then(()=>{
-      this.newMsg = '';
-      this.content.scrollToBottom();
+
+
+  async getAllMsg(){
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    await this.chatService.getChatMessages().subscribe( (res) => {
+       this.messages = res;
+
     });
+
+
+    await loading.dismiss();
+
   }
 
+sendMessage() {
+  const msg = new Message();
+  msg.fromId = this.fromId;
+  msg.forId = this.forId;
+  msg.msg = this.newMsg;
+  msg.createdAt = Timestamp.now();
+
+  this.chatService.addChatMessage(msg).then(() => {
+    this.newMsg = '';
+    this.content.scrollToBottom();
+  });
 }
+}
+
+
+

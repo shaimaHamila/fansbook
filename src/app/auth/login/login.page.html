@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="onboarding"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -45,7 +45,7 @@
           <span class="ion-h3 ion-h3-box "> Remember me</span>
         </div>
         <div class="forget-psw">
-          <h3 class="ion-h3 forget-psw-h3">Forget Password?</h3>
+          <h3 routerLink="/forget-psw" class="ion-h2 forget-psw-h3">Forget Password?</h3>
         </div>
       </div>
       <div class="ion-mt"></div>
@@ -66,7 +66,7 @@
       <div class="ion-register">
         <h3 class="ion-h2">
           You don’t have an account ?
-          <a href="#" class="ion-h2 ion-h2-r" >Register now</a>
+          <a routerLink="/register" class="ion-h2 ion-h2-r" >Register now</a>
         </h3>
       </div>
 

@@ -31,7 +31,7 @@ export class CollaborationService {
   }
 
   getAllColl(): Observable<Collaboration[]>{
-    const q = query(this.colRef, orderBy('postDate'));
+    const q = query(this.colRef, orderBy('postDate', 'desc'));
     return collectionData(q, { idField: 'collId' }) as Observable<Collaboration[]>;
   }
 

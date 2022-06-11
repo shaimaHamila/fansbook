@@ -6,6 +6,8 @@ import { EntpProfilePageRoutingModule } from './entp-profile-routing.module';
 
 import { EntpProfilePage } from './entp-profile.page';
 import { SharedComponentsModule } from 'src/app/shared/modues/shared-components/shared-components.module';
+import { ApplicantsComponent } from '../components/applicants/applicants.component';
+import { ApplicantChildeComponent } from '../components/applicant-childe/applicant-childe.component';
 
 @NgModule({
   imports: [
@@ -16,6 +18,6 @@ import { SharedComponentsModule } from 'src/app/shared/modues/shared-components/
     SharedComponentsModule,
     SharedComponentsModule
   ],
-  declarations: [EntpProfilePage]
+  declarations: [EntpProfilePage, ApplicantsComponent, ApplicantChildeComponent]
 })
 export class EntpProfilePageModule {}

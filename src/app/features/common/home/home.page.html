@@ -44,7 +44,7 @@
           </ion-button>
         </div>
 
-        <ion-segment class="ion-content" scrollable>
+        <ion-segment *ngIf="influencers" class="ion-content" scrollable>
           <div class="inf-test" *ngFor="let influencer of influencers">
             <div class="inf-card" >
               <app-inf-card [influencer]="influencer"></app-inf-card>

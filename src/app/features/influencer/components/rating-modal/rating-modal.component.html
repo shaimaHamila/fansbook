@@ -14,7 +14,7 @@
       <div class="btns-coll btns">
         <ion-button (click)="cancel()" type="reset"  class="  ion-h3-btn btn-applicants">Cancel</ion-button>
         <ion-button *ngIf="!isExist" (click)="addInfRec()" type="submit" class="  ion-h3-btn btn-update">Submit</ion-button>
-        <ion-button *ngIf="isExist" (click)="addInfRec()" type="submit" class="  ion-h3-btn btn-update">Update</ion-button>
+        <ion-button *ngIf="isExist" (click)="updateInfRec()" type="submit" class="  ion-h3-btn btn-update">Update</ion-button>
       </div>
     </form>
 

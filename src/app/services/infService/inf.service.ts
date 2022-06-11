@@ -53,18 +53,19 @@ export class InfService {
   }
 
   // Update influencer data
-  async updateInf(entrepreneur: Influencer){
-    const infDocRef = doc(this.firestore, `Influencer/${entrepreneur.idInf}`);
-    await updateDoc(infDocRef, {...entrepreneur});
+  async updateInf(inf: Influencer){
+    const infDocRef = doc(this.firestore, `Influencer/${inf.idInf}`);
+    await updateDoc(infDocRef, {...inf});
   };
 
     // Update influencer general info
-    async updateInfInfo(idInf: any, country: string, phoneNumber: string, subTitle: string){
+    async updateInfInfo(idInf: any, country: string, phoneNumber: string, subTitle: string, fullName: string){
       const infDocRef = doc(this.firestore, `Influencer/${idInf}`);
       await updateDoc(infDocRef, {
         phoneNumber,
         country,
-        subTitle
+        subTitle,
+        fullName
       });
     };
     // Update influencer bio

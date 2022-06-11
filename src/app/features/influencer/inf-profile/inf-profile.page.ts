@@ -24,6 +24,7 @@ import { RecommendationService } from 'src/app/services/recoService/recommendati
 export class InfProfilePage implements OnInit {
   ratingsNb: number;
   avgRatung=0;
+  roundAvgRating=0;
   isExist: boolean; // Check whether the Influencer has recommendations or not
   recommendations: Recommendation[]; //for all inf recommendations
 
@@ -81,6 +82,8 @@ export class InfProfilePage implements OnInit {
   //get all inf recommendation
   async getInfReco(){
     await this.recoService.getInfReco(this.uid).subscribe((data)=>{
+      this.avgRatung = 0;
+      this.roundAvgRating = 0;
       if(data.length > 0){
         this.isExist = true;
         this.recommendations = data;
@@ -93,9 +96,13 @@ export class InfProfilePage implements OnInit {
         console.log(this.recommendations);
 
         this.avgRatung = this.avgRatung / this.ratingsNb;
+        this.avgRatung = Number(this.avgRatung.toFixed(2));
+        this.roundAvgRating = Math.round(this.avgRatung);
 
       }else{
         this.isExist = false;
+        this.roundAvgRating = 1;
+
       }
     });
   };
@@ -165,7 +172,7 @@ export class InfProfilePage implements OnInit {
 
   //ionic rating component
   segmentChanged(event: any){
-    console.log(event.target.value);
+    //console.log(event.target.value);
   };
 
 
@@ -180,7 +187,9 @@ export class InfProfilePage implements OnInit {
       componentProps:{
         phoneNumber: this.infData.phoneNumber,
         email: this.infData.email,
-        country: this.infData.country
+        country: this.infData.country,
+        fullName: this.infData.fullName,
+        subTitle: this.infData.subTitle
       },
       cssClass: 'influencer-info-modal',
       swipeToClose: true,
@@ -195,7 +204,7 @@ export class InfProfilePage implements OnInit {
 
 
   //Edit profile
-   // Edit User Bio modal
+   //  User Bio modal
    async  openEditInfoModal(){
     const modal = await this.modalCtrl.create({
       component:EditInfoComponent,
@@ -205,6 +214,7 @@ export class InfProfilePage implements OnInit {
         phoneNum: this.infData.phoneNumber,
         country: this.infData.country,
         subTitle: this.infData.subTitle,
+        fullName: this.infData.fullName
       },
       cssClass: 'influencer-info-modal',
       swipeToClose: true,

@@ -11,7 +11,6 @@ import { SharedComponentsModule } from 'src/app/shared/modues/shared-components/
 import { IonicRatingComponentModule } from 'ionic-rating-component';
 import { RatingModalComponent } from '../components/rating-modal/rating-modal.component';
 import { Recommendation } from 'src/app/shared/models/Recommendation';
-import { RecommendationComponent } from '../components/recommendation/recommendation.component';
 
 @NgModule({
   imports: [
@@ -23,6 +22,6 @@ import { RecommendationComponent } from '../components/recommendation/recommenda
     IonicRatingComponentModule,
 
   ],
-  declarations: [InfsProfilePage, RatingModalComponent, RecommendationComponent]
+  declarations: [InfsProfilePage, RatingModalComponent]
 })
 export class InfsProfilePageModule {}

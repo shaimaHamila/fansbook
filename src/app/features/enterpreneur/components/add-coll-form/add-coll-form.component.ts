@@ -39,6 +39,7 @@ export class AddCollFormComponent implements OnInit {
   async addCollOpp(form: NgForm){
     this.newColl.postDate = Timestamp.now() ;
     this.newColl.enpId = this.idEnp;
+    this.newColl.country = this.countrySelected;
     await this.collService.addColl(this.newColl).
     then(() => this.successMessage= 'Added!');
     form.reset();

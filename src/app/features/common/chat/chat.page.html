@@ -1,6 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>chat</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/messages"></ion-back-button>
+    </ion-buttons>
+    <div class="user-profile">
+      <h2 class="ion-h3 user-name-h">{{targetUserFullName}}</h2>
+      <img  class="profiltPic" [src]='targetUserImage?? "../assets/avatar/profilePic.png"'  alt="">
+    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -9,17 +15,24 @@
 
   <ion-grid>
     <ion-row *ngFor="let message of messages">
-      <ion-col size="9" class="message"
-        [offset]="message.myMsg ? 3 : 0"
-        [ngClass]="{ 'my-message': message.myMsg, 'other-message': !message.myMsg }">
-        <b>sami</b><br>
+
+        <ion-col *ngIf="((message.fromId === fromId) && (message.forId === forId)) || ((message.fromId === forId) && (message.forId === fromId))"
+         size="9" class="message"
+        [offset]="message.fromId === fromId ? 3 : 0"
+        [ngClass]="{ 'my-message': message.fromId === fromId, 'other-message': !(message.fromId === fromId) }">
+        <b *ngIf="message.fromId === fromId">{{currentUserFullName}}</b>
+        <b *ngIf="!(message.fromId === fromId)">{{targetUserFullName}}</b><br><br>
         <span>{{ message.msg }}
         </span>
         <div class="time ion-text-right"><br>{{ message.createdAt?.toMillis() | date:'short' }}</div>
       </ion-col>
     </ion-row>
   </ion-grid>
-
+<!-- <ion-grid>
+    <ion-row *ngFor="let conv of conversations">
+      <div>---</div>
+    </ion-row>
+  </ion-grid>-->
 </ion-content>
 
 <ion-footer>

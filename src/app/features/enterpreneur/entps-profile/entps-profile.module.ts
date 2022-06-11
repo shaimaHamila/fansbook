@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { EntpsProfilePageRoutingModule } from './entps-profile-routing.module';
 
 import { EntpsProfilePage } from './entps-profile.page';
+import { SharedComponentsModule } from 'src/app/shared/modues/shared-components/shared-components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EntpsProfilePageRoutingModule
+    EntpsProfilePageRoutingModule,
+    SharedComponentsModule
   ],
   declarations: [EntpsProfilePage]
 })

@@ -14,8 +14,10 @@
 
 
     <section>
+      <h4 class="ion-h3-m text">You are Registring as Entrepreneur</h4>
+
       <h2 class="ion-h1-m">A few details - then you can check your profile.</h2>
-      <h4 class="ion-h3-m text">To keep things safe and simple, they’ll pay to reach you - which is why we need your personal information.</h4>
+      <h4 class="ion-h3-m">To keep things safe and simple, they’ll pay to reach you - which is why we need your personal information.</h4>
     </section>
     <div class="ion-mt"></div>
     <!-- form -->
@@ -39,28 +41,22 @@
           <h2 class="ion-h2 label" >Country*</h2>
           <app-country [isMultiSelect]="false" (countrySlected)="getCountry($event) "></app-country>
 
-          <!-- get user gender -->
-          <h2 class="ion-h2 label" >Gender*</h2>
-          <ion-select value="female" name="gender" formControlName="gender" type="text" placeholder="Gender">
-            <ion-select-option value="female">Female</ion-select-option>
-            <ion-select-option value="male">Male</ion-select-option>
-          </ion-select>
-
         <div class="ion-mt"></div>
 
           <!-- get user company -->
           <ion-label  class="ion-h2 label">company*</ion-label>
           <ion-input class="ion-input ion-h2"  name="company" formControlName="company"  type="text" placeholder="Enter your company name"></ion-input>
 
+          <div class="ion-mt"></div>
 
           <!-- get user number -->
           <ion-label  class="ion-h2 label">Phone*</ion-label>
-          <ion-input class="ion-input ion-h2"  name="phoneNumber" formControlName="phoneNumber"  type="phone" placeholder="Enter your phone number"></ion-input>
+          <ion-input class="ion-input ion-h2"  name="phoneNumber" formControlName="phoneNumber"  type="number" placeholder="Enter your phone number"></ion-input>
 
         <div class="mt-h"></div>
 
         <div class="ion-btn btn">
-          <ion-button (click)="addEntrepreneur()"  routerLinkActive="active"  type="submit" class="ion-btn-lg ion-h3-btn"  color="primary" >Chek your profile</ion-button>
+          <ion-button [disabled]="!userFormGroup.valid" (click)="addEntrepreneur()"  routerLinkActive="active"  type="submit" class="ion-btn-lg ion-h3-btn"  color="primary" >Chek your profile</ion-button>
         </div>
 
 

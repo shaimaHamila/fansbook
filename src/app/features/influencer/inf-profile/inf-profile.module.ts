@@ -16,7 +16,6 @@ import { EditSpecialitiesComponent } from '../components/edit-profile-modals/edi
 import { ExperienceComponent } from '../components/addExperience/experience.component';
 import { EditExperienceComponent } from '../components/edit-profile-modals/edit-experience/edit-experience.component';
 import { EditInfoComponent } from '../components/edit-profile-modals/edit-info/edit-info.component';
-import { RecommendationComponent } from '../components/recommendation/recommendation.component';
 
 @NgModule({
   imports: [
@@ -37,8 +36,7 @@ import { RecommendationComponent } from '../components/recommendation/recommenda
       EditSpecialitiesComponent,
       ExperienceComponent,
       EditExperienceComponent,
-      EditInfoComponent,
-      RecommendationComponent
+      EditInfoComponent
     ]
 })
 export class InfProfilePageModule {}

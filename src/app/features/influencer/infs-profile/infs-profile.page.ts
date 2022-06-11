@@ -20,6 +20,7 @@ export class InfsProfilePage implements OnInit {
   isExist: boolean; // Check whether the Influencer has recommendations or not
   ratingsNb: number;
   avgRatung=0;
+  roundAvgRating=0;
   recommendations: Recommendation[]; //for all inf recommendations
 
   //Influencer Experience
@@ -80,6 +81,7 @@ export class InfsProfilePage implements OnInit {
       this.experiences = exp;
       this.experienceExist = exp.length > 0;
     });
+
   }
 
   //Display Experience time
@@ -99,7 +101,7 @@ export class InfsProfilePage implements OnInit {
     const loading = await this.loadingCtrl.create();
     await loading.present();
     await this.infService.getInfById(this.uid).subscribe(inf=>{
-      console.log('current inf user', inf);
+      //console.log('current inf user', inf);
       //console.log('current inf user', inf.phoneNumber);
     this.infData = inf;
     //profile building
@@ -110,7 +112,7 @@ export class InfsProfilePage implements OnInit {
       }
     }
     this.progress = parseFloat(p.toFixed(2));
-    console.log(p.toFixed(2));
+    //console.log(p.toFixed(2));
     });
 
     await loading.dismiss();
@@ -119,24 +121,37 @@ export class InfsProfilePage implements OnInit {
 
   //get all inf recommendation
   async getInfReco(){
+
     await this.recoService.getInfReco(this.uid).subscribe((data)=>{
+      this.avgRatung = 0;
+      this.roundAvgRating = 0;
       if(data.length > 0){
         this.isExist = true;
+        //console.log('data',data);
+
         this.recommendations = data;
         this.ratingsNb = data.length;
+
+
         this.recommendations.forEach(rec => {
           this.avgRatung = this.avgRatung + rec.starNb;
-          console.log(this.avgRatung);
-          console.log(rec);
+          //console.log('xxx',this.avgRatung);
+          // console.log(rec);
         });
-        console.log(this.recommendations);
 
         this.avgRatung = this.avgRatung / this.ratingsNb;
+        this.avgRatung = Number(this.avgRatung.toFixed(2));
+        this.roundAvgRating = Math.round(this.avgRatung);
 
       }else{
         this.isExist = false;
+        this.roundAvgRating = 1;
+
+
       }
     });
+
+
   };
 
 

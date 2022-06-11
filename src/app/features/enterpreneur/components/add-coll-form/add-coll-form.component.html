@@ -17,23 +17,27 @@
     <form #addCollForm='ngForm' (ngSubmit)="addCollOpp(addCollForm)" >
       <div class="mt-h"></div>
       <label  class="ion-h1-m title">Collaboration Title</label>
-      <ion-input class="ion-input ion-h3" name="colTitla" [(ngModel)]="newColl.colTitle" #colTitla="ngModel" type="text" placeholder="Enter your full name"></ion-input>
+      <ion-input class="ion-input ion-h3" name="colTitla" [(ngModel)]="newColl.colTitle" #colTitla="ngModel" type="text" placeholder="Enter collaboration title" required maxlength="40" minlength="3"></ion-input>
+      <div *ngIf="colTitla.touched && !colTitla.valid" class="error-message">Title is required!</div>
+
       <div class="ion-mt"></div>
 
       <label class="ion-h1-m label title">Specialties</label>
-      <app-specialities   [isMultiSelect]="true" (userSpecialities)="getUserSpecialities($event)"></app-specialities>
+      <app-specialities [isRequired]="true"  [isMultiSelect]="true" (userSpecialities)="getUserSpecialities($event)"></app-specialities>
 
 
       <label  class="ion-h1-m title">Collaboration description</label>
-      <ion-textarea class="ion-input ion-h3" name="colDescription" [(ngModel)]="newColl.colDescription" #colDescription="ngModel" type="textarea" placeholder="Collaboration description"></ion-textarea>
+      <ion-textarea class="ion-input ion-h3" name="colDescription" [(ngModel)]="newColl.colDescription" #colDescription="ngModel" type="textarea" placeholder="Collaboration description" required minlength="10"></ion-textarea>
+      <div *ngIf="colDescription.touched && !colDescription.valid" class="error-message">Description is required!</div>
+
       <div class="ion-mt"></div>
       <!-- get user country -->
       <h2 class="ion-h2 label" >Location*</h2>
-      <app-country [isMultiSelect]="false" (countrySlected)="getCountry($event) "></app-country>
+      <app-country [isRequired]="true" [isMultiSelect]="false" (countrySlected)="getCountry($event) "></app-country>
 
       <div class="btns-coll btns">
         <ion-button type="reset" (click)="resetCollOpp(addCollForm)" class="  ion-h3-btn btn-delete">rest</ion-button>
-        <ion-button type="submit" class="  ion-h3-btn btn-update ion-btn-color"  >Share</ion-button>
+        <ion-button [disabled]="!addCollForm.valid" type="submit" class="  ion-h3-btn btn-update ion-btn-color"  >Share</ion-button>
       </div>
 
     </form>

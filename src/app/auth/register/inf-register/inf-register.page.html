@@ -14,6 +14,8 @@
 
 
     <section>
+      <h4 class="ion-h3-m text">You are Registring as Influencer</h4>
+
       <h2 class="ion-h1-m">A few details - then you can check your profile.</h2>
       <h4 class="ion-h3-m text">To keep things safe and simple, they’ll pay to reach you - which is why we need your personal information.</h4>
     </section>
@@ -24,25 +26,37 @@
         <div class="input-image-section">
           <!-- get user image -->
             <img class="user-img" [src]="imgUrl">
-          <input #fileInput (change)="handleFileInput($event.target.files)" id="profiltPic"  name="profiltPic" style="display: none; "class="file-upload" type="file" accept="image/*" required />
+          <input #fileInput (change)="handleFileInput($event.target.files)" id="profiltPic"  name="profiltPic" style="display: none; "class="file-upload" type="file" accept="image/*" />
           <label for="profiltPic" class="ion-h3-m profile-label">
             <i class="fi fi-rr-add add-icon"></i>Upload Photo
           </label>
-          <!-- <div *ngIf="profiltPici.touched && !profiltPici.valid" class="error-message">Image is required!</div> -->
-
         </div>
+          <!-- Input validation -->
+          <div *ngIf="userFormGroup.get('profiltPic').hasError(validationUserFormGroup.gender.type) && (userFormGroup.get('profiltPic').dirty || userFormGroup.get('profiltPic').touched)"  class="ion-h5 error-message">
+            {{validationUserFormGroup.profiltPic.message}}
+          </div>
 
           <div class="ion-mt"></div>
 
           <!-- get user full name -->
           <ion-label  class="ion-h3">Full name</ion-label>
-          <ion-input formControlName="fullName" class="ion-input ion-h3"  name="fullName" type="text" placeholder="Enter your full name" required></ion-input>
-          <!-- <div *ngIf="fullNamei.touched && !fullNamei.valid" class="error-message">Full name is required!</div> -->
+          <ion-input formControlName="fullName" class="ion-input ion-h3"  name="fullName" type="text" placeholder="Enter your full name" ></ion-input>
+          <!-- Input validation -->
+          <div *ngFor="let validation of validationUserFormGroup.fullName">
+            <div *ngIf="userFormGroup.get('fullName').hasError(validation.type) && (userFormGroup.get('fullName').dirty || userFormGroup.get('fullName').touched)" class="ion-h5 error-message">
+              {{validation.message}}
+            </div>
           <div class="ion-mt"></div>
+          </div>
+
 
           <!-- get user country -->
           <h2 class="ion-h2 label" >Country*</h2>
           <app-country [isRequired]="true" [isMultiSelect]="false" (countrySlected)="getCountry($event) "></app-country>
+          <!-- Input validation -->
+          <div *ngIf="userFormGroup.get('country').hasError(validationUserFormGroup.gender.type) && (userFormGroup.get('country').dirty || userFormGroup.get('country').touched)"  class="ion-h5 error-message">
+            {{validationUserFormGroup.country.message}}
+          </div>
 
           <!-- get user gender -->
           <h2 class="ion-h2 label" >Gender*</h2>
@@ -50,14 +64,21 @@
             <ion-select-option value="female">Female</ion-select-option>
             <ion-select-option value="male">Male</ion-select-option>
           </ion-select>
-          <!-- <div *ngIf="genderi.touched && !genderi.valid" class="error-message">Gender is required!</div> -->
+          <!-- Input validation -->
+          <div *ngIf="userFormGroup.get('gender').hasError(validationUserFormGroup.gender.type) && (userFormGroup.get('gender').dirty || userFormGroup.get('gender').touched)"  class="ion-h5 error-message">
+            {{validationUserFormGroup.gender.message}}
+          </div>
+
 
         <div class="ion-mt"></div>
 
           <!-- get user number -->
           <ion-label  class="ion-h2 label">Phone*</ion-label>
-          <ion-input class="ion-input ion-h2"  name="phone" formControlName="phoneNumber"  type="number" placeholder="Enter your phone number" required></ion-input>
-          <!-- <div *ngIf="phonei.touched && !phonei.valid" class="error-message">Phone Number is required!</div> -->
+          <ion-input class="ion-input ion-h2" name="phone" formControlName="phone"  type="number" placeholder="Enter your phone number" ></ion-input>
+          <!-- Input validation -->
+            <div *ngIf="userFormGroup.get('phone').hasError(validationUserFormGroup.phone.type) && (userFormGroup.get('phone').dirty || userFormGroup.get('phone').touched)" class="ion-h5 error-message">
+              {{validationUserFormGroup.phone.message}}
+            </div>
 
           <div class="ion-mt"></div>
 
@@ -65,28 +86,48 @@
           <h2 class="ion-h2 label">Specialties</h2>
           <app-specialities [isRequired]="true" (userSpecialities)="getUserSpecialities($event)"></app-specialities>
 
+
           <h2  class="ion-h2 label">Minimum budget (DT)</h2>
-          <ion-input formControlName="minBudget"  class="ion-input input-budge ion-h2" name="minBudget" type="number" min="10" max="100" placeholder="0.0 DT" required></ion-input>
-          <!-- <div *ngIf="minBudgeti.touched && !minBudgeti.valid" class="error-message">Phone Number is required!</div> -->
+          <ion-input formControlName="minBudget"  class="ion-input input-budge ion-h2" name="minBudget" type="number" min="10" max="100" placeholder="0.0 DT" ></ion-input>
+          <!-- Input validation -->
+          <div *ngIf="userFormGroup.get('minBudget').hasError(validationUserFormGroup.minBudget.type) && (userFormGroup.get('minBudget').dirty || userFormGroup.get('minBudget').touched)" class="ion-h5 error-message">
+            {{validationUserFormGroup.minBudget.message}}
+          </div>
 
           <!-- User social media links for the follweers number -->
           <div class="ion-mt"></div>
           <h2 class="ion-h2">Instagram</h2>
-          <ion-input formControlName="instagram"  name="instagram" type="URL" class="ion-input ion-h2" placeholder="http://" required></ion-input>
-          <!-- <div *ngIf="instagrami.touched && !instagrami.valid" class="error-message">Instagram link name is required!</div> -->
+          <ion-input formControlName="instagram"  name="instagram" type="URL" class="ion-input ion-h2" placeholder="https://instagram.com/username" ></ion-input>
+          <!-- Input validation -->
+          <div *ngFor="let validation of validationUserFormGroup.instagram">
+            <div *ngIf="userFormGroup.get('instagram').hasError(validation.type) && (userFormGroup.get('instagram').dirty || userFormGroup.get('instagram').touched)" class="ion-h5 error-message">
+              {{validation.message}}
+            </div>
+          </div>
 
           <h2 class="ion-h2">Facebook</h2>
-          <ion-input formControlName="facebook"  ngModel name="facebook" type="URL" class="ion-input ion-h2" placeholder="http://" required></ion-input>
-          <!-- <div *ngIf="facebooki.touched && !facebooki.valid" class="error-message">Facebook link name is required!</div> -->
+          <ion-input formControlName="facebook"  name="facebook" type="URL" class="ion-input ion-h2" placeholder="https://www.facebook.com/username" ></ion-input>
+          <!-- Input validation -->
+          <div *ngFor="let validation of validationUserFormGroup.facebook">
+            <div *ngIf="userFormGroup.get('facebook').hasError(validation.type) && (userFormGroup.get('facebook').dirty || userFormGroup.get('facebook').touched)" class="ion-h5 error-message">
+              {{validation.message}}
+            </div>
+          </div>
 
           <h2 class="ion-h2">Youtube</h2>
-          <ion-input formControlName="youtube"  name="youtube" type="URL" class="ion-input ion-h2" placeholder="http://" required></ion-input>
-          <!-- <div *ngIf="youtubei.touched && !youtubei.valid" class="error-message">Youtube link name is required!</div> -->
+          <ion-input formControlName="youtube"  name="youtube" type="URL" class="ion-input ion-h2" placeholder="https://www.youtube.com/username" ></ion-input>
+          <!-- Input validation -->
+          <div *ngFor="let validation of validationUserFormGroup.youtube">
+            <div *ngIf="userFormGroup.get('youtube').hasError(validation.type) && (userFormGroup.get('youtube').dirty || userFormGroup.get('youtube').touched)" class="ion-h5 error-message">
+              {{validation.message}}
+            </div>
+          </div>
 
         <div class="mt-h"></div>
 
         <div class="ion-btn btn">
-          <ion-button  (click)="addInfluencer()"  routerLinkActive="active"  type="submit" class="ion-btn-lg ion-h3-btn"  color="primary" >Chek your profile</ion-button>
+
+          <ion-button  (click)="addInfluencer()" [disabled]="!userFormGroup.valid"  routerLinkActive="active"  type="submit" class="ion-btn-lg ion-h3-btn"  color="primary" >Chek your profile</ion-button>
         </div>
 
 

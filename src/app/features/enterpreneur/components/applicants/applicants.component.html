@@ -1,0 +1,19 @@
+<ion-content class="ion-content">
+  <!-- Update collaboration opportunity -->
+
+  <div class="container p-6">
+    <h1 class="ion-h1 applicants">All applicants</h1>
+
+    <h1></h1>
+    <div *ngIf="!infsId">There is no applicant!</div>
+    <div *ngIf="infsId">
+      <div *ngFor="let aId of infsId">
+
+        <app-applicant-childe [applicantId]="aId"></app-applicant-childe>
+
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>

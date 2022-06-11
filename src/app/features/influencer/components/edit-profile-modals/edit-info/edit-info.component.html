@@ -6,13 +6,18 @@
 
     <form #bioform="ngForm" ngForm="bioForm">
       <div class="mt-h"></div>
+      <ion-label>Full Name</ion-label>
+      <ion-input [(ngModel)]="fullName" name="fullName" #fullNamei="ngModel" class="ion-input ion-h2" type="text" placeholder="Full Name" required maxlength="30"></ion-input>
+      <div *ngIf="fullNamei.touched && !fullNamei.valid" class="error-message">Full Name Number is required!</div>
+
+      <div class="ion-mt"></div>
 
       <label  class="ion-h1-m title">SubTitle</label>
-      <ion-input [(ngModel)]="subTitle" class="ion-input ion-h3" name="subTitle" type="text" placeholder="Exp: Influencer" ></ion-input>
+      <ion-input [(ngModel)]="subTitle" class="ion-input ion-h3" name="subTitle" type="text" placeholder="Exp: Influencer" maxlength="30" ></ion-input>
       <div class="ion-mt"></div>
 
       <label  class="ion-h1-m title">Phone Number*</label>
-      <ion-input [(ngModel)]="phoneNum" class="ion-input ion-h3"  #phoneNumber="ngModel" name="phoneNumber" type="phone" placeholder="22 222 222" required></ion-input>
+      <ion-input [(ngModel)]="phoneNum" class="ion-input ion-h3"  #phoneNumber="ngModel" name="phoneNumber" type="phone" placeholder="22 222 222"  required></ion-input>
       <div *ngIf="phoneNumber.touched && !phoneNumber.valid" class="error-message">Phone Number is required!</div>
 
       <div class="ion-mt"></div>

@@ -23,12 +23,9 @@ export class RecommendationService {
   }
 
   //Update recommendation
-  async updateRecommendation(idRec: any, starNb: string ,recommandation: string){
-    const recDocRef = doc(this.firestore, `Recommendation/${idRec}`);
-    await updateDoc(recDocRef, {
-      starNb,
-      recommandation
-    });
+  async updateRecommendation(recommandation: Recommendation){
+    const recDocRef = doc(this.firestore, `Recommendation/${recommandation.idRec}`);
+    await updateDoc(recDocRef, {...recommandation});
   }
 
   //Get recommendation

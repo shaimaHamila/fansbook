@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Timestamp } from '@angular/fire/firestore';
 import { AlertController, ModalController } from '@ionic/angular';
+import { NotificationService } from 'src/app/services/notifService/notification.service';
 import { RecommendationService } from 'src/app/services/recoService/recommendation.service';
 import { Influencer } from 'src/app/shared/models/influencer';
 import { Recommendation } from 'src/app/shared/models/Recommendation';
+import { Notification } from 'src/app/shared/models/notification';
 
 @Component({
   selector: 'app-rating-modal',
@@ -15,10 +18,14 @@ export class RatingModalComponent implements OnInit {
   recommendation = new Recommendation();
   isFilled = false; // Check whether the entrepreneur has filled the stars or not
   isExist: boolean; // Check whether the entrepreneur has given a recommendation or not
+  notification = new Notification();
+
   constructor(
     private recoService: RecommendationService,
     public alertCtrl: AlertController,
-    private modalctrl: ModalController
+    private modalctrl: ModalController,
+    private notifService: NotificationService,
+
   ) { }
 
   ngOnInit() {
@@ -35,12 +42,20 @@ export class RatingModalComponent implements OnInit {
     if(this.isFilled){
       this.recommendation.idInf =this.idInf;
       this.recommendation.idEnp =this.idEnp;
-      await this.recoService.addRecommendation(this.recommendation).then(() =>{
+      await this.recoService.addRecommendation(this.recommendation).then(async () =>{
         this.modalctrl.dismiss();
 
         const header= 'Submitted';
         const message= 'Thanks for your feedbac';
         this.presentAlert(header, message);
+
+        this.notification.forId = this.idInf;
+        this.notification.fromId = this.idEnp;
+        this.notification.notifType = 'rating';
+        this.notification.notifMessg = 'gave you a recommendation';
+        this.notification.createdAt = Timestamp.now();
+
+        await this.notifService.addNotif(this.notification);
       });
     }else{
       const header= 'Alert';
@@ -48,6 +63,9 @@ export class RatingModalComponent implements OnInit {
       this.presentAlert(header, message);
     }
   }
+
+
+
   //Get recommendation if it is existe
   async getInfEnpRco(){
     await this.recoService.getInfEnpReco(this.idInf, this.idEnp).subscribe((data)=>{
@@ -60,9 +78,23 @@ export class RatingModalComponent implements OnInit {
     });
   }
 
+  //update recommendation
+  async updateInfRec(){
+    await this.recoService.updateRecommendation(this.recommendation).then(()=>{
+      this.modalctrl.dismiss();
+      window.location.reload();
+    });
+  }
   //delete this recommndation
   async deletRec(){
-    await this.recoService.deleteReco(this.recommendation.idRec).then(()=>{
+    await this.recoService.deleteReco(this.recommendation.idRec).then(async ()=>{
+      this.notification.forId = this.idInf;
+      this.notification.fromId = this.idEnp;
+      this.notification.notifType = 'rating';
+      this.notification.notifMessg = 'removed his recommendation';
+      this.notification.createdAt = Timestamp.now();
+
+      await this.notifService.addNotif(this.notification);
       this.modalctrl.dismiss();
       window.location.reload();
     });

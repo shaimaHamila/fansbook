@@ -69,7 +69,7 @@ export class AppComponent {
     }
   ];
   myPosts = {
-    title: 'My Postes',
+    title: 'My Collaborations Postes',
     url: '/tabs/entp-profile/enp-posts',
     icon: 'fi fi-rr-briefcase '
   };

@@ -12,6 +12,7 @@ export class EditInfoComponent implements OnInit {
   @Input() phoneNum: string;
   @Input() country: string;
   @Input() subTitle: string;
+  @Input() fullName: string;
 
   constructor(
     private infService: InfService,
@@ -30,7 +31,7 @@ export class EditInfoComponent implements OnInit {
   async updateBio(){
     const loading = await this.lodingCtrl.create();
     await loading.present();
-    await this.infService.updateInfInfo(this.uid, this.country, this.phoneNum, this.subTitle).then(()=>{
+    await this.infService.updateInfInfo(this.uid, this.country, this.phoneNum, this.subTitle, this.fullName).then(()=>{
       console.log('Updated successfuly');
       loading.dismiss();
     });

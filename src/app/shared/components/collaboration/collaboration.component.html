@@ -1,6 +1,6 @@
 <!-- This is the collaboration opportunity post -->
 
-  <div class="coll-header-div">
+  <div (click)="goEnpProfile()" class="coll-header-div">
     <img class="profiltPic-enp" [src]="enp.image" alt="">
     <div class="coll-header-text">
       <h2 class="ion-h1">{{enp.fullName}}</h2>
@@ -9,7 +9,12 @@
     </div>
 
   </div>
-  <h3 class="ion-h3 applicants">{{collaboration.applicants.length}} applicants</h3>
+  <h3 *ngIf="!collaboration.applicants" class="ion-h3 applicants">0 applicants</h3>
+  <h3 *ngIf="collaboration.applicants" class="ion-h3 applicants">{{collaboration.applicants.length}} applicants</h3>
+  <div *ngIf="isOwner" class="applicant" (click)="openCollApplicantsModal()">
+    <h3 class="ion-h3 app" >See All applicants</h3>
+    <i class="fi fi-rr-arrow-right appicon"></i>
+  </div>
   <h1 class="ion-h2-b coll-title">Collaboration Title</h1>
   <h2 class="ion-h3 description-text">{{collaboration.colTitle}}</h2>
 
@@ -17,7 +22,6 @@
     <h1 class="ion-h2-b specialities-req-h">Specialties</h1>
     <div class="specialities">
       <h3 *ngFor="let specialty of collaboration.specialties" class="ion-h3 specialty">{{specialty}}</h3>
-      <!-- <h3  class="ion-h3 specialty">{{collaboration.specialties}}</h3> -->
     </div>
   </div>
 

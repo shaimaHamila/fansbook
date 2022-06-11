@@ -11,6 +11,7 @@ import { Collaboration } from 'src/app/shared/models/collaboration';
 export class UpdateCollFormComponent implements OnInit {
 
   @Input() collaboration: Collaboration;
+  countrySelected: string;
 
   constructor(
     private serviceColl: CollaborationService,
@@ -18,7 +19,7 @@ export class UpdateCollFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.collaboration);
+    //console.log(this.collaboration);
   }
 
   getUserSpecialities(specialities){
@@ -28,6 +29,7 @@ export class UpdateCollFormComponent implements OnInit {
 
   // Update coll opp
   updateCollOpp(){
+    this.collaboration.country = this.countrySelected;
     this.serviceColl.updateCollOpp(this.collaboration).then(()=>{
       this.modalController.dismiss();
       console.log('Data add successfully');
@@ -42,6 +44,10 @@ export class UpdateCollFormComponent implements OnInit {
 
     }
 
+    getCountry(country) {
+      // console.log(country);
+      this.countrySelected = country;
+    }
     cancelUpdateColl(){
       this.modalController.dismiss();
       window.location.reload();

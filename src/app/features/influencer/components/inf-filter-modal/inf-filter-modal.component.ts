@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 @Component({
   selector: 'app-inf-filter-modal',
   templateUrl: './inf-filter-modal.component.html',
@@ -26,7 +26,10 @@ export class InfFilterModalComponent implements OnInit {
       higherFbFollowers: '10000000'
     },
   };
-  constructor( public navCtrrl: NavController) { }
+  constructor(
+    public navCtrrl: NavController,
+    public modalctrl: ModalController
+    ) { }
 
   ngOnInit() {};
 
@@ -52,6 +55,9 @@ export class InfFilterModalComponent implements OnInit {
     console.log(this.filters.fbFollowers);
   }
 
+  filter(){
+    this.modalctrl.dismiss();
+  }
 
   //Specialities
 

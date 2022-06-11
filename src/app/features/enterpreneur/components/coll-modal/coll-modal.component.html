@@ -8,7 +8,8 @@
         <h3 class="ion-h5 data-post-h">{{getDate()}}</h3>
       </div>
     </div>
-    <h3 class="ion-h3 applicants">{{collaboration.applicants.length}}  applicants</h3>
+    <h3 *ngIf="collaboration.applicants" class="ion-h3 applicants">{{collaboration.applicants.length}}  applicants</h3>
+    <h3 *ngIf="!collaboration.applicants" class="ion-h3 applicants">0 applicants</h3>
     <h1 class="ion-h2-b coll-title">Collaboration Title</h1>
     <h2 class="ion-h3 description-text">{{collaboration.colTitle}}</h2>
 
@@ -26,7 +27,6 @@
       <ion-button *ngIf="!isOwner && !isApplied && isInfluencer " (click)="addApplicant()" type="submit" class=" btn-apply ion-h3-btn ion-btn-color" >Apply</ion-button>
       <ion-button *ngIf="!isOwner && isApplied && isInfluencer" (click)="removeApplicant()" type="submit" class=" btn-cancel ion-h3-btn " >Cancel</ion-button>
       <!-- edit pot  -->
-      <ion-button *ngIf="isOwner" (click)="openCollUpdatelModal()" type="submit" class=" btn-apply ion-h3-btn ion-btn-color" >Edit</ion-button>
     </div>
   </div>
 

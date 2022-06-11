@@ -18,6 +18,15 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./auth/register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'forget-psw',
+    loadChildren: () => import('./auth/forget-psw/forget-psw.module').then( m => m.ForgetPswPageModule)
+  },
+  {
+    path: 'verify-email',
+    loadChildren: () => import('./auth/verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
+  },
+
 
 
 
